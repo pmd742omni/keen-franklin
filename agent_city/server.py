@@ -35,6 +35,7 @@ from agent_city.agents.optimizer_roles import (
     StartupGuardianAgent,
     PerformanceAuditorAgent,
 )
+from native_core.native_bridge import PolyglotBridge
 
 # -----------------------------------------------------------------------------
 # Active coordinator instance
@@ -265,6 +266,46 @@ async def get_hardware_telemetry() -> Dict[str, Any]:
         "optimizer_agents": [a.model_dump() for a in optimizer_agents],
     }
 
+@app.get("/api/native/status")
+async def get_native_polyglot_status() -> Dict[str, Any]:
+    """Retrieve verified polyglot status across C kernel, Rust sentinel, and Java bridge."""
+    return PolyglotBridge.get_polyglot_status()
+
+@app.post("/api/native/compact")
+async def post_native_compact() -> Dict[str, Any]:
+    """Trigger microsecond Win32 working set compaction via C silicon_kernel.dll."""
+    res = PolyglotBridge.compact_memory_c()
+    coordinator.trigger_event(
+        "NATIVE_KERNEL_TRIM",
+        "Win32 NT Working Set Compaction",
+        f"Reclaimed {res.get('reclaimed_mb', 0)} MB across {res.get('processes_trimmed', 0)} processes in {res.get('execution_duration_ms', 0)} ms.",
+    )
+    return res
+
+@app.get("/api/evolution/status")
+async def get_evolution_status() -> Dict[str, Any]:
+    """Retrieve 168-Hour autonomous evolution timeline and epoch state."""
+    state_file = _parent_dir / "evolution" / "evolution_state.json"
+    if state_file.exists():
+        try:
+            with open(state_file, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            return {"status": "error", "message": str(e)}
+    return {"status": "uninitialized"}
+
+@app.get("/api/evolution/chronicle")
+async def get_evolution_chronicle() -> Dict[str, Any]:
+    """Retrieve living Silicon Sanctuary markdown chronicle."""
+    chronicle_file = _parent_dir / "evolution" / "CHRONICLE.md"
+    if chronicle_file.exists():
+        try:
+            with open(chronicle_file, "r", encoding="utf-8") as f:
+                return {"status": "ok", "content": f.read()}
+        except Exception as e:
+            return {"status": "error", "message": str(e)}
+    return {"status": "not_found"}
+
 @app.get("/api/agents")
 async def get_agents() -> List[Dict[str, Any]]:
     """Retrieve full list of active civic agents and subagents."""
@@ -362,7 +403,8 @@ async def post_controls(req: ControlRequest) -> Dict[str, Any]:
     action_upper = req.action.upper()
     valid_actions = {
         "PAUSE", "RESUME", "STEP", "SET_SPEED", "TRIGGER_EVENT",
-        "BOOST_MEMORY", "TRIM_MEMORY", "PURGE_STORAGE", "FULL_OPTIMIZE", "TRIM_PID"
+        "BOOST_MEMORY", "TRIM_MEMORY", "PURGE_STORAGE", "FULL_OPTIMIZE", "TRIM_PID",
+        "NATIVE_COMPACT"
     }
     if action_upper not in valid_actions:
         raise HTTPException(status_code=400, detail=f"Invalid action '{req.action}'. Allowed: {valid_actions}")
@@ -386,6 +428,13 @@ async def post_controls(req: ControlRequest) -> Dict[str, Any]:
         coordinator.trigger_event(event_name, title, desc, payload)
     
     # Real Laptop Optimization Actions
+    elif action_upper == "NATIVE_COMPACT":
+        opt_result = PolyglotBridge.compact_memory_c()
+        coordinator.trigger_event(
+            "NATIVE_KERNEL_TRIM",
+            "Win32 Working Set Compaction",
+            f"Flushed {opt_result.get('reclaimed_mb', 0)} MB from {opt_result.get('processes_trimmed', 0)} processes via C kernel.",
+        )
     elif action_upper == "TRIM_PID":
         pid = int(payload.get("pid", 0))
         opt_result = SystemMetricsCollector.trim_process_by_pid(pid)

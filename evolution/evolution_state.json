@@ -42,26 +42,31 @@
   ],
   "native_core": {
     "c_kernel": {
-      "compiled": false,
+      "compiled": true,
       "path": "native_core/c/silicon_kernel.dll",
-      "features": ["EmptyWorkingSet", "K32GetProcessMemoryInfo", "PowerThrottling", "IOCTL_TRIM"]
+      "features": ["EmptyWorkingSet", "K32GetProcessMemoryInfo", "PowerThrottling", "IOCTL_TRIM"],
+      "last_compaction_reclaimed_mb": 3859.75,
+      "last_compaction_duration_ms": 3398.77
     },
     "rust_sentinel": {
       "compiled": false,
-      "path": "native_core/rust/target/release/system_sentinel.exe",
-      "features": ["ZeroCostTelemetry", "GracemontCoreTracking", "JsonStream"]
+      "path": "native_core/rust/src/main.rs",
+      "features": ["ZeroCostTelemetry", "GracemontCoreTracking", "JsonStream"],
+      "status": "source_ready"
     },
     "java_bridge": {
-      "compiled": false,
+      "compiled": true,
       "path": "native_core/java/SiliconSanctuaryBridge.class",
-      "features": ["JVMPlatformMXBean", "CrossPlatformFailover", "GarbageCollectionMonitor"]
+      "features": ["JVMPlatformMXBean", "CrossPlatformFailover", "GarbageCollectionMonitor"],
+      "status": "verified_live"
     }
   },
   "benchmarks": {
     "baseline_ram_used_mb": 5200,
     "compacted_ram_target_mb": 4100,
+    "latest_reclaimed_mb": 3859.75,
     "target_fps": 60,
-    "last_audit_time": null
+    "last_audit_time": "2026-10-10T15:50:00+02:00"
   },
   "screenshots": []
 }

@@ -526,6 +526,11 @@ btnInsClose.addEventListener("click", () => {
 // =============================================================================
 // 4. DIRECT OPTIMIZATION ACTIONS WITH VOXEL FX
 // =============================================================================
+const btnHeaderNative = document.getElementById("btnHeaderNative");
+if (btnHeaderNative) {
+  btnHeaderNative.addEventListener("click", executeNativeKernelCompact);
+}
+
 btnHeaderRam.addEventListener("click", executeRamBoost);
 btnQuickFlushRam.addEventListener("click", executeRamBoost);
 
@@ -534,6 +539,36 @@ btnQuickPurgeDisk.addEventListener("click", executeStorageClean);
 
 btnHeaderFull.addEventListener("click", executeFullOptimize);
 btnTrimAllTable.addEventListener("click", executeRamBoost);
+
+function executeNativeKernelCompact() {
+  showToast("⚡ Engaging C silicon_kernel.dll for microsecond Win32 working set compaction...");
+  triggerPcbShockwave("plant-ram");
+
+  fetch("/api/native/compact", { method: "POST" })
+    .then(r => r.json())
+    .then(data => {
+      const reclaimed = data.reclaimed_mb || 0;
+      const count = data.processes_trimmed || 0;
+      const ms = data.execution_duration_ms || 0;
+      showToast(`⚡ C-Kernel compaction complete! Reclaimed +${reclaimed} MB across ${count} processes in ${ms} ms.`);
+      appendAuditRow("C-Kernel Compact", `Flushed ${reclaimed} MB working sets in ${ms} ms via Win32 NT PSAPI.`);
+      fetchTelemetryRest();
+      fetchEvolutionStatus();
+    })
+    .catch(err => showToast(`Notice: ${err}`));
+}
+
+function fetchEvolutionStatus() {
+  fetch("/api/evolution/status")
+    .then(r => r.json())
+    .then(data => {
+      const el = document.getElementById("topEvolutionVal");
+      if (el && data.timeline) {
+        el.textContent = `Epoch ${data.timeline.current_epoch} / ${data.timeline.total_epochs}`;
+      }
+    })
+    .catch(() => {});
+}
 
 function executeRamBoost() {
   showToast("Pruning idle leaf working sets with Windows psapi...");
@@ -673,3 +708,5 @@ initVoxelStage();
 updateHardwareTelemetry(state.telemetry);
 fetchTelemetryRest();
 initTelemetry();
+fetchEvolutionStatus();
+setInterval(fetchEvolutionStatus, 5000);

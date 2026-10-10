@@ -10,7 +10,7 @@
 
 In the 2026 web engineering landscape, open source software (OSS) forms the foundational bedrock of all digital infrastructure. From monolithic powerhouses like **Laravel** and **Ruby on Rails** to decoupled reactive ecosystems like **React**, **Vue**, **Svelte**, and high-performance runtimes in **Go**, **Rust**, and **Python**, the open-source web domain offers zero-licensing-cost, enterprise-grade scalability.
 
-This repository provides deep-dive architectural blueprints, decision frameworks, and concrete implementation patterns across seven core domains:
+This repository provides deep-dive architectural blueprints, decision frameworks, production blueprints, and concrete implementation patterns across ten core domains:
 
 1. **Frontend Reactive Frameworks & Meta-Frameworks** (React 19+, Next.js, Remix/React Router v7, Vue 3.5/Nuxt, Svelte 5, Astro 5)
 2. **Backend & Full-Stack Application Frameworks** (Laravel 11/12, Django 5+, FastAPI, NestJS/Hono, Go/Gin/Chi, Rails 8)
@@ -19,6 +19,9 @@ This repository provides deep-dive architectural blueprints, decision frameworks
 5. **Open Source Backend-as-a-Service (BaaS) & Headless CMS** (Supabase self-hosted, PocketBase, Payload CMS 3.0, Strapi 5, Directus)
 6. **Containerization, Self-Hosted PaaS & Web Runtimes** (Docker/Podman, Coolify, Dokku, Kamal 2, FrankenPHP, Caddy, Nginx)
 7. **Architectural Trade-Off & Decision Matrices** (TCO, Velocity vs Throughput, Team Topology, Maintenance Overhead)
+8. **Production Scaffold Blueprints** (Laravel/Filament, React 19/Next/Drizzle, FastAPI/Pydantic/SQLAlchemy, Go/Chi/sqlc)
+9. **Web Security & Zero-Trust Hardening** (OWASP Top 10 web defense, RBAC/ABAC multi-tenancy, HTTP security headers)
+10. **Zero-Downtime Database Migrations & Indexing** (Expand/Contract pattern, PostgreSQL index types, EXPLAIN ANALYZE)
 
 ---
 
@@ -53,7 +56,7 @@ quadrantChart
 
 ---
 
-## 🗂️ Directory Structure
+## 🗂️ Complete Knowledge Base Map
 
 ```text
 .agents/2026-10-10 Opensource Web development systems/
@@ -84,7 +87,18 @@ quadrantChart
 │   ├── 01-containers-and-orchestration.md             <-- Docker, Podman, Compose, Kubernetes, K3s
 │   ├── 02-self-hosting-paas.md                        <-- Coolify, Dokku, Kamal 2, CapRover
 │   └── 03-web-servers-and-proxies.md                  <-- FrankenPHP, Caddy, Nginx, Traefik
-└── 07-architectural-comparisons-and-decision-matrix.md<-- TCO, Performance, Velocity, Team Fit
+├── 07-architectural-comparisons-and-decision-matrix.md<-- TCO, Performance, Velocity, Team Fit
+├── 08-production-scaffold-blueprints/
+│   ├── laravel-filament-modern-monolith.md            <-- Full Laravel 11/12 + Filament v3 setup
+│   ├── react-19-nextjs-drizzle-fullstack.md           <-- Next.js 15 + Drizzle + React 19 blueprint
+│   ├── fastapi-pydantic-v2-sqlalchemy.md              <-- FastAPI + Pydantic v2 + SQLAlchemy 2 setup
+│   └── go-chi-sqlc-microservice.md                    <-- Go 1.23 + Chi + sqlc microservice setup
+├── 09-security-and-hardening/
+│   ├── owasp-top-10-web-defense.md                    <-- Concrete defenses against OWASP Top 10
+│   └── zero-trust-and-rbac.md                         <-- Multi-tenancy isolation and RBAC architecture
+└── 10-database-migration-and-indexing/
+    ├── zero-downtime-migrations.md                    <-- Expand & contract pattern for live DBs
+    └── postgresql-indexing-and-explain-analyze.md     <-- B-tree, GIN, HNSW indexes & EXPLAIN ANALYZE
 ```
 
 ---
@@ -104,7 +118,10 @@ quadrantChart
 
 ## 🚀 Workspace Evolution & Active Skills
 
-In parallel with this knowledge base, the workspace's `.agents/skills` environment has been expanded with three high-agency production skills:
-1. `@[skills/laravel-expert]`: End-to-end modern Laravel mastery (Laravel 11/12, Inertia v2, Livewire 3, Filament, Eloquent optimization, Pest).
-2. `@[skills/modern-react-stack]`: Modern React 19, Server Components, Next.js App Router, Vite, TanStack Query, and Zustand patterns.
-3. `@[skills/fullstack-open-source-architect]`: Multi-tier system design, self-hosted deployment (Coolify, Docker, Kamal), database architecture, and technology trade-off resolution.
+The workspace's `.agents/skills` environment now includes six specialized production skills:
+1. `@[skills/laravel-expert]`: Modern Laravel 11/12, Inertia v2, Livewire 3, Filament v3, Eloquent optimization, Octane, Pest.
+2. `@[skills/modern-react-stack]`: React 19, Server Components, Next.js App Router, Vite, TanStack Query v5, Zustand, Tailwind v4, shadcn/ui.
+3. `@[skills/fullstack-open-source-architect]`: Multi-tier system design, self-hosted deployment (Coolify, Docker, Kamal), database architecture, trade-off resolution.
+4. `@[skills/python-web-engineer]`: FastAPI with Pydantic v2, Django 5+ async ORM, Django Ninja, async SQLAlchemy 2.0, Alembic.
+5. `@[skills/go-backend-craft]`: Go 1.23+ web services, Chi router, stdlib path routing, compile-time sqlc, bounded goroutine worker pools, pgxpool.
+6. `@[skills/self-hosted-devops-and-coolify]`: Coolify PaaS automation, Docker multi-stage builds, reverse proxies (Traefik/Caddy), automated S3 backups, VPS security hardening.

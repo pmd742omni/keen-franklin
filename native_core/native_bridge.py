@@ -174,7 +174,7 @@ class PolyglotBridge:
                 ["java", "-cp", str(_JAVA_CLASS_DIR), "native_core.java.SiliconSanctuaryBridge", "--status"],
                 capture_output=True,
                 text=True,
-                timeout=4,
+                timeout=12,
             )
             if proc.returncode == 0:
                 data = json.loads(proc.stdout)
