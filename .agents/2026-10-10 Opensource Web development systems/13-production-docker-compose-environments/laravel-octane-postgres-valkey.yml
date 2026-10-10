@@ -1,0 +1,72 @@
+# Production Docker Compose: Laravel 11/12 + FrankenPHP Octane + PostgreSQL 17 + Valkey
+version: '3.8'
+
+services:
+  app:
+    image: myorg/laravel-octane:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - APP_ENV=production
+      - APP_DEBUG=false
+      - APP_KEY=${APP_KEY}
+      - DB_CONNECTION=pgsql
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_DATABASE=laravel_prod
+      - DB_USERNAME=laravel_user
+      - DB_PASSWORD=${DB_PASSWORD}
+      - REDIS_HOST=valkey
+      - REDIS_PORT=6379
+      - QUEUE_CONNECTION=redis
+      - CACHE_STORE=redis
+      - OCTANE_SERVER=frankenphp
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      postgres:
+        condition: service_healthy
+      valkey:
+        condition: service_started
+
+  queue-worker:
+    image: myorg/laravel-octane:latest
+    restart: unless-stopped
+    command: php artisan horizon
+    environment:
+      - APP_ENV=production
+      - DB_HOST=postgres
+      - REDIS_HOST=valkey
+    depends_on:
+      - app
+
+  postgres:
+    image: pgvector/pgvector:pg17
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: laravel_prod
+      POSTGRES_USER: laravel_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U laravel_user -d laravel_prod"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  valkey:
+    image: valkey/valkey:8-alpine
+    restart: unless-stopped
+    command: valkey-server --maxmemory 512mb --maxmemory-policy allkeys-lru --save ""
+    volumes:
+      - valkeydata:/data
+
+volumes:
+  pgdata:
+  valkeydata:
+  caddy_data:
+  caddy_config:

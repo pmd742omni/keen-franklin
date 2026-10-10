@@ -1,0 +1,57 @@
+# Production Docker Compose: FastAPI + Celery Workers + PostgreSQL 17 + Valkey
+version: '3.8'
+
+services:
+  api:
+    image: myorg/fastapi-app:latest
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - DATABASE_URL=postgresql+asyncpg://fastapi_user:${DB_PASSWORD}@postgres:5432/fastapi_prod
+      - CELERY_BROKER_URL=redis://valkey:6379/0
+      - CELERY_RESULT_BACKEND=redis://valkey:6379/1
+    depends_on:
+      postgres:
+        condition: service_healthy
+      valkey:
+        condition: service_started
+
+  worker:
+    image: myorg/fastapi-app:latest
+    restart: unless-stopped
+    command: celery -A app.core.celery worker --loglevel=info -c 4
+    environment:
+      - ENVIRONMENT=production
+      - DATABASE_URL=postgresql+asyncpg://fastapi_user:${DB_PASSWORD}@postgres:5432/fastapi_prod
+      - CELERY_BROKER_URL=redis://valkey:6379/0
+      - CELERY_RESULT_BACKEND=redis://valkey:6379/1
+    depends_on:
+      - api
+
+  postgres:
+    image: pgvector/pgvector:pg17
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: fastapi_prod
+      POSTGRES_USER: fastapi_user
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fastapi_user -d fastapi_prod"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  valkey:
+    image: valkey/valkey:8-alpine
+    restart: unless-stopped
+    command: valkey-server --maxmemory 512mb --maxmemory-policy allkeys-lru --save ""
+    volumes:
+      - valkeydata:/data
+
+volumes:
+  pgdata:
+  valkeydata:

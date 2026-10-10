@@ -10,7 +10,7 @@
 
 In the 2026 web engineering landscape, open source software (OSS) forms the foundational bedrock of all digital infrastructure. From monolithic powerhouses like **Laravel** and **Ruby on Rails** to decoupled reactive ecosystems like **React**, **Vue**, **Svelte**, and high-performance runtimes in **Go**, **Rust**, and **Python**, the open-source web domain offers zero-licensing-cost, enterprise-grade scalability.
 
-This repository provides deep-dive architectural blueprints, decision frameworks, production blueprints, and concrete implementation patterns across ten core domains:
+This repository provides deep-dive architectural blueprints, decision frameworks, production blueprints, and concrete implementation patterns across fifteen core domains:
 
 1. **Frontend Reactive Frameworks & Meta-Frameworks** (React 19+, Next.js, Remix/React Router v7, Vue 3.5/Nuxt, Svelte 5, Astro 5)
 2. **Backend & Full-Stack Application Frameworks** (Laravel 11/12, Django 5+, FastAPI, NestJS/Hono, Go/Gin/Chi, Rails 8)
@@ -22,6 +22,11 @@ This repository provides deep-dive architectural blueprints, decision frameworks
 8. **Production Scaffold Blueprints** (Laravel/Filament, React 19/Next/Drizzle, FastAPI/Pydantic/SQLAlchemy, Go/Chi/sqlc)
 9. **Web Security & Zero-Trust Hardening** (OWASP Top 10 web defense, RBAC/ABAC multi-tenancy, HTTP security headers)
 10. **Zero-Downtime Database Migrations & Indexing** (Expand/Contract pattern, PostgreSQL index types, EXPLAIN ANALYZE)
+11. **Open-Source Agent Skills Ecosystem & Workspace Evolution** (Skill standards, GitHub repositories, automated installation)
+12. **Full-Stack Testing & Automated QA** (Playwright browser automation, visual regressions, Pest 3 & Pytest architecture)
+13. **Production Docker Compose Environments** (Multi-service production Compose setups for Laravel, Next.js, FastAPI, Go)
+14. **Observability, Distributed Tracing & Metrics** (OpenTelemetry OTel W3C propagation, Prometheus RED method, structured JSON logging)
+15. **AI Integration, LLM Orchestration & Local Inferences** (Self-hosted Ollama/vLLM, Vercel AI SDK streaming, pgvector RAG)
 
 ---
 
@@ -60,9 +65,9 @@ quadrantChart
 
 ```text
 .agents/2026-10-10 Opensource Web development systems/
-├── README.md                                           <-- This Master Index
+├── README.md                                           <-- Master Index, 2026 Tech Radar, Selection Guide
 ├── 01-frontend-ecosystems/
-│   ├── 01-react-ecosystem.md                          <-- React 19, Server Components, Next.js, Vite
+│   ├── 01-react-ecosystem.md                          <-- React 19 RSC, Server Actions, Next.js, Vite
 │   ├── 02-vue-and-nuxt.md                             <-- Vue 3.5, Nuxt 3/4, Pinia, VueUse
 │   ├── 03-svelte-and-sveltekit.md                     <-- Svelte 5 Runes, SvelteKit, Superforms
 │   └── 04-astro-and-island-architecture.md            <-- Astro 5, Island Architecture, Content Layer
@@ -96,9 +101,37 @@ quadrantChart
 ├── 09-security-and-hardening/
 │   ├── owasp-top-10-web-defense.md                    <-- Concrete defenses against OWASP Top 10
 │   └── zero-trust-and-rbac.md                         <-- Multi-tenancy isolation and RBAC architecture
-└── 10-database-migration-and-indexing/
-    ├── zero-downtime-migrations.md                    <-- Expand & contract pattern for live DBs
-    └── postgresql-indexing-and-explain-analyze.md     <-- B-tree, GIN, HNSW indexes & EXPLAIN ANALYZE
+├── 10-database-migration-and-indexing/
+│   ├── zero-downtime-migrations.md                    <-- Expand & contract pattern for live DBs
+│   └── postgresql-indexing-and-explain-analyze.md     <-- B-tree, GIN, HNSW indexes & EXPLAIN ANALYZE
+├── 11-agent-skills-and-workspace-evolution.md         <-- GitHub skill ecosystems & installation guide
+├── 12-fullstack-testing-and-qa/
+│   ├── playwright-e2e-and-visual-regression.md        <-- Playwright browser tests & snapshots
+│   └── pest-and-pytest-backend-testing.md             <-- Pest 3 architecture tests & Pytest async
+├── 13-production-docker-compose-environments/
+│   ├── laravel-octane-postgres-valkey.yml             <-- Production Compose for Laravel Octane
+│   ├── nextjs-drizzle-postgres-valkey.yml             <-- Production Compose for Next.js & Drizzle
+│   ├── fastapi-celery-postgres-valkey.yml             <-- Production Compose for FastAPI & Celery
+│   └── go-chi-postgres-valkey.yml                     <-- Production Compose for Go & Chi
+├── 14-observability-metrics-and-logging/
+│   ├── opentelemetry-distributed-tracing.md           <-- W3C trace context, spans & OTLP export
+│   └── prometheus-grafana-and-structured-logging.md   <-- RED method metrics & JSON trace logging
+├── 15-ai-integration-and-llm-orchestration/
+│   ├── open-source-llm-runtimes-and-ollama.md         <-- Ollama, vLLM & llama.cpp inference
+│   └── ai-sdk-and-langchain-web-integration.md        <-- Vercel AI SDK streaming & pgvector RAG
+├── 16-local-first-and-edge-architectures/
+│   ├── 01-local-first-data-sync-and-crdts.md          <-- wa-sqlite, OPFS, Yjs CRDTs, ElectricSQL & PowerSync
+│   └── 02-edge-runtimes-and-distributed-sqlite.md     <-- workerd isolates, LibSQL replicas, LiteFS FUSE
+├── 17-open-source-voxel-art-for-the-web/
+│   ├── 01-open-source-voxel-tools-and-formats.md      <-- Goxel, MagicaVoxel, .vox parser, palette design
+│   ├── 02-webgl-webgpu-voxel-rendering-engines.md     <-- Three.js InstancedMesh, Babylon Thin Instances, WebGPU DDA
+│   ├── 03-greedy-meshing-and-mesh-optimization.md     <-- Greedy meshing algorithm, 95% poly drop, vertex AO
+│   └── 04-interactive-react-three-fiber-voxel-viewer.md<-- Production React Three Fiber component & lighting
+└── scripts/
+    ├── skills_audit.py                                <-- Automated YAML frontmatter and reference auditor
+    ├── stack_scaffolder.py                            <-- CLI generator for scaffolding starter stacks
+    ├── stack_decision_advisor.py                      <-- Interactive architecture recommender and scoring CLI
+    └── run_all_diagnostics.py                         <-- Unified end-to-end regression and verification suite
 ```
 
 ---
@@ -113,15 +146,24 @@ quadrantChart
 | **Real-Time Interactive App** | **Node.js (Hono/Fastify) + WebSockets** | Phoenix (Elixir) / Go | Asynchronous event loop, lightweight connection multiplexing |
 | **Solo Developer MVP** | **PocketBase** OR **Laravel + Livewire** | Supabase self-hosted | Minimal operational surface area, zero context switching |
 | **Content-Heavy Portal** | **Payload CMS 3.0 + Next.js** | Strapi 5 + Astro | Content modeling in code, Git-driven workflow, TypeScript types |
+| **Local-First / Collaborative App**| **Yjs + wa-sqlite (OPFS) + ElectricSQL** | PowerSync + PostgreSQL | 0ms local reads/writes, offline-first reliability, background delta replication |
+| **Voxel & 3D Interactive Web App** | **React Three Fiber + InstancedMesh / Greedy Mesh** | Babylon.js Thin Instances | 60-120 FPS performance, single draw call, native React scene graph integration |
 
 ---
 
-## 🚀 Workspace Evolution & Active Skills
+## 🚀 Workspace Evolution & Active Skills Registry
 
-The workspace's `.agents/skills` environment now includes six specialized production skills:
-1. `@[skills/laravel-expert]`: Modern Laravel 11/12, Inertia v2, Livewire 3, Filament v3, Eloquent optimization, Octane, Pest.
-2. `@[skills/modern-react-stack]`: React 19, Server Components, Next.js App Router, Vite, TanStack Query v5, Zustand, Tailwind v4, shadcn/ui.
-3. `@[skills/fullstack-open-source-architect]`: Multi-tier system design, self-hosted deployment (Coolify, Docker, Kamal), database architecture, trade-off resolution.
-4. `@[skills/python-web-engineer]`: FastAPI with Pydantic v2, Django 5+ async ORM, Django Ninja, async SQLAlchemy 2.0, Alembic.
-5. `@[skills/go-backend-craft]`: Go 1.23+ web services, Chi router, stdlib path routing, compile-time sqlc, bounded goroutine worker pools, pgxpool.
-6. `@[skills/self-hosted-devops-and-coolify]`: Coolify PaaS automation, Docker multi-stage builds, reverse proxies (Traefik/Caddy), automated S3 backups, VPS security hardening.
+### Curated Open-Source Skills (GitHub)
+- `@[skills/webapp-testing]`: Automated browser testing with Playwright and server lifecycle management.
+- `@[skills/mcp-builder]`: Model Context Protocol server development in TypeScript & Python.
+- `@[skills/skill-creator]`: Best practices for authoring context-efficient agent skills.
+- `@[skills/vercel-react-best-practices]`: 70 rules for eliminating waterfalls and optimizing React/Next.js.
+- `@[skills/composition-patterns]`: Headless UI and React compound component composition.
+
+### Custom Domain Skills
+- `@[skills/laravel-expert]`: Modern Laravel 11/12, Inertia v2, Livewire 3, Filament v3, Octane, Pest.
+- `@[skills/modern-react-stack]`: React 19, Server Components, Next.js, TanStack Query, Zustand, Tailwind v4.
+- `@[skills/fullstack-open-source-architect]`: Multi-tier system design, self-hosted deployment, PostgreSQL 17 + `pgvector`.
+- `@[skills/python-web-engineer]`: FastAPI with Pydantic v2, Django 5+ async ORM, Django Ninja, SQLAlchemy 2.0.
+- `@[skills/go-backend-craft]`: Go 1.23+ web services, Chi router, compile-time `sqlc`, bounded worker pools.
+- `@[skills/self-hosted-devops-and-coolify]`: Coolify PaaS automation, Docker multi-stage builds, reverse proxies, automated backups.

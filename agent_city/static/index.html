@@ -54,7 +54,7 @@
         </div>
         <div class="telemetry-capsule" id="nodeEvolution" title="168-Hour Autonomous Evolution Timeline">
           <span class="capsule-meta-label">168H Status</span>
-          <span class="capsule-metric-val" id="topEvolutionVal" style="color: #c084fc;">Epoch 0 / 14</span>
+          <span class="capsule-metric-val" id="topEvolutionVal" style="color: #c084fc;">Epoch 1 / 14</span>
         </div>
       </div>
 
@@ -277,6 +277,10 @@
           <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
           <span>Sanctuary Harmony Feed & Terminal</span>
         </button>
+        <button class="lower-deck-tab-btn" data-tab="tabEvolution">
+          <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Evolution Chronicle & Polyglot Kernel (168H Live Horizon)</span>
+        </button>
       </nav>
 
       <!-- Panel 1: Swarm Agents Grid -->
@@ -329,6 +333,72 @@
             <input type="text" class="terminal-cmd-input" id="terminalCmdInput" placeholder="Enter sanctuary command (e.g. prune, trim, clean, harmonize, status, help)..." />
             <button class="pill-btn btn-secondary" id="btnTerminalSubmit" style="padding:4px 12px;font-size:10px;">Run</button>
           </div>
+        </div>
+      </div>
+
+      <!-- Panel 4: 168-Hour Evolution Chronicle & Polyglot Kernel Status -->
+      <div class="lower-deck-view-panel" id="tabEvolution">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+          <!-- Left Sub-card: 168H Evolution Engine Status -->
+          <div class="hud-card" style="padding:16px;border-radius:12px;background:rgba(18,24,20,0.6);border:1px solid rgba(255,255,255,0.08);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+              <span style="font-size:12px;font-weight:700;color:var(--text-bright);letter-spacing:0.05em;text-transform:uppercase;">⏳ 168-Hour Evolution Engine</span>
+              <span class="hud-capsule" style="font-size:10px;background:rgba(244,114,182,0.15);color:var(--sakura-pink);padding:2px 8px;border-radius:10px;font-weight:700;" id="evoCurrentEpoch">Epoch 1 / 14</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:11px;margin-bottom:12px;">
+              <div>
+                <span style="color:var(--text-muted);display:block;">Heartbeat Schedule</span>
+                <span style="font-weight:600;color:var(--text-bright);">30-Min Cron Timer</span>
+              </div>
+              <div>
+                <span style="color:var(--text-muted);display:block;">Autonomous Agents</span>
+                <span style="font-weight:600;color:var(--ginkgo-gold);">5 Active Cohort</span>
+              </div>
+              <div>
+                <span style="color:var(--text-muted);display:block;">Target Horizon</span>
+                <span style="font-weight:600;color:var(--text-bright);">168.0 Hours</span>
+              </div>
+              <div>
+                <span style="color:var(--text-muted);display:block;">Compacted RAM Reclaimed</span>
+                <span style="font-weight:600;color:#38bdf8;" id="evoReclaimed">3,859.75 MB</span>
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;">
+              <button class="pill-btn btn-secondary" id="btnRefreshEvo" style="padding:4px 12px;font-size:11px;">
+                🔄 Refresh Status
+              </button>
+              <button class="pill-btn btn-secondary" id="btnTriggerCompaction" style="padding:4px 12px;font-size:11px;background:rgba(56,189,248,0.15);color:#38bdf8;border:1px solid rgba(56,189,248,0.3);">
+                ⚡ Run C-Kernel Trim
+              </button>
+            </div>
+          </div>
+
+          <!-- Right Sub-card: Polyglot Native Stack Status -->
+          <div class="hud-card" style="padding:16px;border-radius:12px;background:rgba(18,24,20,0.6);border:1px solid rgba(255,255,255,0.08);">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+              <span style="font-size:12px;font-weight:700;color:var(--text-bright);letter-spacing:0.05em;text-transform:uppercase;">⚙️ Polyglot Native Stack</span>
+              <span class="hud-capsule" style="font-size:10px;background:rgba(16,185,129,0.15);color:#10b981;padding:2px 8px;border-radius:10px;font-weight:700;">Live Integrated</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;font-size:11px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 8px;background:rgba(0,0,0,0.25);border-radius:6px;">
+                <span><strong>C Kernel:</strong> <code style="color:#f472b6;">silicon_kernel.dll</code> (Win32 K32EmptyWorkingSet)</span>
+                <span style="color:#10b981;font-weight:700;">ACTIVE</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 8px;background:rgba(0,0,0,0.25);border-radius:6px;">
+                <span><strong>Java Bridge:</strong> <code style="color:#f59e0b;">SiliconSanctuaryBridge.class</code> (OpenJDK 17 MXBean)</span>
+                <span style="color:#10b981;font-weight:700;">ACTIVE</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 8px;background:rgba(0,0,0,0.25);border-radius:6px;">
+                <span><strong>Rust Sentinel:</strong> <code style="color:#38bdf8;">system_sentinel</code> (Zero-Cost Gracemont Telemetry)</span>
+                <span style="color:#38bdf8;font-weight:700;">SOURCE READY</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Living Chronicle Markdown Stream -->
+        <div style="background:rgba(10,14,12,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px;max-height:240px;overflow-y:auto;font-family:monospace;font-size:11px;line-height:1.6;color:var(--text-muted);" id="chronicleMarkdownView">
+          <div style="color:var(--text-bright);font-weight:700;margin-bottom:6px;">Loading living chronicle...</div>
         </div>
       </div>
     </section>

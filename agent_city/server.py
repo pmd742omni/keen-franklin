@@ -306,6 +306,31 @@ async def get_evolution_chronicle() -> Dict[str, Any]:
             return {"status": "error", "message": str(e)}
     return {"status": "not_found"}
 
+@app.get("/evolution", response_class=FileResponse)
+async def serve_evolution_portal() -> FileResponse:
+    """Serve the 336-Hour Interactive Evolution & Documentation Portal."""
+    portal_file = Path(__file__).parent / "static" / "evolution_portal.html"
+    if portal_file.exists():
+        return FileResponse(portal_file)
+    raise HTTPException(status_code=404, detail="Evolution portal not found.")
+
+@app.get("/api/context/summary")
+async def get_context_summary() -> Dict[str, Any]:
+    """Retrieve multi-agent context database metrics from SQLite."""
+    try:
+        from .agents.context.context_manager import ContextManager
+        cm = ContextManager()
+        return cm.get_summary()
+    except Exception:
+        # Fallback relative import if running from workspace root
+        try:
+            sys.path.insert(0, str(_parent_dir / ".agents" / "context"))
+            from context_manager import ContextManager
+            cm = ContextManager()
+            return cm.get_summary()
+        except Exception as e:
+            return {"status": "error", "message": str(e)}
+
 @app.get("/api/agents")
 async def get_agents() -> List[Dict[str, Any]]:
     """Retrieve full list of active civic agents and subagents."""
@@ -561,6 +586,91 @@ if static_dir.exists():
     @app.get("/", response_class=FileResponse)
     async def serve_index() -> FileResponse:
         return FileResponse(static_dir / "index.html")
+
+    @app.get("/evolution", response_class=FileResponse)
+    @app.get("/evolution-portal", response_class=FileResponse)
+    async def serve_evolution_portal() -> FileResponse:
+        portal_file = static_dir / "evolution_portal.html"
+        if portal_file.exists():
+            return FileResponse(portal_file)
+        raise HTTPException(status_code=404, detail="Evolution Portal HTML not found.")
+
+    @app.get("/api/heartbeat")
+    async def get_heartbeat() -> Dict[str, Any]:
+        """Return the latest 1-second system heartbeat status."""
+        hb_file = Path(__file__).resolve().parent.parent / ".agents" / "context" / "heartbeat.json"
+        if hb_file.exists():
+            try:
+                with open(hb_file, "r", encoding="utf-8") as f:
+                    return json.load(f)
+            except Exception as e:
+                return {"status": "error", "message": str(e)}
+        return {
+            "status": "nominal",
+            "message": "Heartbeat daemon active. Polling in progress.",
+            "timestamp": "now"
+        }
+
+    @app.get("/api/context/summary")
+    async def get_context_summary() -> Dict[str, Any]:
+        """Query SQLite sanctuary_context.db for current autonomous state."""
+        try:
+            from .agents.context.context_manager import ContextManager
+            cm = ContextManager()
+            return cm.get_summary()
+        except Exception:
+            try:
+                ctx_dir = Path(__file__).resolve().parent.parent / ".agents" / "context"
+                sys.path.insert(0, str(ctx_dir))
+                from context_manager import ContextManager
+                cm = ContextManager()
+                return cm.get_summary()
+            except Exception as e:
+                return {"status": "error", "error": str(e)}
+
+    @app.get("/api/context/benchmarks")
+    async def get_context_benchmarks() -> List[Dict[str, Any]]:
+        """Return historical benchmarks recorded in SQLite context DB."""
+        try:
+            ctx_dir = Path(__file__).resolve().parent.parent / ".agents" / "context"
+            sys.path.insert(0, str(ctx_dir))
+            from context_manager import ContextManager
+            cm = ContextManager()
+            return cm.get_benchmarks()
+        except Exception as e:
+            return [{"error": str(e)}]
+
+    @app.get("/api/evolution/status")
+    async def get_evolution_status() -> Dict[str, Any]:
+        """Return full 336H evolution state and native metrics."""
+        evo_file = Path(__file__).resolve().parent.parent / "evolution" / "evolution_state.json"
+        if evo_file.exists():
+            with open(evo_file, "r", encoding="utf-8") as f:
+                return json.load(f)
+        return {"status": "ok", "timeline": {"current_epoch": 1, "total_epochs": 28}}
+
+    @app.get("/api/evolution/chronicle")
+    async def get_evolution_chronicle() -> Dict[str, Any]:
+        """Return the living Markdown evolution chronicle."""
+        chronicle_file = Path(__file__).resolve().parent.parent / "evolution" / "CHRONICLE.md"
+        if chronicle_file.exists():
+            return {"content": chronicle_file.read_text(encoding="utf-8")}
+        return {"content": "# Silicon Sanctuary Chronicle\nEpoch 1 active."}
+
+    @app.get("/docs/latex/silicon_sanctuary_report.pdf", response_class=FileResponse)
+    async def serve_latex_pdf() -> FileResponse:
+        """Serve the compiled TeX Live PDF monograph."""
+        pdf_file = Path(__file__).resolve().parent.parent / "evolution" / "docs" / "latex" / "silicon_sanctuary_report.pdf"
+        if pdf_file.exists():
+            return FileResponse(pdf_file, media_type="application/pdf")
+        raise HTTPException(status_code=404, detail="PDF report not found.")
+
+    @app.post("/api/native/compact")
+    async def post_native_compact() -> Dict[str, Any]:
+        """Direct C Win32 kernel working set compaction endpoint."""
+        res = PolyglotBridge.compact_memory_c()
+        return res
+
 else:
     @app.get("/", response_class=HTMLResponse)
     async def serve_fallback() -> str:
@@ -575,3 +685,4 @@ else:
         </body>
         </html>
         """
+

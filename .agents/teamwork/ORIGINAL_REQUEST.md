@@ -78,3 +78,40 @@ Bidirectional WebSocket or SSE communication for low-latency synchronization of 
 - [ ] Automated Python test suite passes, verifying agent message passing, subagent spawning, economic transactions, and state serialization.
 - [ ] Quick-start launcher script (start_city.bat / start_city.sh) boots the server and automatically provides the dashboard URL.
 
+
+
+## 2026-10-10T17:01:39Z
+
+Build an autonomous multi-agent documentation system operating on a 2-minute cron cadence that headlessly captures high-resolution visual progress screenshots of the running web application via Microsoft Edge headless, embeds them into interactive evolution galleries and Markdown snapshots, and maintains persistent documentation state across the 336-hour autonomous horizon.
+
+Working directory: c:/Users/ignaz/antigravity/keen-franklin
+Integrity mode: development
+
+## Requirements
+
+### R1. Automated High-Resolution Web App Screenshot Engine
+A lightweight, zero-dependency capture runner utilizing Microsoft Edge Headless on a 2-minute cron cadence to capture visual snapshots of both the 3D Voxel Canvas (http://127.0.0.1:8000/) and the Evolution Portal (http://127.0.0.1:8000/evolution), saving timestamped PNG artifacts (screenshot_grove_*.png, screenshot_portal_*.png) into agent_city/ and the artifacts registry without orphan processes.
+
+### R2. Interactive Web Gallery & Markdown Documentation Synchronization
+An automated documentation aggregator that links every newly captured screenshot into the 5-minute context snapshots (.agents/context/snapshots/), mounts them in the real-time Visual Evolution Gallery on http://127.0.0.1:8000/evolution with epoch tags, timestamps, and zoom previews, and verifies that images render cleanly on the live web server.
+
+### R3. Context Database & LaTeX Monograph Integration
+A shared-context bridge registering each captured screenshot and documentation file in SQLite sanctuary_context.db (artifacts table) with dimensions and file sizes, and keeping the LaTeX monograph (silicon_sanctuary_report.tex / compiled .pdf) aligned with empirical visual benchmarks.
+
+## Acceptance Criteria
+
+### Automated Visual Capture
+- [ ] 2-minute headless screenshot runner cleanly captures valid PNG images of both / and /evolution using Microsoft Edge headless without browser hangs or orphaned processes.
+- [ ] Captured images are saved with ISO timestamps/epoch IDs and registered with non-zero byte size in sanctuary_context.db.
+
+### Web Application Documentation
+- [ ] Opening http://127.0.0.1:8000/evolution displays the latest captured screenshots in the Visual Evolution Gallery with timestamps, epoch badges, and zoom previews.
+- [ ] Generated Markdown snapshots in .agents/context/snapshots/ include clickable links and embedded image tags to the captured screenshots.
+
+### Context Persistence & Stability
+- [ ] SQLite database sanctuary_context.db records each new documentation artifact and screenshot with file metadata.
+- [ ] The 2-minute documentation cron runs stably alongside the 1-second heartbeat and FastAPI server without port contention or file locking errors.
+
+## 2026-10-10T17:03:20Z
+
+Crucial requirement from user: Before each screenshot is taken, the web server must be restarted (or reloaded), and the browser page must be cleanly reloaded to ensure fresh rendering of the 3D canvas and dynamic state. Please incorporate this cycle (server restart/reload -> clean page navigation -> render settlement -> screenshot capture) into the 2-minute documentation engine.

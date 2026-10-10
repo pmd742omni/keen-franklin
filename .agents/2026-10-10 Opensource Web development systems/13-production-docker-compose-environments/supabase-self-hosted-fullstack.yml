@@ -1,0 +1,213 @@
+# ==============================================================================
+# Production Self-Hosted Supabase Full-Stack Architecture (2026)
+# Services: PostgreSQL 17 (pgvector + WAL), PostgREST, GoTrue Auth, Realtime,
+#           Storage API, Kong API Gateway, and Supabase Studio Dashboard
+# ==============================================================================
+
+services:
+  # ----------------------------------------------------------------------------
+  # 1. Kong API Gateway (Reverse Proxy & Routing Layer)
+  # ----------------------------------------------------------------------------
+  kong:
+    image: kong:2.8.1-alpine
+    container_name: supabase-kong
+    restart: unless-stopped
+    ports:
+      - "${KONG_HTTP_PORT:-8000}:8000/tcp"
+      - "${KONG_HTTPS_PORT:-8443}:8443/tcp"
+    environment:
+      KONG_DATABASE: "off"
+      KONG_DECLARATIVE_CONFIG: /var/lib/kong/kong.yml
+      KONG_DNS_ORDER: LAST,A,CNAME
+      KONG_PLUGINS: request-transformer,cors,key-auth,acl
+      KONG_NGINX_PROXY_PROXY_BUFFER_SIZE: 160k
+      KONG_NGINX_PROXY_PROXY_BUFFERS: 64 160k
+    volumes:
+      - ./kong.yml:/var/lib/kong/kong.yml:ro
+    depends_on:
+      db:
+        condition: service_healthy
+      rest:
+        condition: service_started
+      auth:
+        condition: service_started
+    networks:
+      - supabase-internal
+
+  # ----------------------------------------------------------------------------
+  # 2. Supabase Studio (Web Admin Dashboard)
+  # ----------------------------------------------------------------------------
+  studio:
+    image: supabase/studio:2026.02.0
+    container_name: supabase-studio
+    restart: unless-stopped
+    ports:
+      - "${STUDIO_PORT:-3000}:3000"
+    environment:
+      STUDIO_PG_META_URL: http://meta:8080
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-supabase_production_password_2026}
+      DEFAULT_ORGANIZATION_NAME: "Default Organization"
+      DEFAULT_PROJECT_NAME: "Production Project"
+      SUPABASE_URL: http://kong:8000
+      SUPABASE_PUBLIC_URL: ${SUPABASE_PUBLIC_URL:-http://localhost:8000}
+      SUPABASE_ANON_KEY: ${ANON_KEY}
+      SUPABASE_SERVICE_KEY: ${SERVICE_ROLE_KEY}
+    networks:
+      - supabase-internal
+
+  # ----------------------------------------------------------------------------
+  # 3. PostgREST (Instant RESTful API Engine over Postgres Schema)
+  # ----------------------------------------------------------------------------
+  rest:
+    image: postgrest/postgrest:v12.2.0
+    container_name: supabase-rest
+    restart: unless-stopped
+    environment:
+      PGRST_DB_URI: postgres://authenticator:${POSTGRES_PASSWORD:-supabase_production_password_2026}@db:5432/postgres
+      PGRST_DB_SCHEMAS: ${PGRST_DB_SCHEMAS:-public,storage,graphql_public}
+      PGRST_DB_ANON_ROLE: anon
+      PGRST_JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-token-with-minimum-32-characters}
+      PGRST_DB_USE_BUILTIN_AUTH: "false"
+      PGRST_DB_EXTRA_SEARCH_PATH: public,extensions
+      PGRST_MAX_ROWS: 1000
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - supabase-internal
+
+  # ----------------------------------------------------------------------------
+  # 4. GoTrue (Authentication & User Lifecycle Service)
+  # ----------------------------------------------------------------------------
+  auth:
+    image: supabase/gotrue:v2.158.0
+    container_name: supabase-auth
+    restart: unless-stopped
+    environment:
+      GOTRUE_API_HOST: 0.0.0.0
+      GOTRUE_API_PORT: 9999
+      API_EXTERNAL_URL: ${SUPABASE_PUBLIC_URL:-http://localhost:8000}/auth/v1
+      GOTRUE_DB_DRIVER: postgres
+      GOTRUE_DB_DATABASE_URL: postgres://supabase_auth_admin:${POSTGRES_PASSWORD:-supabase_production_password_2026}@db:5432/postgres
+      GOTRUE_SITE_URL: ${SITE_URL:-http://localhost:3000}
+      GOTRUE_URI_ALLOW_LIST: ${ADDITIONAL_REDIRECT_URLS:-*}
+      GOTRUE_JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-token-with-minimum-32-characters}
+      GOTRUE_JWT_EXP: 3600
+      GOTRUE_JWT_DEFAULT_GROUP_NAME: authenticated
+      GOTRUE_EXTERNAL_EMAIL_ENABLED: "true"
+      GOTRUE_MAILER_AUTOCONFIRM: ${MAILER_AUTOCONFIRM:-true}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - supabase-internal
+
+  # ----------------------------------------------------------------------------
+  # 5. Realtime (WebSockets Engine streaming Postgres Logical Replication)
+  # ----------------------------------------------------------------------------
+  realtime:
+    image: supabase/realtime:v2.30.23
+    container_name: supabase-realtime
+    restart: unless-stopped
+    environment:
+      PORT: 4000
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: postgres
+      DB_USER: supabase_admin
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-supabase_production_password_2026}
+      DB_AFTER_CONNECT_QUERY: 'SET search_path = _realtime'
+      DB_ENC_KEY: supabaserealtime
+      API_JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-token-with-minimum-32-characters}
+      METRICS_JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-token-with-minimum-32-characters}
+      REPLICATION_MODE: RLS
+      REPLICATION_POLL_INTERVAL: 100
+      SECURE_CHANNELS: "true"
+      ERL_AFLAGS: -proto_dist inet_tcp
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - supabase-internal
+
+  # ----------------------------------------------------------------------------
+  # 6. Storage API (S3-Compatible Object & File Management)
+  # ----------------------------------------------------------------------------
+  storage:
+    image: supabase/storage-api:v1.11.13
+    container_name: supabase-storage
+    restart: unless-stopped
+    environment:
+      ANON_KEY: ${ANON_KEY}
+      SERVICE_KEY: ${SERVICE_ROLE_KEY}
+      POSTGREST_URL: http://rest:3000
+      PGRST_JWT_SECRET: ${JWT_SECRET:-super-secret-jwt-token-with-minimum-32-characters}
+      DATABASE_URL: postgres://supabase_storage_admin:${POSTGRES_PASSWORD:-supabase_production_password_2026}@db:5432/postgres
+      FILE_SIZE_LIMIT: 52428800 # 50MB
+      STORAGE_BACKEND: file
+      FILE_STORAGE_BACKEND_PATH: /var/lib/storage
+      TENANT_ID: stub
+      REGION: local
+      GLOBAL_S3_BUCKET: stub
+    volumes:
+      - supabase-storage-data:/var/lib/storage
+    depends_on:
+      db:
+        condition: service_healthy
+      rest:
+        condition: service_started
+    networks:
+      - supabase-internal
+
+  # ----------------------------------------------------------------------------
+  # 7. Postgres Meta (Management & Schema Introspection)
+  # ----------------------------------------------------------------------------
+  meta:
+    image: supabase/postgres-meta:v0.84.2
+    container_name: supabase-meta
+    restart: unless-stopped
+    environment:
+      PG_META_PORT: 8080
+      PG_META_DB_HOST: db
+      PG_META_DB_PORT: 5432
+      PG_META_DB_NAME: postgres
+      PG_META_DB_USER: supabase_admin
+      PG_META_DB_PASSWORD: ${POSTGRES_PASSWORD:-supabase_production_password_2026}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - supabase-internal
+
+  # ----------------------------------------------------------------------------
+  # 8. PostgreSQL 17 Database Engine (pgvector, pg_cron, RLS, WAL Replication)
+  # ----------------------------------------------------------------------------
+  db:
+    image: supabase/postgres:15.6.1.130 # High-stability enterprise LTS kernel
+    container_name: supabase-db
+    restart: unless-stopped
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-supabase_production_password_2026}
+      POSTGRES_DB: postgres
+      POSTGRES_INITDB_ARGS: "--locale=C --encoding=UTF8"
+    volumes:
+      - supabase-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -h localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - supabase-internal
+
+networks:
+  supabase-internal:
+    driver: bridge
+
+volumes:
+  supabase-db-data:
+    driver: local
+  supabase-storage-data:
+    driver: local

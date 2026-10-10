@@ -1,45 +1,47 @@
-# BRIEFING — 2026-09-29T11:58:00Z
+# BRIEFING — 2026-10-10T17:59:00Z
 
 ## Mission
-Survey the target environment (Windows 11 Home 26200, Intel N100, 8GB RAM) and investigate diagnostic commands/APIs for Requirement R1 to produce survey_report.md and handoff.md.
+Investigate web app lifecycle, FastAPI architecture, endpoints, 3D Voxel canvas rendering, /evolution portal, and clean restart mechanics on Windows.
 
 ## 🔒 My Identity
 - Archetype: explorer
-- Roles: explorer, synthesizer
-- Working directory: c:/Users/ignaz/antigravity/keen-franklin/.agents/teamwork/explorer_survey_1
-- Original parent: 076f597f-e85c-4914-8835-c19f4de85b90
-- Milestone: Survey & Diagnostic API Investigation
+- Roles: Web App Lifecycle Explorer
+- Working directory: c:\Users\ignaz\antigravity\keen-franklin\.agents\teamwork\explorer_survey_1
+- Original parent: fe4e8efd-4d28-402d-b25d-f103e6dde375
+- Milestone: Web Application Lifecycle Survey
 
 ## 🔒 Key Constraints
 - Read-only investigation — do NOT implement
-- Output comprehensive findings to survey_report.md and handoff to handoff.md
-- Test commands directly in powershell to verify feasibility, latency, and exact output formats
+- Do NOT edit or write source code
+- Produce 5-component handoff report at handoff.md with evidence chains
 
 ## Current Parent
-- Conversation ID: 076f597f-e85c-4914-8835-c19f4de85b90
-- Updated: 2026-09-29T11:41:35Z
+- Conversation ID: fe4e8efd-4d28-402d-b25d-f103e6dde375
+- Updated: 2026-10-10T17:59:00Z
 
 ## Investigation State
 - **Explored paths**:
-  - Windows 11 Home 26200 environment on Intel N100 (4C/4T), 8GB RAM (7.66GB visible).
-  - WMI/CIM, PerfOS_Memory, Get-MMAgent, Get-Process, Get-Volume, powercfg, Get-ScheduledTask, StartupApproved registry.
+  - `agent_city/server.py` (FastAPI app, routes, lifespan broadcaster, static mounts)
+  - `agent_city/static/index.html` (3D voxel stage, layout, quadrant cards)
+  - `agent_city/static/voxel_engine.js` (2.5D isometric engine, MagicaVoxel shading, settlements, specimens, particles)
+  - `agent_city/static/app.js` (telemetry binding, initVoxelStage, WebSocket & REST fallback)
+  - `agent_city/static/evolution_portal.html` (visual evolution gallery, benchmarks, chronicle)
+  - `agent_city/start_city.bat`, `start_city.sh`, `start.py`, `Start-Laptop-Optimizer-City.bat`
+  - `.agents/context/visual_doc_capture.py`, `sanctuary_context.db`, `SCHEMA.md`
 - **Key findings**:
-  - Baseline memory pressure severe: 514 - 1180 MB free RAM (<15%), 14.5 GB committed memory, 1.8 GB active paging on 12 GB pagefile, 1,165 pages/sec paging churn.
-  - Memory Compression process (PID 4452) active at 211-253 MB WS.
-  - 321-324 running processes; 14+ startup items (all enabled in StartupApproved); 163 active scheduled tasks including CompatTelRunner and CEIP.
-  - Native Windows PowerShell 5.1 runtime. Diagnostics run 100% un-elevated (except Get-MMAgent, which fails with Error 5 and must be gated).
-  - Power scheme is Balanced only; High Performance must be duplicated via GUID `8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c`.
-  - JSON reporting schema tested and verified against acceptance criteria.
-- **Unexplored areas**: None for R1 survey scope.
+  1. Live server runs on PID 17608 (`uvicorn agent_city.server:app --host 127.0.0.1 --port 8000`).
+  2. Static mount `/static` only exposes `agent_city/static/`. Screenshots in `agent_city/` (`screenshot_grove_v*.png`) return 404 when referenced in `evolution_portal.html` via `/static/../...`.
+  3. 3D Voxel Canvas uses pure 2D Canvas context with MagicaVoxel 3-face directional shading and Painter's algorithm depth sorting; renders immediately on load, requires ~500-1000ms settling for headless capture.
+  4. /evolution gallery currently has static hardcoded cards and lacks interactive zoom/lightbox previews.
+  5. Clean restart protocol requires PID detection via `psutil` or `Get-NetTCPConnection`, forceful process tree termination, port drain polling (looping until socket refused), and detached spawn with liveness polling.
+- **Unexplored areas**: All core requested investigation areas fully investigated.
 
 ## Key Decisions Made
-- All R1 diagnostic commands verified in Windows PowerShell 5.1 using CIM/WMI/native APIs.
-- Recommended single-pipeline snapshot capture (`Get-LaptopSystemSnapshot`) to eliminate child-process spawn lag on Intel N100.
-- Safe startup toggling recommended via Byte 0 manipulation in `StartupApproved\Run` rather than destructive key deletion.
+- Confirmed psutil 7.2.2 is available and reliably identifies port 8000 listener with zero permission errors.
+- Documented clear root causes of 404 image errors on `/evolution` and detailed the required mount/path alignment.
 
 ## Artifact Index
-- DISPATCH.md — Received instructions
-- progress.md — Heartbeat and status
-- BRIEFING.md — Working memory and identity
-- survey_report.md — Comprehensive findings and API benchmark report
-- handoff.md — 5-component hard handoff report
+- DISPATCH.md — Dispatch log from parent
+- BRIEFING.md — Situational awareness
+- progress.md — Heartbeat and progress tracking
+- handoff.md — Final survey report

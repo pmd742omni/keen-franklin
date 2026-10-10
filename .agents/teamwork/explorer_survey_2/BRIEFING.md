@@ -1,43 +1,47 @@
-# BRIEFING — 2026-09-29T11:41:16Z
+# BRIEFING — 2026-10-10T19:12:00Z
 
 ## Mission
-Investigate Windows 11 storage reclamation and memory optimization mechanics for Requirement R2 (HP Laptop 15, Intel N100, 8GB RAM, Windows 11 Home 26200).
+Investigate Microsoft Edge Headless and the capture workflow on Windows for the 2-minute documentation engine.
 
 ## 🔒 My Identity
-- Archetype: explorer
-- Roles: investigation, synthesis
-- Working directory: c:/Users/ignaz/antigravity/keen-franklin/.agents/teamwork/explorer_survey_2
-- Original parent: 076f597f-e85c-4914-8835-c19f4de85b90
-- Milestone: survey
+- Archetype: Explorer
+- Roles: Read-only investigation, CLI flag verification, process lifecycle and timing analysis, synthesis
+- Working directory: c:\Users\ignaz\antigravity\keen-franklin\.agents\teamwork\explorer_survey_2
+- Original parent: fe4e8efd-4d28-402d-b25d-f103e6dde375
+- Milestone: Headless Capture Engine Survey
 
 ## 🔒 Key Constraints
-- Read-only investigation — do NOT implement
-- Safe storage reclamation without touching user documents, downloads, or credentials
-- Free physical RAM and stabilize memory above 1.5 GB without active paging churn
-- Maintain Windows 11 stability and boot reliability
+- Read-only investigation — do NOT implement or modify source code
+- Strictly write only within working directory .agents/teamwork/explorer_survey_2/
+- Verify all findings directly with concrete commands / file checks
 
 ## Current Parent
-- Conversation ID: 076f597f-e85c-4914-8835-c19f4de85b90
-- Updated: 2026-09-29T12:04:00Z
+- Conversation ID: fe4e8efd-4d28-402d-b25d-f103e6dde375
+- Updated: 2026-10-10T19:12:00Z
 
 ## Investigation State
-- **Explored paths**: Temp, Explorer, Chrome/Edge cache directories; SSD storage controller and volume; EmptyWorkingSet C# P/Invoke compilation; Windows 11 services (DiagTrack, SysMain, WSearch); 8 HP OEM services; Build 26200 telemetry tasks; Startup registry & folders.
-- **Key findings**: 
-  - Measured 1.64 GB of immediate safe user cache (> 1 GB requirement met).
-  - SSD is NVMe SSD (`SM2P41C8-256GC6`); TRIM supported via `Optimize-Volume -ReTrim` / `defrag /L`.
-  - `EmptyWorkingSet` reduced working sets by 4,401 MB, increasing free physical RAM by +772 MB to 1.23 GB in <2s, scaling to >2.5 GB with bloat removal.
-  - Identified 8 active HP OEM background services, `DiagTrack`, and 12 startup bloatware programs.
-- **Unexplored areas**: None for R2.
+- **Explored paths**:
+  - `C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe` (verified version 155.0.4283.45)
+  - `agent_city/static/index.html`, `agent_city/static/voxel_engine.js`, `agent_city/static/app.js`
+  - `agent_city/static/evolution_portal.html`
+  - `.agents/context/visual_doc_capture.py`
+  - `.agents/context/sanctuary_context.db`
+  - `.agents/teamwork/explorer_survey_1/handoff.md`
+- **Key findings**:
+  - Edge binary is located at `C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe` (not in PATH).
+  - Headless capture with `--headless=new`, `--window-size=1920,1080`, `--virtual-time-budget=3000`, `--hide-scrollbars`, and isolated `--user-data-dir` empirically verified: produced valid 1920x1080 PNG of 546,112 bytes.
+  - `--virtual-time-budget=3000` is essential for 3D canvas easing settlement and telemetry WebSocket sync.
+  - Temporary isolated user data directory prevents lockups and singleton conflicts.
+  - Crucial User Cycle requires clean PID termination and socket drain before restarting uvicorn on port 8000.
+  - 404 Bug identified in `evolution_portal.html` where screenshots in `agent_city/` cannot be served via `/static/..`.
+- **Unexplored areas**: None. All 5 objective requirements investigated and empirically verified.
 
 ## Key Decisions Made
-- Exclude foreground window and critical system processes from memory trimming to prevent active paging churn.
-- Use wildcard `*Compatibility Appraiser*` for forward/backward compatibility on Windows 11 Build 26200.
-- Use per-item try/catch loops for safe file deletion of locked cache files.
+- Conclude investigation and write comprehensive 5-component handoff.md.
 
 ## Artifact Index
-- DISPATCH.md — Dispatch log
-- BRIEFING.md — Persistent context & state
-- progress.md — Liveness & step heartbeat
-- survey_report.md — Comprehensive findings and implementation guide for R2
-- handoff.md — 5-component hard handoff report
-
+- DISPATCH.md — Dispatch instructions from parent
+- BRIEFING.md — Situational awareness working memory
+- progress.md — Liveness heartbeat
+- test_captures/test_timing.png — Verified empirical 1920x1080 capture artifact (546,112 bytes)
+- handoff.md — Final structured handoff report

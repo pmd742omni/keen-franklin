@@ -135,7 +135,14 @@
 
     // Lanterns & Owls
     LANTERN_CORE: "#fef08a",
+    LANTERN_GLOW: "#fef9c3",
     OWL_BEAK: "#f59e0b",
+
+    // Miniature Wooden Identification Markers
+    SIGN_POST: "#78350f",
+    SIGN_PLAQUE: "#92400e",
+    SIGN_PLAQUE_LIGHT: "#b45309",
+    SIGN_TEXT: "#fef3c7",
   };
 
   const SHADE_CACHE = new Map();
@@ -368,7 +375,7 @@
     initButterflies() {
       this.butterflies = [
         { id: 0, color: PALETTE.BUTTERFLY_ORANGE, baseX: 9.0,  baseY: 14.0, baseZ: 9.5, radius: 2.2, speed: 1.2, phase: 0.0 },
-        { id: 1, color: PALETTE.BUTTERFLY_LIME,   baseX: 15.0, baseY: 8.5,  baseZ: 9.8, radius: 2.0, speed: 1.4, phase: 1.8 },
+        { id: 1, color: PALETTE.BUTTERFLY_LIME,   baseX: 16.0, baseY: 10.5, baseZ: 9.8, radius: 2.0, speed: 1.4, phase: 1.8 },
         { id: 2, color: PALETTE.BUTTERFLY_CYAN,   baseX: 9.5,  baseY: 22.0, baseZ: 8.8, radius: 2.4, speed: 1.1, phase: 3.5 },
         { id: 3, color: PALETTE.BUTTERFLY_VIOLET, baseX: 23.0, baseY: 15.5, baseZ: 9.0, radius: 1.8, speed: 1.5, phase: 5.1 },
       ];
@@ -755,8 +762,8 @@
         stat: `Load: ${c1Load}% • Freq: ${Math.round(this.telemetry.cpuFreqMhz)} MHz`,
         desc: "High-throughput asynchronous computation & background IPC bus rooted on golden loam.",
         action: "Click to isolate Core 1 & trigger golden shower",
-        worldX: 15.0,
-        worldY: 8.5,
+        worldX: 16.0,
+        worldY: 10.5,
         worldZ: 10.2,
       };
 
@@ -1031,9 +1038,9 @@
       this.addSakuraTree(voxels, 9.0, 14.0, 0.4, 0, sakuraSpecimen);
       this.addWoodenSignpost(voxels, 11.2, 15.8, 0.4, "C0", sakuraSpecimen);
 
-      // Tree 1: 🍂 Golden Ginkgo Tree (Core 1 — Deep Interior Knoll 15.0, 8.5)
-      this.addGinkgoTree(voxels, 15.0, 8.5, 0.4, 1, ginkgoSpecimen);
-      this.addWoodenSignpost(voxels, 17.2, 10.2, 0.4, "C1", ginkgoSpecimen);
+      // Tree 1: 🍂 Golden Ginkgo Tree (Core 1 — Deep Interior Knoll 16.0, 10.5)
+      this.addGinkgoTree(voxels, 16.0, 10.5, 0.4, 1, ginkgoSpecimen);
+      this.addWoodenSignpost(voxels, 17.8, 12.0, 0.4, "C1", ginkgoSpecimen);
 
       // Tree 2: 🌲 Emerald Jade Pine (Core 2 — Bonsai Stone Knoll 9.5, 22.0)
       this.addJadePineTree(voxels, 9.5, 22.0, 0.4, 2, pineSpecimen);
@@ -1068,7 +1075,7 @@
 
       // Register Precision Interactive Hit Zones per Specimen
       this.registerSpecimenZone(sakuraSpecimen, 6.0, 11.0, 12.0, 17.0);
-      this.registerSpecimenZone(ginkgoSpecimen, 12.0, 5.5, 18.0, 11.5);
+      this.registerSpecimenZone(ginkgoSpecimen, 13.0, 7.5, 19.0, 13.5);
       this.registerSpecimenZone(pineSpecimen,   6.5, 19.0, 12.5, 25.0);
       this.registerSpecimenZone(mapleSpecimen,  20.0, 12.5, 26.0, 18.5);
       this.registerSpecimenZone(ramSpecimen,    13.5, 13.5, 18.5, 18.5);
@@ -1212,6 +1219,9 @@
 
     // 🏮 TRADITIONAL JAPANESE STONE LANTERN (Tōrō)
     addStoneLantern(voxels, x, y, z, district) {
+      // Subtle warm ground candlelight glow patch beneath lantern
+      voxels.push({ x: x - 0.7, y: y - 0.7, z: z + 0.01, w: 1.4, d: 1.4, h: 0.04, color: PALETTE.LANTERN_CORE, topColor: PALETTE.LANTERN_GLOW, district });
+
       // Carved stone base (Kiso)
       voxels.push({ x: x - 0.45, y: y - 0.45, z: z, w: 0.9, d: 0.9, h: 0.35, color: PALETTE.STONE_SLATE, topColor: PALETTE.STONE_PEBBLE, district });
       // Slender pedestal pillar (Sao)
@@ -1289,7 +1299,7 @@
       const windSway = Math.sin(this.time * 1.6) * 0.16;
 
       // 1. Raised contoured moss mound & stone lantern
-      this.addEarthenKnoll(voxels, x, y, z, 2.6, 0.45, PALETTE.STONE_PEBBLE, district);
+      this.addEarthenKnoll(voxels, x, y, z, 2.7, 0.45, PALETTE.STONE_PEBBLE, district);
       this.addStoneLantern(voxels, x - 2.2, y + 1.8, z, district);
 
       const treeZ = z + 0.45;
@@ -1300,7 +1310,7 @@
       const cLight = PALETTE.SAKURA_LIGHT;
       const cPale = PALETTE.SAKURA_PALE;
 
-      // 2. 6-Way Gnarled Buttress Roots clinging to the knoll
+      // 2. 6-Way Gnarled Buttress Roots anchoring to the knoll
       voxels.push({ x: x - 1.2, y: y - 0.4, z: treeZ, w: 0.7, d: 0.8, h: 0.45, color: PALETTE.WOOD_DARK, district });
       voxels.push({ x: x + 0.5, y: y - 0.4, z: treeZ, w: 0.7, d: 0.8, h: 0.45, color: PALETTE.WOOD_DARK, district });
       voxels.push({ x: x - 0.4, y: y - 1.2, z: treeZ, w: 0.8, d: 0.7, h: 0.45, color: PALETTE.WOOD_DARK, district });
@@ -1308,7 +1318,7 @@
       voxels.push({ x: x - 1.0, y: y - 1.0, z: treeZ, w: 0.5, d: 0.5, h: 0.35, color: PALETTE.WOOD_BARK, district });
       voxels.push({ x: x + 0.5, y: y + 0.5, z: treeZ, w: 0.5, d: 0.5, h: 0.35, color: PALETTE.WOOD_BARK, district });
 
-      // 3. Cedar Trunk with Knothole Detailing
+      // 3. Cedar Trunk with Organic Twist & Knothole
       voxels.push({ x: x - 0.55, y: y - 0.55, z: treeZ, w: 1.1, d: 1.1, h: 1.8, color: PALETTE.WOOD_DARK, district });
       voxels.push({ x: x - 0.45, y: y - 0.45, z: treeZ + 1.8, w: 0.9, d: 0.9, h: 1.8, color: PALETTE.WOOD_BARK, district });
       voxels.push({ x: x - 0.35, y: y - 0.35, z: treeZ + 3.6, w: 0.7, d: 0.7, h: 1.4, color: PALETTE.WOOD_MID, district });
@@ -1316,33 +1326,34 @@
       // Knothole micro-voxel
       voxels.push({ x: x - 0.56, y: y - 0.15, z: treeZ + 1.2, w: 0.12, d: 0.3, h: 0.4, color: PALETTE.WOOD_DARK, district });
 
-      // 4. Branch Bifurcations
-      voxels.push({ x: x - 1.3, y: y - 0.3, z: treeZ + 4.0, w: 1.1, d: 0.6, h: 0.6, color: PALETTE.WOOD_BRANCH, district });
-      voxels.push({ x: x + 0.2, y: y - 1.3, z: treeZ + 4.0, w: 0.6, d: 1.1, h: 0.6, color: PALETTE.WOOD_BRANCH, district });
-      voxels.push({ x: x + 0.3, y: y + 0.2, z: treeZ + 4.2, w: 1.1, d: 0.6, h: 0.6, color: PALETTE.WOOD_BRANCH, district });
-      voxels.push({ x: x - 0.3, y: y + 0.3, z: treeZ + 4.2, w: 0.6, d: 1.1, h: 0.6, color: PALETTE.WOOD_BRANCH, district });
+      // 4. Sturdy Supporting Branch Boughs
+      voxels.push({ x: x - 1.6, y: y - 0.4, z: treeZ + 4.0, w: 1.4, d: 0.7, h: 0.6, color: PALETTE.WOOD_BRANCH, district });
+      voxels.push({ x: x + 0.2, y: y + 0.0, z: treeZ + 4.2, w: 1.4, d: 0.7, h: 0.6, color: PALETTE.WOOD_BRANCH, district });
+      voxels.push({ x: x - 0.4, y: y - 1.5, z: treeZ + 4.1, w: 0.7, d: 1.3, h: 0.6, color: PALETTE.WOOD_BRANCH, district });
+      voxels.push({ x: x - 0.3, y: y + 0.2, z: treeZ + 4.3, w: 0.7, d: 1.3, h: 0.6, color: PALETTE.WOOD_BRANCH, district });
 
-      // 5. Volumetric Multi-Lobe Blossom Canopy (Puffy Billowing Cloud Architecture)
+      // 5. Volumetric Cascading Sakura Blossom Canopy (Authentic Japanese Cloud Architecture)
       const sx = x + windSway;
 
-      // Base shadow layer
-      voxels.push({ x: sx - 2.2, y: y - 2.2, z: treeZ + 4.6, w: 4.4, d: 4.4, h: 0.8, color: cDark, district });
+      // Tier 1: Base Shadow Underside (Deep Blossom Rose)
+      voxels.push({ x: sx - 2.2, y: y - 2.2, z: treeZ + 4.0, w: 4.4, d: 4.4, h: 0.75, color: cDark, district });
 
-      // Main blossom dome
-      voxels.push({ x: sx - 2.6, y: y - 2.6, z: treeZ + 5.4, w: 5.2, d: 5.2, h: 1.6, color: cMid, district });
+      // Tier 2: Wide Billowing Blossom Mantle (Spring Rose with Organic Rounded Billows)
+      voxels.push({ x: sx - 2.6, y: y - 2.6, z: treeZ + 4.75, w: 5.2, d: 5.2, h: 1.5, color: cMid, district });
+      // Organic perimeter billows softening canopy into rounded cloud
+      voxels.push({ x: sx - 3.0, y: y - 1.6, z: treeZ + 4.5, w: 0.6, d: 3.2, h: 1.1, color: cMid, topColor: cLight, district });
+      voxels.push({ x: sx + 2.4, y: y - 1.6, z: treeZ + 4.5, w: 0.6, d: 3.2, h: 1.1, color: cMid, topColor: cLight, district });
+      voxels.push({ x: sx - 1.6, y: y - 3.0, z: treeZ + 4.5, w: 3.2, d: 0.6, h: 1.1, color: cMid, topColor: cLight, district });
+      voxels.push({ x: sx - 1.6, y: y + 2.4, z: treeZ + 4.5, w: 3.2, d: 0.6, h: 1.1, color: cMid, topColor: cLight, district });
 
-      // Billowing lateral cloud lobes
-      voxels.push({ x: sx - 3.1, y: y - 1.2, z: treeZ + 5.6, w: 0.6, d: 2.4, h: 1.1, color: cMid, topColor: cLight, district });
-      voxels.push({ x: sx + 2.5, y: y - 1.2, z: treeZ + 5.6, w: 0.6, d: 2.4, h: 1.1, color: cMid, topColor: cLight, district });
-      voxels.push({ x: sx - 1.2, y: y - 3.1, z: treeZ + 5.6, w: 2.4, d: 0.6, h: 1.1, color: cMid, topColor: cLight, district });
-      voxels.push({ x: sx - 1.2, y: y + 2.5, z: treeZ + 5.6, w: 2.4, d: 0.6, h: 1.1, color: cMid, topColor: cLight, district });
+      // Tier 3: Upper Sunlit Blossom Canopy (Pastel Rose to Pale Blossom)
+      voxels.push({ x: sx - 1.9, y: y - 1.9, z: treeZ + 6.25, w: 3.8, d: 3.8, h: 1.3, color: cLight, topColor: cPale, district });
 
-      // Upper sunlit blossom crown
-      voxels.push({ x: sx - 2.0, y: y - 2.0, z: treeZ + 7.0, w: 4.0, d: 4.0, h: 1.2, color: cLight, topColor: cPale, district });
+      // Tier 4: Pinnacle Crown Dome (Pale Blossom to Ivory White)
+      voxels.push({ x: sx - 1.2, y: y - 1.2, z: treeZ + 7.55, w: 2.4, d: 2.4, h: 0.85, color: cPale, topColor: PALETTE.SAKURA_WHITE, district });
 
-      // Pinnacle white blossom peak
-      voxels.push({ x: sx - 1.2, y: y - 1.2, z: treeZ + 8.2, w: 2.4, d: 2.4, h: 0.75, color: cPale, topColor: PALETTE.SAKURA_WHITE, district });
-      voxels.push({ x: sx - 0.5, y: y - 0.5, z: treeZ + 8.95, w: 1.0, d: 1.0, h: 0.40, color: PALETTE.SAKURA_WHITE, district });
+      // Tier 5: Zenith Peak Blossom Spire (Pure Sakura White Highlight)
+      voxels.push({ x: sx - 0.5, y: y - 0.5, z: treeZ + 8.4, w: 1.0, d: 1.0, h: 0.45, color: PALETTE.SAKURA_WHITE, topColor: "#ffffff", district });
 
       // 6. Fallen Sakura Petal Carpet on Knoll Turf
       const petals = [
@@ -1368,12 +1379,12 @@
       });
     }
 
-    // 🍂 SPECIMEN 1: GOLDEN GINKGO TREE (Core 1 — Deep Interior Knoll at 15.0, 8.5)
+    // 🍂 SPECIMEN 1: GOLDEN GINKGO TREE (Core 1 — Deep Interior Knoll at 16.0, 10.5)
     addGinkgoTree(voxels, x, y, z, coreIdx, district) {
       const windSway = Math.sin(this.time * 1.5 + 1.0) * 0.15;
 
       // 1. Raised amber knoll & stone lantern
-      this.addEarthenKnoll(voxels, x, y, z, 2.6, 0.45, PALETTE.STONE_SLATE, district);
+      this.addEarthenKnoll(voxels, x, y, z, 2.7, 0.45, PALETTE.STONE_SLATE, district);
       this.addStoneLantern(voxels, x + 2.2, y - 1.6, z, district);
 
       const treeZ = z + 0.45;
@@ -1384,7 +1395,7 @@
       const cGold = PALETTE.GINKGO_GOLD;
       const cPale = PALETTE.GINKGO_PALE;
 
-      // 2. Buttress roots
+      // 2. Buttress roots anchoring to knoll
       voxels.push({ x: x - 1.1, y: y - 0.4, z: treeZ, w: 0.7, d: 0.8, h: 0.45, color: PALETTE.WOOD_DARK, district });
       voxels.push({ x: x + 0.4, y: y - 0.4, z: treeZ, w: 0.7, d: 0.8, h: 0.45, color: PALETTE.WOOD_DARK, district });
       voxels.push({ x: x - 0.4, y: y - 1.1, z: treeZ, w: 0.8, d: 0.7, h: 0.45, color: PALETTE.WOOD_DARK, district });
@@ -1398,16 +1409,26 @@
       // Steep upward branch knuckles
       voxels.push({ x: x - 0.7, y: y - 0.7, z: treeZ + 4.6, w: 0.5, d: 0.5, h: 1.1, color: PALETTE.WOOD_BRANCH, district });
       voxels.push({ x: x + 0.2, y: y + 0.2, z: treeZ + 4.6, w: 0.5, d: 0.5, h: 1.1, color: PALETTE.WOOD_BRANCH, district });
+      voxels.push({ x: x - 0.7, y: y + 0.2, z: treeZ + 4.8, w: 0.5, d: 0.5, h: 1.0, color: PALETTE.WOOD_BRANCH, district });
+      voxels.push({ x: x + 0.2, y: y - 0.7, z: treeZ + 4.8, w: 0.5, d: 0.5, h: 1.0, color: PALETTE.WOOD_BRANCH, district });
 
-      // 4. Conical Fan-Shaped Ginkgo Foliage Spire
+      // 4. Stately Pyramidal Ginkgo Stepped Foliage Plates
       const sx = x + windSway;
-      voxels.push({ x: sx - 2.0, y: y - 2.0, z: treeZ + 4.2, w: 4.0, d: 4.0, h: 1.0, color: cDark, district });
-      voxels.push({ x: sx - 2.4, y: y - 0.9, z: treeZ + 4.5, w: 4.8, d: 1.8, h: 0.9, color: cMid, district });
-      voxels.push({ x: sx - 1.8, y: y - 1.8, z: treeZ + 5.2, w: 3.6, d: 3.6, h: 1.5, color: cLight, topColor: cGold, district });
-      voxels.push({ x: sx - 0.9, y: y - 2.2, z: treeZ + 5.5, w: 1.8, d: 4.4, h: 0.9, color: cGold, district });
-      voxels.push({ x: sx - 1.3, y: y - 1.3, z: treeZ + 6.7, w: 2.6, d: 2.6, h: 1.4, color: cGold, topColor: cPale, district });
-      voxels.push({ x: sx - 0.7, y: y - 0.7, z: treeZ + 8.1, w: 1.4, d: 1.4, h: 1.0, color: cPale, topColor: "#ffffff", district });
-      voxels.push({ x: sx - 0.35, y: y - 0.35, z: treeZ + 9.1, w: 0.7, d: 0.7, h: 0.6, color: cPale, topColor: "#ffffff", district });
+
+      // Tier 1: Lower Fan Skirt
+      voxels.push({ x: sx - 2.1, y: y - 2.1, z: treeZ + 4.1, w: 4.2, d: 4.2, h: 0.9, color: cDark, topColor: cMid, district });
+
+      // Tier 2: Mid Golden Flurry
+      voxels.push({ x: sx - 1.7, y: y - 1.7, z: treeZ + 5.0, w: 3.4, d: 3.4, h: 1.3, color: cMid, topColor: cLight, district });
+
+      // Tier 3: Upper Radiant Fan Spire
+      voxels.push({ x: sx - 1.2, y: y - 1.2, z: treeZ + 6.3, w: 2.4, d: 2.4, h: 1.2, color: cGold, topColor: cPale, district });
+
+      // Tier 4: Pinnacle Tip
+      voxels.push({ x: sx - 0.6, y: y - 0.6, z: treeZ + 7.5, w: 1.2, d: 1.2, h: 0.9, color: cPale, topColor: "#ffffff", district });
+
+      // Zenith ivory peak
+      voxels.push({ x: sx - 0.25, y: y - 0.25, z: treeZ + 8.4, w: 0.5, d: 0.5, h: 0.45, color: "#ffffff", district });
 
       // 5. Fallen Golden Fan Leaves on Knoll
       const leaves = [
@@ -1582,28 +1603,28 @@
 
     // 🏷️ 3D VOXEL WOODEN SIGNPOST (Identification Tier 1)
     addWoodenSignpost(voxels, x, y, z, label, district) {
-      // Vertical Cedar Stake
-      voxels.push({ x: x - 0.14, y: y - 0.14, z: z, w: 0.28, d: 0.28, h: 1.1, color: PALETTE.SIGN_POST, district });
-      // Carved Horizontal Timber Plaque
+      // Slender vertical stake
+      voxels.push({ x: x - 0.10, y: y - 0.10, z: z, w: 0.20, d: 0.20, h: 0.80, color: PALETTE.SIGN_POST, district });
+      // Carved horizontal cedar plaque
       voxels.push({
-        x: x - 0.55,
-        y: y - 0.12,
-        z: z + 0.85,
-        w: 1.1,
-        d: 0.24,
-        h: 0.55,
+        x: x - 0.40,
+        y: y - 0.08,
+        z: z + 0.55,
+        w: 0.80,
+        d: 0.16,
+        h: 0.42,
         color: PALETTE.SIGN_PLAQUE,
         topColor: PALETTE.SIGN_PLAQUE_LIGHT,
         district
       });
-      // Carved Inscription Plate
+      // Inscription label
       voxels.push({
-        x: x - 0.45,
-        y: y - 0.14,
-        z: z + 0.95,
-        w: 0.9,
-        d: 0.08,
-        h: 0.32,
+        x: x - 0.30,
+        y: y - 0.10,
+        z: z + 0.62,
+        w: 0.60,
+        d: 0.06,
+        h: 0.25,
         color: PALETTE.SIGN_TEXT,
         district
       });

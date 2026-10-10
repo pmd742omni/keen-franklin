@@ -1,0 +1,5 @@
+[28824:22420:1010/202519.311:ERROR:ui\gl\direct_composition_support.cc:255] GetGpuDriverOverlayInfo: Failed to retrieve video device
+[28824:22420:1010/202519.318:VERBOSE1:components\viz\service\main\viz_main_impl.cc:87] VizNullHypothesis is disabled (not a warning)
+[28824:27060:1010/202519.320:VERBOSE1:base\allocator\scheduler_loop_quarantine_config.cc:199] No entry found for gpu-process/viz-compositor.
+[29548:24620:1010/202534.615:INFO:content\child\child_thread_impl.cc:1136] Terminating current process after 15 seconds with no connection.
+[28696:28420:1010/202535.491:INFO:content\child\child_thread_impl.cc:1136] Terminating current process after 15 seconds with no connection.

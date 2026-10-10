@@ -566,8 +566,50 @@ function fetchEvolutionStatus() {
       if (el && data.timeline) {
         el.textContent = `Epoch ${data.timeline.current_epoch} / ${data.timeline.total_epochs}`;
       }
+      const evoEpochEl = document.getElementById("evoCurrentEpoch");
+      if (evoEpochEl && data.timeline) {
+        evoEpochEl.textContent = `Epoch ${data.timeline.current_epoch} / ${data.timeline.total_epochs}`;
+      }
+      const evoRecEl = document.getElementById("evoReclaimed");
+      if (evoRecEl && data.native_core && data.native_core.c_kernel) {
+        evoRecEl.textContent = `${data.native_core.c_kernel.last_compaction_reclaimed_mb} MB`;
+      }
     })
     .catch(() => {});
+}
+
+function fetchEvolutionChronicle() {
+  fetch("/api/evolution/chronicle")
+    .then(r => r.text())
+    .then(md => {
+      const view = document.getElementById("chronicleMarkdownView");
+      if (view) {
+        let html = md
+          .replace(/^# (.*$)/gim, '<h2 style="color:var(--text-bright);font-size:14px;margin-top:4px;margin-bottom:8px;">$1</h2>')
+          .replace(/^## (.*$)/gim, '<h3 style="color:var(--sakura-pink);font-size:12px;margin-top:12px;margin-bottom:6px;">$1</h3>')
+          .replace(/^### (.*$)/gim, '<h4 style="color:var(--ginkgo-gold);font-size:11px;margin-top:8px;margin-bottom:4px;">$1</h4>')
+          .replace(/\*\*(.*?)\*\*/gim, '<strong style="color:var(--text-bright);">$1</strong>')
+          .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+          .replace(/`([^`]+)`/gim, '<code style="background:rgba(255,255,255,0.08);padding:1px 4px;border-radius:3px;color:#38bdf8;">$1</code>')
+          .replace(/\n/gim, '<br>');
+        view.innerHTML = html;
+      }
+    })
+    .catch(() => {});
+}
+
+const btnRefreshEvo = document.getElementById("btnRefreshEvo");
+if (btnRefreshEvo) {
+  btnRefreshEvo.addEventListener("click", () => {
+    fetchEvolutionStatus();
+    fetchEvolutionChronicle();
+    showToast("168-Hour Evolution Chronicle refreshed.");
+  });
+}
+
+const btnTriggerCompaction = document.getElementById("btnTriggerCompaction");
+if (btnTriggerCompaction) {
+  btnTriggerCompaction.addEventListener("click", executeNativeKernelCompact);
 }
 
 function executeRamBoost() {
@@ -698,8 +740,13 @@ document.querySelectorAll(".lower-deck-tab-btn").forEach(btn => {
     document.querySelectorAll(".lower-deck-tab-btn").forEach(b => b.classList.remove("active"));
     document.querySelectorAll(".lower-deck-view-panel").forEach(p => p.classList.remove("active"));
     btn.classList.add("active");
-    const target = document.getElementById(btn.getAttribute("data-tab"));
+    const targetId = btn.getAttribute("data-tab");
+    const target = document.getElementById(targetId);
     if (target) target.classList.add("active");
+    if (targetId === "tabEvolution") {
+      fetchEvolutionStatus();
+      fetchEvolutionChronicle();
+    }
   });
 });
 

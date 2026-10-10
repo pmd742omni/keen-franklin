@@ -1,21 +1,18 @@
-# Explorer Survey 2 Dispatch
+## 2026-10-10T17:08:30Z
+From: fe4e8efd-4d28-402d-b25d-f103e6dde375 (Orchestrator 3)
+To: Explorer 2 (Headless Capture Engine Explorer)
 
-## Target
-Survey Windows 11 storage reclamation and memory optimization mechanics for R2.
+Objective:
+Investigate Microsoft Edge Headless and the capture workflow on Windows:
+1. Microsoft Edge binary location (msedge.exe path on Windows 11, e.g. "C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe", "C:\Program Files\Microsoft\Edge\Application\msedge.exe", or in PATH).
+2. Headless CLI flags for reliable screenshot capture (--headless=new, --screenshot=<path>, --window-size=1920,1080, --virtual-time-budget, --no-sandbox, --hide-scrollbars, temp user-data-dir to isolate sessions and prevent hangs/orphans).
+3. Crucial User Cycle: (server restart/reload -> clean page navigation -> render settlement -> screenshot capture). How to ensure settlement/3D canvas and dynamic state are fully loaded and rendered before the screenshot is taken.
+4. 2-minute cron cadence execution model: How should the runner execute continuously or on schedule without orphaned processes or memory leaks?
+5. Output files: screenshot_grove_*.png and screenshot_portal_*.png saving into agent_city/ and artifacts registry.
 
-## Scope
-- Read `c:/Users/ignaz/antigravity/keen-franklin/.agents/teamwork/ORIGINAL_REQUEST.md`
-- Investigate safe locations for temporary cache removal, Windows Update cache, crash dumps, Delivery Optimization, DISM component store cleanup, `Optimize-Volume` SSD TRIM parameters.
-- Investigate RAM working set trimming mechanics (Win32 EmptyWorkingSet via pinvoke or native PowerShell, memory compression controls, memory footprint stabilization).
-- Investigate safe background services, telemetry, and startup bloat identification rules.
-- Produce report in `c:/Users/ignaz/antigravity/keen-franklin/.agents/teamwork/explorer_survey_2/survey_report.md` and handoff in `handoff.md`.
+Scope boundaries:
+Read-only exploration. DO NOT write or edit source code.
 
-## 2026-09-29T11:41:16Z
-Task:
-Read ORIGINAL_REQUEST.md.
-Investigate system resource and storage optimization mechanics for Requirement R2:
-- Safe temporary and cache locations to reclaim at least 1 GB of storage without touching user documents, downloads, or credentials (e.g. C:\Windows\Temp, user Temp, Windows Update SoftwareDistribution\Download, DeliveryOptimization cache, CrashDumps, WER reports, Thumbnail/Icon cache, Edge/browser caches, Dism /Online /Cleanup-Image /StartComponentCleanup).
-- SSD TRIM command execution on C: drive via Optimize-Volume (or defrag /L).
-- RAM working set trimming mechanics in native PowerShell (e.g., using [System.GC]::Collect() / P/Invoke to EmptyWorkingSet from KERNEL32/PSAPI or EmptyWorkingSet via native PowerShell C# type definition) to free physical RAM and stabilize memory above 1.5 GB without active paging churn.
-- Identifying and safely tuning unnecessary Windows 11 background services (e.g. DiagTrack / Connected User Experiences and Telemetry, Wsearch if appropriate, Xbox services if not gaming), telemetry tasks, and startup bloat while ensuring system stability.
-
+Output requirements:
+Write a comprehensive structured report to c:\Users\ignaz\antigravity\keen-franklin\.agents\teamwork\explorer_survey_2\handoff.md. Include verified commands, CLI flags, timing, and process management.
+When finished, send a message back to the caller with a concise summary and your report path.
