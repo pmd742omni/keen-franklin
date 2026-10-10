@@ -1,0 +1,20 @@
+{
+    "Timestamp":  "2026-09-29T18:36:39.2805342+02:00",
+    "ActivePowerScheme":  "381b4222-f694-41f0-9685-ff5bb260df2e",
+    "MenuShowDelay":  "10",
+    "MinAnimate":  "0",
+    "TaskbarAnimations":  0,
+    "Services":  {
+                     "dmwappushservice":  {
+                                              "Status":  "Stopped",
+                                              "StartType":  "Manual"
+                                          },
+                     "DiagTrack":  {
+                                       "Status":  "Running",
+                                       "StartType":  "Automatic"
+                                   }
+                 },
+    "ScheduledTasks":  {
+
+                       }
+}

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakura Grove — Silicon Forest Sanctuary</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Floating Island Header (Dynamic Glass Capsule) -->
+  <div class="floating-pill-wrapper">
+    <header class="floating-pill-capsule">
+      <!-- Brand Group -->
+      <div class="pill-brand-unit">
+        <div class="pill-logo-chip" title="Silicon Forest Sanctuary">
+          <!-- Clean SVG Sakura Twig Primitive (No Emojis) -->
+          <svg class="icon-svg" viewBox="0 0 24 24">
+            <path d="M12 2C9 5 5 9 5 13a7 7 0 0 0 14 0c0-4-4-8-7-11z" />
+            <path d="M12 11v9" />
+            <path d="M12 14c-2-1-3.5-3-3.5-4" />
+            <path d="M12 17c2-1 3.5-3 3.5-4" />
+          </svg>
+        </div>
+        <div class="pill-brand-text">
+          <h1>Sakura Grove</h1>
+          <div class="pill-specs-tag">
+            <span>Intel N100</span>
+            <span class="bullet"></span>
+            <span>4 Cores @ 6W</span>
+            <span class="bullet"></span>
+            <span>8GB Dew</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Telemetry Micro-Pills -->
+      <div class="pill-telemetry-strip">
+        <div class="telemetry-capsule highlight-sakura" id="nodeCpu" title="Live CPU Bloom Load">
+          <span class="capsule-meta-label">Core Bloom</span>
+          <span class="capsule-metric-val" id="topCpuVal">--%</span>
+        </div>
+        <div class="telemetry-capsule highlight-ram" id="nodeRam" title="Available Physical RAM Dew">
+          <span class="capsule-meta-label">Free Dew</span>
+          <span class="capsule-metric-val" id="topRamVal">-- MB</span>
+        </div>
+        <div class="telemetry-capsule" id="nodeSsd" title="NVMe Root Soil Headroom">
+          <span class="capsule-meta-label">Root Soil</span>
+          <span class="capsule-metric-val" id="topSsdVal">-- GB</span>
+        </div>
+        <div class="telemetry-capsule" id="nodeJunk" title="Clearable Deadwood Brambles">
+          <span class="capsule-meta-label">Deadwood</span>
+          <span class="capsule-metric-val" id="topJunkVal">-- MB</span>
+        </div>
+      </div>
+
+      <!-- Hairline Spacer Divider -->
+      <div class="pill-divider"></div>
+
+      <!-- Action Pill Group -->
+      <div class="pill-action-cluster">
+        <button class="pill-btn btn-secondary" id="btnHeaderRam" title="Prune idle leaf working sets across active processes using Windows psapi.dll">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 4 13C4 8 9 3 11 2c2 1 7 6 7 11a7 7 0 0 1-7 7z"/><path d="M11 2v18"/></svg>
+          <span>Prune</span>
+        </button>
+        <button class="pill-btn btn-secondary" id="btnHeaderStorage" title="Clear deadwood brambles and dispatch native NVMe TRIM">
+          <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          <span>Purge</span>
+        </button>
+        <button class="pill-btn btn-primary-accent" id="btnHeaderFull" title="Execute comprehensive multi-agent sanctuary harmonization sweep">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <span>Harmonize</span>
+        </button>
+      </div>
+    </header>
+  </div>
+
+  <!-- Main Sanctuary Workspace -->
+  <main class="studio-main-container">
+    
+    <!-- Upper Deck: 4-Quadrant Mission Control Grid -->
+    <section class="quadrant-grid">
+      
+      <!-- Quadrant 1: Sanctuary Harmony Index Hero Dial -->
+      <div class="liquid-card smoothness-card-hero">
+        <div class="card-header-bar">
+          <div class="card-title-wrap">
+            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2C9 5 5 9 5 13a7 7 0 0 0 14 0c0-4-4-8-7-11z"/></svg>
+            <span class="card-title-text">Sanctuary Harmony</span>
+          </div>
+          <span class="card-status-badge">Live Harmony</span>
+        </div>
+        <div class="halo-gauge-container">
+          <svg class="halo-svg" viewBox="0 0 124 124">
+            <circle class="halo-track-ring" cx="62" cy="62" r="56"></circle>
+            <circle class="halo-meter-ring" id="haloProgressRing" cx="62" cy="62" r="56"></circle>
+          </svg>
+          <div class="halo-metric-center">
+            <span class="halo-score-num" id="haloScore">--</span>
+            <span class="halo-sub-tag">HARMONY / 100</span>
+          </div>
+        </div>
+        <div class="halo-status-indicator" id="heroStatusPill">
+          <span class="breathing-pulse-dot" id="heroPulseDot"></span>
+          <span id="heroStatusText">Flourishing Bloom</span>
+        </div>
+      </div>
+
+      <!-- Quadrant 2: Sacred Core Canopy Grid & Sparkline -->
+      <div class="liquid-card">
+        <div class="card-header-bar">
+          <div class="card-title-wrap">
+            <svg class="icon-svg" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+            <span class="card-title-text">Sacred Core Canopy</span>
+          </div>
+          <span style="font-size:10px;font-family:var(--font-mono);color:var(--text-secondary);" id="labelCpuFreq">-- MHz</span>
+        </div>
+        <div class="cores-box-grid" id="coresDeckGrid">
+          <div class="core-monitor-capsule">
+            <div class="core-meta-line"><span class="core-id-label">🌸 Sakura 0</span><span class="core-pct-reading">0%</span></div>
+            <div class="core-meter-track"><div class="core-meter-progress" style="width:0%;"></div></div>
+          </div>
+          <div class="core-monitor-capsule">
+            <div class="core-meta-line"><span class="core-id-label">🍂 Ginkgo 1</span><span class="core-pct-reading">0%</span></div>
+            <div class="core-meter-track"><div class="core-meter-progress" style="width:0%;"></div></div>
+          </div>
+          <div class="core-monitor-capsule">
+            <div class="core-meta-line"><span class="core-id-label">🌲 Pine 2</span><span class="core-pct-reading">0%</span></div>
+            <div class="core-meter-track"><div class="core-meter-progress" style="width:0%;"></div></div>
+          </div>
+          <div class="core-monitor-capsule">
+            <div class="core-meta-line"><span class="core-id-label">🍁 Maple 3</span><span class="core-pct-reading">0%</span></div>
+            <div class="core-meter-track"><div class="core-meter-progress" style="width:0%;"></div></div>
+          </div>
+        </div>
+        <!-- Live Antialiased CPU Sparkline -->
+        <canvas class="smooth-sparkline-canvas" id="cpuSparklineCanvas" width="280" height="42" title="Rolling 30-Second Bloom Activity Trend"></canvas>
+      </div>
+
+      <!-- Quadrant 3: Memory Dew Reserves Stack & Sparkline -->
+      <div class="liquid-card">
+        <div class="card-header-bar">
+          <div class="card-title-wrap">
+            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            <span class="card-title-text">Memory Dew</span>
+          </div>
+          <span class="card-status-badge">8 GB Reserve</span>
+        </div>
+        <div class="memory-structure-stack">
+          <div class="stack-data-row">
+            <span style="color:var(--text-muted);font-size:10px;">Sap & Dew Allocation</span>
+            <strong style="color:var(--accent-primary);font-family:var(--font-mono);" id="labelRamPct">--%</strong>
+          </div>
+          <div class="stack-bar-segmented">
+            <div class="stack-fill-active" id="segActiveRam" style="width:50%;"></div>
+            <div class="stack-fill-compressed" id="segCompressedRam" style="width:20%;"></div>
+            <div class="stack-fill-free" id="segFreeRam" style="width:30%;"></div>
+          </div>
+          <div class="stack-legend-grid">
+            <div class="legend-chip-unit"><span class="legend-color-dot" style="background:var(--forest-jade);"></span> <span>Active: <span id="lblUsedMb" style="color:var(--text-lead);">-- MB</span></span></div>
+            <div class="legend-chip-unit"><span class="legend-color-dot" style="background:var(--status-warning);"></span> <span>Standby</span></div>
+            <div class="legend-chip-unit"><span class="legend-color-dot" style="background:rgba(255,255,255,0.4);"></span> <span>Free: <span id="lblFreeMb" style="color:var(--text-lead);">-- MB</span></span></div>
+          </div>
+        </div>
+        <div class="card-action-bar-row">
+          <button class="card-action-btn" id="btnQuickFlushRam" title="Prune idle leaf working sets across active processes">
+            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 4 13C4 8 9 3 11 2c2 1 7 6 7 11a7 7 0 0 1-7 7z"/><path d="M11 2v18"/></svg>
+            <span>Prune Idle Foliage</span>
+          </button>
+        </div>
+        <!-- Live RAM Headroom Sparkline -->
+        <canvas class="smooth-sparkline-canvas" id="ramSparklineCanvas" width="280" height="42" title="Rolling 30-Second Dew Recovery Trend"></canvas>
+      </div>
+
+      <!-- Quadrant 4: Root Soil & Deadwood (Drive C:) -->
+      <div class="liquid-card">
+        <div class="card-header-bar">
+          <div class="card-title-wrap">
+            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22v-8m0 0C9 10 5 9 3 9m9 5c3-4 7-5 9-5M7 22c1-3 3-5 5-5m5 5c-1-3-3-5-5-5"/></svg>
+            <span class="card-title-text">Root Soil</span>
+          </div>
+          <span class="card-status-badge">Drive C:</span>
+        </div>
+        <div class="storage-structure-stack">
+          <div class="stack-data-row">
+            <span style="color:var(--text-muted);font-size:10px;">Root Soil Utilization</span>
+            <strong style="color:var(--text-secondary);font-family:var(--font-mono);" id="labelDiskPct">--%</strong>
+          </div>
+          <div class="stack-bar-segmented" style="height:8px;">
+            <div style="background:var(--text-secondary);transition:width 0.4s ease;" id="segDiskUsed" style="width:75%;"></div>
+            <div style="background:rgba(255,255,255,0.08);transition:width 0.4s ease;" id="segDiskFree" style="width:25%;"></div>
+          </div>
+          <div class="stack-legend-grid">
+            <span id="lblDiskUsedGb">Rooted: -- GB</span>
+            <span id="lblDiskFreeGb">Fertile: -- GB</span>
+          </div>
+          <div class="card-action-bar-row">
+            <button class="card-action-btn" id="btnQuickPurgeDisk" title="Clear deadwood brambles and dispatch native NVMe TRIM">
+              <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+              <span>Clear Deadwood</span>
+            </button>
+            <span class="card-action-meta" id="lblDiskJunkMb">-- MB</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Center Stage: Living 3D Voxel Sakura Sanctuary -->
+    <section class="circuit-motherboard-container">
+      <div class="motherboard-header-strip">
+        <div class="subsystem-legend-row">
+          <div class="subsystem-legend-chip"><span class="dot-indicator" style="background:#f472b6;"></span> 🌸 Sakura (C0)</div>
+          <div class="subsystem-legend-chip"><span class="dot-indicator" style="background:#f59e0b;"></span> 🍂 Ginkgo (C1)</div>
+          <div class="subsystem-legend-chip"><span class="dot-indicator" style="background:#10b981;"></span> 🌲 Pine (C2)</div>
+          <div class="subsystem-legend-chip"><span class="dot-indicator" style="background:#e11d48;"></span> 🍁 Maple (C3)</div>
+          <div class="subsystem-legend-chip"><span class="dot-indicator" style="background:#38bdf8;"></span> 🪷 Dew Basin (RAM)</div>
+          <div class="subsystem-legend-chip"><span class="dot-indicator" style="background:#d97706;"></span> 🎋 Palisade (C:)</div>
+          <div class="subsystem-legend-chip"><span class="dot-indicator" style="background:#a855f7;"></span> 🌷 Flora (Apps)</div>
+          <div class="subsystem-legend-chip"><span class="dot-indicator" style="background:#ffffff;"></span> 🐇 Bunny (Gov)</div>
+        </div>
+        
+        <!-- Controls: Time of Day & Camera Angles -->
+        <div class="voxel-camera-controls-row">
+          <!-- Time of Day Selector -->
+          <div class="tod-select-capsule">
+            <button class="tod-btn" data-tod="dawn" title="Golden Dawn Ambiance">Dawn</button>
+            <button class="tod-btn active" data-tod="twilight" title="Sakura Twilight Ambiance">Twilight</button>
+            <button class="tod-btn" data-tod="midnight" title="Nocturnal Starry Ambiance">Night</button>
+          </div>
+
+          <!-- Camera Angles & Plant Tags -->
+          <button class="voxel-cam-btn active" id="btnTogglePlantTags" title="Toggle in-world floating botanical identification tags">🏷️ Plant Tags: ON</button>
+          <button class="voxel-cam-btn active" id="btnCamIso" title="Default 45° Isometric Sanctuary View">Isometric</button>
+          <button class="voxel-cam-btn" id="btnCamLow" title="Low Angle Botanical 3D View">Low-Angle 3D</button>
+          <button class="voxel-cam-btn" id="btnCamTop" title="Top-Down Forest Canopy View">Top-Down</button>
+          <button class="voxel-cam-btn" id="btnTogglePackets" title="Toggle animated spirit fireflies over the stream">Fireflies: ON</button>
+          <button class="card-link-trigger" id="btnPcbZoomReset">Reset Camera</button>
+        </div>
+      </div>
+
+      <!-- 3D Voxel Canvas Stage -->
+      <div class="motherboard-canvas-stage" id="pcbViewport">
+        <canvas class="voxel-canvas-root" id="voxelMotherboardCanvas"></canvas>
+
+        <!-- Interactive Popover Diagnostics -->
+        <div class="pcb-inspector-popover" id="pcbInspectorOverlay">
+          <div class="inspector-header-line">
+            <span class="inspector-badge-title" id="insHeading">Botanical Sanctuary Telemetry</span>
+            <button class="inspector-close-trigger" id="btnInsClose">✕</button>
+          </div>
+          <div id="insBody" style="font-size:11px;color:var(--text-muted);line-height:1.5;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Deck: Lower Tabs (Forest Spirits, Flora Processes, Harmony Feed & Terminal) -->
+    <section class="lower-deck-container">
+      <nav class="lower-deck-nav">
+        <button class="lower-deck-tab-btn active" data-tab="tabSwarm">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 2C9 5 5 9 5 13a7 7 0 0 0 14 0c0-4-4-8-7-11z"/></svg>
+          <span>Forest Spirits Swarm (5 Autonomous Performance Guardians)</span>
+        </button>
+        <button class="lower-deck-tab-btn" data-tab="tabProcesses">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 4 13C4 8 9 3 11 2c2 1 7 6 7 11a7 7 0 0 1-7 7z"/><path d="M11 2v18"/></svg>
+          <span>Process Flora & Dew Inspector</span>
+        </button>
+        <button class="lower-deck-tab-btn" data-tab="tabAudit">
+          <svg class="icon-svg" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          <span>Sanctuary Harmony Feed & Terminal</span>
+        </button>
+      </nav>
+
+      <!-- Panel 1: Swarm Agents Grid -->
+      <div class="lower-deck-view-panel active" id="tabSwarm">
+        <div class="swarm-cards-deck" id="swarmAgentGrid">
+          <!-- Populated dynamically with 5 spirits -->
+        </div>
+      </div>
+
+      <!-- Panel 2: Process Working Set Table -->
+      <div class="lower-deck-view-panel" id="tabProcesses">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <span style="font-size:11px;color:var(--text-muted);">Active flora consuming physical RAM dew (psapi.dll monitored):</span>
+          <button class="pill-btn btn-secondary" style="padding:4px 12px;font-size:11px;" id="btnTrimAllTable">
+            <svg class="icon-svg" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 4 13C4 8 9 3 11 2c2 1 7 6 7 11a7 7 0 0 1-7 7z"/><path d="M11 2v18"/></svg>
+            <span>Prune All Flora Dew</span>
+          </button>
+        </div>
+        <div class="process-table-scroll">
+          <table class="precision-data-table">
+            <thead>
+              <tr>
+                <th>Active Flora / Process</th>
+                <th>PID</th>
+                <th>Dew Consumption (RAM)</th>
+                <th>Health Status</th>
+                <th>Direct Action</th>
+              </tr>
+            </thead>
+            <tbody id="processTableBody">
+              <!-- Populated dynamically with real PIDs -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Panel 3: Live Audit Feed & Interactive Terminal -->
+      <div class="lower-deck-view-panel" id="tabAudit">
+        <div class="terminal-container">
+          <div class="audit-stream-container" id="auditStreamFeed">
+            <div class="audit-stream-entry">
+              <span class="audit-entry-time">[SANCTUARY]</span>
+              <span style="color:var(--sakura-pink);font-weight:600;">Sakura Forest Sanctuary Kernel:</span>
+              <span>Zero-overhead botanical telemetry active on HP Laptop 15 (Intel N100).</span>
+            </div>
+          </div>
+          <!-- Tactical Command Input Bar -->
+          <div class="terminal-input-bar">
+            <span class="terminal-prompt-glyph">🌸 &gt;</span>
+            <input type="text" class="terminal-cmd-input" id="terminalCmdInput" placeholder="Enter sanctuary command (e.g. prune, trim, clean, harmonize, status, help)..." />
+            <button class="pill-btn btn-secondary" id="btnTerminalSubmit" style="padding:4px 12px;font-size:10px;">Run</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating HUD Toast for Tactile Feedback -->
+  <div class="floating-hud-toast" id="studioHudToast">
+    <svg class="icon-svg" viewBox="0 0 24 24" id="hudToastIcon"><path d="M11 20A7 7 0 0 1 4 13C4 8 9 3 11 2c2 1 7 6 7 11a7 7 0 0 1-7 7z"/><path d="M11 2v18"/></svg>
+    <span id="hudToastText">Flora pruned and sanctuary refreshed!</span>
+  </div>
+
+  <script src="/static/voxel_engine.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

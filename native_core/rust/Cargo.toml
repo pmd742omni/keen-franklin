@@ -1,0 +1,8 @@
+[package]
+name = "system_sentinel"
+version = "0.1.0"
+edition = "2021"
+authors = ["Silicon Sanctuary Core Team"]
+description = "High-performance telemetry and Intel Gracemont scheduler monitor in Rust"
+
+[dependencies]

@@ -1,0 +1,34 @@
+--- a/src/Diagnostics/Comparison.ps1
++++ b/src/Diagnostics/Comparison.ps1
+@@ -200,7 +200,13 @@ function Compare-LaptopSnapshots {
+                 DriveLetter        = "C:"
+                 TotalSize_GB       = $Baseline.DriveC_Total_GB
+                 FreeSpace_GB       = $Baseline.DriveC_Free_GB
+-                FreeSpace_Percent  = if ($Baseline.PSObject.Properties['DriveC_Free_Percent']) { $Baseline.DriveC_Free_Percent } else { [math]::Round(($Baseline.DriveC_Free_GB / $Baseline.DriveC_Total_GB) * 100.0, 1) }
++                FreeSpace_Percent  = if ($Baseline.PSObject.Properties['DriveC_Free_Percent'] -and $null -ne $Baseline.DriveC_Free_Percent) {
++                    [double]$Baseline.DriveC_Free_Percent
++                } elseif ($Baseline.PSObject.Properties['DriveC_Total_GB'] -and $null -ne $Baseline.DriveC_Total_GB -and [double]$Baseline.DriveC_Total_GB -gt 0) {
++                    $bFree = if ($Baseline.PSObject.Properties['DriveC_Free_GB'] -and $null -ne $Baseline.DriveC_Free_GB) { [double]$Baseline.DriveC_Free_GB } else { 0.0 }
++                    [math]::Round(($bFree / [double]$Baseline.DriveC_Total_GB) * 100.0, 1)
++                } else {
++                    0.0
++                }
+             }
+             Paging = [PSCustomObject]@{
+                 AllocatedSize_MB = $Baseline.PageFile_Allocated_MB
+@@ -223,7 +229,13 @@ function Compare-LaptopSnapshots {
+                 DriveLetter        = "C:"
+                 TotalSize_GB       = $Current.DriveC_Total_GB
+                 FreeSpace_GB       = $Current.DriveC_Free_GB
+-                FreeSpace_Percent  = if ($Current.PSObject.Properties['DriveC_Free_Percent']) { $Current.DriveC_Free_Percent } else { [math]::Round(($Current.DriveC_Free_GB / $Current.DriveC_Total_GB) * 100.0, 1) }
++                FreeSpace_Percent  = if ($Current.PSObject.Properties['DriveC_Free_Percent'] -and $null -ne $Current.DriveC_Free_Percent) {
++                    [double]$Current.DriveC_Free_Percent
++                } elseif ($Current.PSObject.Properties['DriveC_Total_GB'] -and $null -ne $Current.DriveC_Total_GB -and [double]$Current.DriveC_Total_GB -gt 0) {
++                    $cFree = if ($Current.PSObject.Properties['DriveC_Free_GB'] -and $null -ne $Current.DriveC_Free_GB) { [double]$Current.DriveC_Free_GB } else { 0.0 }
++                    [math]::Round(($cFree / [double]$Current.DriveC_Total_GB) * 100.0, 1)
++                } else {
++                    0.0
++                }
+             }
+             Paging = [PSCustomObject]@{
+                 AllocatedSize_MB = $Current.PageFile_Allocated_MB

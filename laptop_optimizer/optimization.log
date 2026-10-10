@@ -1,0 +1,75 @@
+[2026-09-29 18:29:54] [INFO] Creating system state snapshot before modifications...
+[2026-09-29 18:29:56] [SUCCESS] System state saved to: C:\Users\ignaz\antigravity\keen-franklin\laptop_optimizer\backup_state.json
+[2026-09-29 18:29:56] [INFO] Starting temporary and cache file reclamation...
+[2026-09-29 18:30:00] [INFO] Found 1752 files in 'C:\Users\ignaz\AppData\Local\Temp' (~514.11 MB)
+[2026-09-29 18:30:23] [SUCCESS] Reclaimed 511 MB from C:\Users\ignaz\AppData\Local\Temp
+[2026-09-29 18:30:23] [INFO] Found 4 files in 'C:\Windows\SoftwareDistribution\Download' (~39.45 MB)
+[2026-09-29 18:30:23] [SUCCESS] Reclaimed 0 MB from C:\Windows\SoftwareDistribution\Download
+[2026-09-29 18:30:24] [INFO] Found 75 files in 'C:\ProgramData\Microsoft\Windows\WER\ReportArchive' (~5.63 MB)
+[2026-09-29 18:30:26] [SUCCESS] Reclaimed 5.63 MB from C:\ProgramData\Microsoft\Windows\WER\ReportArchive
+[2026-09-29 18:30:26] [INFO] Found 1 files in 'C:\ProgramData\Microsoft\Windows\WER\ReportQueue' (~0 MB)
+[2026-09-29 18:30:26] [SUCCESS] Reclaimed 0 MB from C:\ProgramData\Microsoft\Windows\WER\ReportQueue
+[2026-09-29 18:30:26] [INFO] Found 5 files in 'C:\ProgramData\Microsoft\Windows\WER\Temp' (~31.42 MB)
+[2026-09-29 18:30:27] [SUCCESS] Reclaimed 31.42 MB from C:\ProgramData\Microsoft\Windows\WER\Temp
+[2026-09-29 18:30:27] [INFO] Found 10 files in 'C:\Users\ignaz\AppData\Local\CrashDumps' (~125.81 MB)
+[2026-09-29 18:30:27] [SUCCESS] Reclaimed 125.81 MB from C:\Users\ignaz\AppData\Local\CrashDumps
+[2026-09-29 18:30:31] [SUCCESS] Emptied Windows Recycle Bin.
+[2026-09-29 18:30:31] [SUCCESS] Storage cleanup completed: Reclaimed ~673.86 MB (~0.658 GB)
+[2026-09-29 18:30:31] [INFO] Checking drive C: for SSD re-trimming...
+[2026-09-29 18:30:50] [WARN] Standard Optimize-Volume notice: Access denied
+Activity ID: {d6cd23bb-4ef3-0001-85d3-08daf34edd01}
+[2026-09-29 18:30:51] [SUCCESS] Defrag re-trim fallback completed for Drive C:.
+[2026-09-29 18:30:51] [INFO] Analyzing and optimizing active memory consumption...
+[2026-09-29 18:30:53] [INFO] Free Physical Memory Before: 241.8 MB
+[2026-09-29 18:30:56] [SUCCESS] Trimmed working sets of 0 processes to release stale memory pages.
+[2026-09-29 18:30:57] [SUCCESS] Free Physical Memory After: 237.8 MB (Change: +-4 MB)
+[2026-09-29 18:30:57] [INFO] Disabling resource-intensive telemetry and scheduled background tasks...
+[2026-09-29 18:30:58] [WARN] Notice on task \Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser: 
+[2026-09-29 18:30:58] [WARN] Notice on task \Microsoft\Windows\Application Experience\ProgramDataUpdater: 
+[2026-09-29 18:30:58] [WARN] Notice on task \Microsoft\Windows\Customer Experience Improvement Program\Consolidator: 
+[2026-09-29 18:30:58] [WARN] Notice on task \Microsoft\Windows\Customer Experience Improvement Program\UsbCeip: 
+[2026-09-29 18:30:58] [WARN] Notice on task \Microsoft\Windows\Feedback\Siuf\DmClient: 
+[2026-09-29 18:30:59] [SUCCESS] Disabled scheduled task: \Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector
+[2026-09-29 18:30:59] [WARN] Notice on task \Microsoft\Windows\Autochk\Proxy: 
+[2026-09-29 18:30:59] [WARN] Note: Running in user mode. Run as Administrator for service-level tuning.
+[2026-09-29 18:30:59] [INFO] Tuning UI response latency for instant window and menu opening...
+[2026-09-29 18:30:59] [SUCCESS] Reduced MenuShowDelay to 10ms (context menus open instantly).
+[2026-09-29 18:30:59] [SUCCESS] Disabled slow minimize/restore animation delays.
+[2026-09-29 18:30:59] [SUCCESS] Set TaskbarAnimations to instant mode.
+[2026-09-29 18:31:00] [SUCCESS] Disabled Microsoft Edge background startup boost to save ~200MB RAM.
+[2026-09-29 18:31:00] [INFO] Configuring CPU power responsiveness for low-TDP quad-core...
+[2026-09-29 18:31:00] [INFO] Current Active Scheme GUID: 381b4222-f694-41f0-9685-ff5bb260df2e
+[2026-09-29 18:31:04] [SUCCESS] Tuned current power scheme processor throttling bounds (Min: 5%, Max: 100%).
+[2026-09-29 18:36:20] [INFO] Creating system state snapshot before modifications...
+[2026-09-29 18:36:20] [SUCCESS] System state saved to: C:\Users\ignaz\antigravity\keen-franklin\laptop_optimizer\backup_state.json
+[2026-09-29 18:36:20] [INFO] Analyzing and optimizing background startup programs...
+[2026-09-29 18:36:21] [INFO] Identified startup bloat: GoogleChromeAutoLaunch_E158563B6D5ACE81C9BF68562B3EF297
+[2026-09-29 18:36:21] [SUCCESS] Disabled auto-start for: GoogleChromeAutoLaunch_E158563B6D5ACE81C9BF68562B3EF297 (backed up for easy restoration)
+[2026-09-29 18:36:21] [INFO] Identified startup bloat: MicrosoftCopilotAutoLaunch_EB9A11AE69AB2D13B72BAADA832B2292
+[2026-09-29 18:36:21] [SUCCESS] Disabled auto-start for: MicrosoftCopilotAutoLaunch_EB9A11AE69AB2D13B72BAADA832B2292 (backed up for easy restoration)
+[2026-09-29 18:36:21] [INFO] Identified startup bloat: ut
+[2026-09-29 18:36:21] [SUCCESS] Disabled auto-start for: ut (backed up for easy restoration)
+[2026-09-29 18:36:21] [INFO] Identified startup bloat: TeraBox
+[2026-09-29 18:36:21] [SUCCESS] Disabled auto-start for: TeraBox (backed up for easy restoration)
+[2026-09-29 18:36:21] [INFO] Identified startup bloat: TeraBoxWeb
+[2026-09-29 18:36:21] [SUCCESS] Disabled auto-start for: TeraBoxWeb (backed up for easy restoration)
+[2026-09-29 18:36:21] [INFO] Identified startup bloat: Free Download Manager
+[2026-09-29 18:36:21] [SUCCESS] Disabled auto-start for: Free Download Manager (backed up for easy restoration)
+[2026-09-29 18:36:39] [INFO] Creating system state snapshot before modifications...
+[2026-09-29 18:36:39] [SUCCESS] System state saved to: C:\Users\ignaz\antigravity\keen-franklin\laptop_optimizer\backup_state.json
+[2026-09-29 18:36:39] [INFO] Analyzing and optimizing active memory consumption...
+[2026-09-29 18:36:40] [INFO] Free Physical Memory Before: 475.3 MB
+[2026-09-29 18:36:43] [SUCCESS] Trimmed working sets of 38 processes to release stale memory pages.
+[2026-09-29 18:36:43] [SUCCESS] Free Physical Memory After: 1081.8 MB (Change: +606.5 MB)
+[2026-09-29 18:36:43] [INFO] Starting temporary and cache file reclamation...
+[2026-09-29 18:36:45] [INFO] Found 36 files in 'C:\Users\ignaz\AppData\Local\Temp' (~13.1 MB)
+[2026-09-29 18:36:46] [SUCCESS] Reclaimed 0 MB from C:\Users\ignaz\AppData\Local\Temp
+[2026-09-29 18:36:46] [INFO] Found 4 files in 'C:\Windows\SoftwareDistribution\Download' (~39.45 MB)
+[2026-09-29 18:36:46] [SUCCESS] Reclaimed 0 MB from C:\Windows\SoftwareDistribution\Download
+[2026-09-29 18:36:48] [SUCCESS] Emptied Windows Recycle Bin.
+[2026-09-29 18:36:48] [SUCCESS] Storage cleanup completed: Reclaimed ~0 MB (~0 GB)
+[2026-09-29 18:36:48] [INFO] Tuning UI response latency for instant window and menu opening...
+[2026-09-29 18:36:48] [SUCCESS] Reduced MenuShowDelay to 10ms (context menus open instantly).
+[2026-09-29 18:36:48] [SUCCESS] Disabled slow minimize/restore animation delays.
+[2026-09-29 18:36:48] [SUCCESS] Set TaskbarAnimations to instant mode.
+[2026-09-29 18:36:49] [SUCCESS] Disabled Microsoft Edge background startup boost to save ~200MB RAM.

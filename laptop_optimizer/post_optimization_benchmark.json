@@ -1,0 +1,76 @@
+{
+    "Timestamp":  "2026-09-29 18:37:32",
+    "ComputerName":  "PMD742OMNI",
+    "Model":  "HP HP Laptop 15-fd0xxx",
+    "CPU":  "Intel(R) N100",
+    "CoresLogical":  "4C / 4T",
+    "CPU_Load_Pct":  57.9,
+    "Total_RAM_MB":  7845.5,
+    "Used_RAM_MB":  6621.1,
+    "Free_RAM_MB":  1224.4,
+    "RAM_Usage_Pct":  84.4,
+    "Disk_C_Total_GB":  237.36,
+    "Disk_C_Free_GB":  41.15,
+    "Disk_C_Used_Pct":  82.7,
+    "ProcessCount":  313,
+    "ActivePowerPlan":  "Balanced (381b4222-f694-41f0-9685-ff5bb260df2e)",
+    "TopMemoryProcs":  [
+                           {
+                               "Name":  "language_server",
+                               "PID":  22212,
+                               "MB":  607.9
+                           },
+                           {
+                               "Name":  "Memory Compression",
+                               "PID":  4452,
+                               "MB":  561.7
+                           },
+                           {
+                               "Name":  "StartMenuExperienceHost",
+                               "PID":  14824,
+                               "MB":  480.4
+                           },
+                           {
+                               "Name":  "chrome",
+                               "PID":  19716,
+                               "MB":  204.2
+                           },
+                           {
+                               "Name":  "chrome",
+                               "PID":  15672,
+                               "MB":  140.6
+                           }
+                       ],
+    "TopCPUProcs":  [
+                        {
+                            "Name":  "chrome",
+                            "PID":  19716,
+                            "CPUSec":  14114.9,
+                            "RAM_MB":  204.2
+                        },
+                        {
+                            "Name":  "chrome",
+                            "PID":  224,
+                            "CPUSec":  10425.9,
+                            "RAM_MB":  57.2
+                        },
+                        {
+                            "Name":  "StartMenuExperienceHost",
+                            "PID":  14824,
+                            "CPUSec":  5792.7,
+                            "RAM_MB":  480.4
+                        },
+                        {
+                            "Name":  "msedgewebview2",
+                            "PID":  26508,
+                            "CPUSec":  5008.5,
+                            "RAM_MB":  106.8
+                        },
+                        {
+                            "Name":  "msedgewebview2",
+                            "PID":  17432,
+                            "CPUSec":  4624.3,
+                            "RAM_MB":  39.8
+                        }
+                    ]
+}
