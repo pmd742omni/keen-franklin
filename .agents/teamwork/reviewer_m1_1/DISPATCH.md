@@ -1,34 +1,16 @@
-# Dispatch: Reviewer M1 (Instance 1)
+## 2026-10-11T03:57:37Z
 
-## Objective
-Review Milestone M1 (Diagnostics & Performance Profiling):
-- Files: `src/Common/Platform.ps1`, `src/Common/Types.ps1`, `src/Diagnostics/Profiler.ps1`, `src/Diagnostics/Comparison.ps1`
-- Unit tests: `tests/test_m1_diagnostics.ps1`
-- Examine correctness, completeness, robustness, and contract conformance against `PROJECT.md`.
-- Run tests and deliver verdict: `APPROVE` or `REQUEST_CHANGES`.
+You are Reviewer 1 (Visual Capture Code Reviewer) for Milestone M1.
+Your Working Directory: c:\Users\ignaz\antigravity\keen-franklin\.agents\teamwork\reviewer_m1_1
+Original Request Path: c:\Users\ignaz\antigravity\keen-franklin\.agents\teamwork\ORIGINAL_REQUEST.md (YOU MUST READ THIS FIRST)
+Project Scope Document: c:\Users\ignaz\antigravity\keen-franklin\.agents\teamwork\orchestrator_3\PROJECT.md (YOU MUST READ THIS FIRST)
 
-## 2026-09-29T12:18:00Z
-You are Reviewer 1 for Milestone M1 (Diagnostics & Performance Profiling).
-Working directory: c:/Users/ignaz/antigravity/keen-franklin/.agents/teamwork/reviewer_m1_1
-Original request path: c:/Users/ignaz/antigravity/keen-franklin/.agents/teamwork/ORIGINAL_REQUEST.md
-Project plan path: c:/Users/ignaz/antigravity/keen-franklin/PROJECT.md
-Worker handoff path: c:/Users/ignaz/antigravity/keen-franklin/.agents/teamwork/worker_m1/handoff.md
-Target project directory: c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer
+Objective:
+Review the Milestone M1 implementation in c:\Users\ignaz\antigravity\keen-franklin\.agents\context\visual_doc_capture.py against ORIGINAL_REQUEST.md and PROJECT.md requirements:
+1. Feature F1: Web Server Freshness Cycle - Does ensure_server_fresh() cleanly terminate the server on port 8000, drain the socket, spawn detached uvicorn, and probe /api/heartbeat?
+2. Feature F2: Microsoft Edge Headless Capture - Does it capture both / and /evolution at 1920x1080 with isolated user-data-dir, 3000ms virtual time settling, and poll-and-terminate to avoid browser hangs?
+3. Artifacts: Are valid PNG images saved to both agent_city/ and agent_city/screenshots/ with non-zero size and valid PNG header?
+4. Run verification commands: Run `python .agents/context/visual_doc_capture.py` and inspect console output, exit code, and generated screenshot files.
 
-Task:
-1. Read ORIGINAL_REQUEST.md, PROJECT.md, and worker_m1's handoff.md.
-2. Review the code implemented in:
-   - `c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/src/Common/Platform.ps1`
-   - `c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/src/Common/Types.ps1`
-   - `c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/src/Diagnostics/Profiler.ps1`
-   - `c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/src/Diagnostics/Comparison.ps1`
-3. Execute the unit test suite:
-   `powershell -NoProfile -ExecutionPolicy Bypass -File "c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/tests/test_m1_diagnostics.ps1"`
-4. Verify interface contract conformance against PROJECT.md § Interface Contracts.
-5. Provide your verdict: APPROVE or REQUEST_CHANGES.
-6. Write your handoff to `c:/Users/ignaz/antigravity/keen-franklin/.agents/teamwork/reviewer_m1_1/handoff.md` and notify parent via send_message.
-
-## 2026-09-29T12:40:33Z
-**Context**: Milestone M1 Review
-**Content**: Checking in on your status. Has test_m1_diagnostics.ps1 (task-32) completed execution? Please provide your review findings, verdict (APPROVE or REQUEST_CHANGES), and handoff report.
-**Action**: Conclude review and submit handoff.md and verdict.
+Output:
+Write a comprehensive review report with an unambiguous verdict: APPROVE or REQUEST_CHANGES to c:\Users\ignaz\antigravity\keen-franklin\.agents\teamwork\reviewer_m1_1\handoff.md and notify the caller via send_message.

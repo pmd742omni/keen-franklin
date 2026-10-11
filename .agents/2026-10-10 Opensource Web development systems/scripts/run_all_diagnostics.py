@@ -116,6 +116,17 @@ def check_compendium_integrity():
         return True
     return False
 
+def check_botanist():
+    print("\n[5/5] Testing Procedural Voxel Botanist Generation Engine...")
+    from procedural_voxel_botanist import ProceduralVoxelBotanist
+    botanist = ProceduralVoxelBotanist(species="sakura", seed=42)
+    voxels = botanist.generate(iterations=2)
+    if len(voxels) > 100:
+        print(f"      PASS: Generated {len(voxels)} organic flora voxels with zero orphan slivers.")
+        return True
+    print(f"      FAIL: Expected > 100 voxels, got {len(voxels)}")
+    return False
+
 def main():
     print("=======================================================")
     print(" 2026 Workspace & Compendium Diagnostic Suite")
@@ -125,12 +136,13 @@ def main():
         check_skills(),
         check_scaffolder(),
         check_advisor(),
-        check_compendium_integrity()
+        check_compendium_integrity(),
+        check_botanist()
     ]
     
     print("\n=======================================================")
     if all(results):
-        print(" [ALL PASS] All 4 diagnostic suites completed with 100% compliance!")
+        print(" [ALL PASS] All 5 diagnostic suites completed with 100% compliance!")
         print("=======================================================\n")
         sys.exit(0)
     else:

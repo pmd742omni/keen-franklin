@@ -131,47 +131,75 @@ body::before {
 }
 
 /* ==========================================================================
-   Floating Glass Pill Header (Dynamic Island)
+   Executive Glass Header Deck (Responsive & Spacious)
    ========================================================================== */
 .floating-pill-wrapper {
   position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
-  z-index: 20;
-  padding: 20px 24px 0 24px;
-  margin-bottom: 38px;
+  z-index: 30;
+  padding: 16px 24px 0 24px;
+  margin-bottom: 24px;
 }
 
 .floating-pill-capsule {
   pointer-events: auto;
   max-width: 1240px;
   width: 100%;
-  height: 60px;
-  border-radius: 9999px;
-  background: var(--bg-glass-pill);
+  min-height: 58px;
+  border-radius: 16px;
+  background: rgba(18, 18, 22, 0.90);
   backdrop-filter: blur(28px) saturate(180%);
   -webkit-backdrop-filter: blur(28px) saturate(180%);
-  border: 1px solid var(--border-hairline);
-  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 16px;
-  padding: 0 20px 0 18px;
+  padding: 8px 18px;
+  flex-wrap: wrap;
   transition: all 0.3s var(--ease-spring);
 }
 
 .pill-brand-unit {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-shrink: 0;
 }
 
+.brand-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.portal-badge-link a {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: var(--accent-primary);
+  text-decoration: none;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 2px 7px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.portal-badge-link a:hover {
+  background: rgba(16, 185, 129, 0.22);
+  border-color: var(--accent-primary);
+  color: #ffffff;
+}
+
 .pill-logo-chip {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
   background: var(--bg-elevated);
   border: 1px solid var(--sakura-border);
   display: flex;
@@ -180,12 +208,19 @@ body::before {
   color: var(--sakura-pink);
   box-shadow: 0 0 12px -2px rgba(244, 114, 182, 0.25);
   flex-shrink: 0;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.pill-logo-chip:hover {
+  border-color: var(--sakura-pink);
+  transform: scale(1.05);
 }
 
 .pill-brand-text h1 {
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--text-lead);
   white-space: nowrap;
@@ -199,6 +234,7 @@ body::before {
   align-items: center;
   gap: 5px;
   white-space: nowrap;
+  margin-top: 2px;
 }
 
 .pill-specs-tag .bullet {
@@ -213,17 +249,17 @@ body::before {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-shrink: 0;
+  flex-wrap: wrap;
 }
 
 .telemetry-capsule {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-hairline);
-  padding: 3px 9px;
-  border-radius: 14px;
+  padding: 4px 10px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
   transition: all 0.2s var(--ease-spring);
   white-space: nowrap;
 }
@@ -244,7 +280,7 @@ body::before {
 }
 
 .capsule-meta-label {
-  font-size: 8px;
+  font-size: 8.5px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -252,7 +288,7 @@ body::before {
 }
 
 .capsule-metric-val {
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 600;
   font-family: var(--font-mono);
   color: var(--text-lead);
@@ -266,31 +302,21 @@ body::before {
   color: var(--sakura-pink);
 }
 
-/* Hairline Spacer Divider */
-.pill-divider {
-  width: 1px;
-  height: 24px;
-  background: var(--border-hairline);
-  flex-shrink: 0;
-  margin: 0 4px;
-}
-
 /* Floating Pill Action Buttons */
 .pill-action-cluster {
   display: flex;
   align-items: center;
   gap: 8px;
-  flex-shrink: 0;
-  margin-left: auto;
+  flex-wrap: wrap;
 }
 
 .pill-btn {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px 12px;
-  border-radius: 16px;
-  font-size: 10.5px;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 11px;
   font-weight: 600;
   cursor: pointer;
   border: 1px solid transparent;
@@ -301,22 +327,37 @@ body::before {
 }
 
 .pill-btn:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 
-.btn-secondary {
+.btn-kernel {
+  background: rgba(56, 189, 248, 0.10);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
+}
+
+.btn-kernel:hover {
+  background: rgba(56, 189, 248, 0.20);
+  border-color: #38bdf8;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.btn-action-tool {
   background: var(--bg-elevated);
-  border-color: var(--border-hairline);
+  border: 1px solid var(--border-hairline);
   color: var(--text-primary);
 }
 
-.btn-secondary:hover {
+.btn-action-tool:hover {
   background: var(--bg-hover);
   border-color: var(--border-subtle);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
 .btn-primary-accent {
-  background: linear-gradient(135deg, rgba(244, 114, 182, 0.22) 0%, rgba(16, 185, 129, 0.22) 100%);
+  background: linear-gradient(135deg, rgba(244, 114, 182, 0.25) 0%, rgba(16, 185, 129, 0.25) 100%);
   border: 1px solid var(--sakura-border);
   color: #fce7f3;
   font-weight: 700;
@@ -324,7 +365,7 @@ body::before {
 }
 
 .btn-primary-accent:hover {
-  background: linear-gradient(135deg, rgba(244, 114, 182, 0.35) 0%, rgba(16, 185, 129, 0.35) 100%);
+  background: linear-gradient(135deg, rgba(244, 114, 182, 0.38) 0%, rgba(16, 185, 129, 0.38) 100%);
   border-color: var(--sakura-pink);
   color: #ffffff;
   box-shadow: 0 6px 20px -2px rgba(244, 114, 182, 0.35);

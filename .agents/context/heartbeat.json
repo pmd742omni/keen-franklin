@@ -1,16 +1,16 @@
 {
-  "heartbeat_id": "hb-13312",
-  "timestamp": "2026-10-10T21:45:49.695551",
+  "heartbeat_id": "hb-37191",
+  "timestamp": "2026-10-11T09:01:46.017977",
   "epoch": 1,
-  "tick": 13312,
-  "uptime_seconds": 15602.0,
-  "server_live": true,
-  "consecutive_failures": 0,
+  "tick": 37191,
+  "uptime_seconds": 56158.3,
+  "server_live": false,
+  "consecutive_failures": 905,
   "rate_limit_state": "nominal",
   "headroom_pct": 84.5,
   "estimated_tokens_used": 142000,
   "vitals": {
-    "ram_pct": 97.6,
+    "ram_pct": 95.9,
     "cpu_pct": 100.0,
     "status": "healthy"
   },

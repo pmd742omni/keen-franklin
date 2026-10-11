@@ -374,7 +374,7 @@
 
     initButterflies() {
       this.butterflies = [
-        { id: 0, color: PALETTE.BUTTERFLY_ORANGE, baseX: 9.0,  baseY: 14.0, baseZ: 9.5, radius: 2.2, speed: 1.2, phase: 0.0 },
+        { id: 0, color: PALETTE.BUTTERFLY_ORANGE, baseX: 8.5,  baseY: 12.0, baseZ: 10.0, radius: 2.2, speed: 1.2, phase: 0.0 },
         { id: 1, color: PALETTE.BUTTERFLY_LIME,   baseX: 16.0, baseY: 10.5, baseZ: 9.8, radius: 2.0, speed: 1.4, phase: 1.8 },
         { id: 2, color: PALETTE.BUTTERFLY_CYAN,   baseX: 9.5,  baseY: 22.0, baseZ: 8.8, radius: 2.4, speed: 1.1, phase: 3.5 },
         { id: 3, color: PALETTE.BUTTERFLY_VIOLET, baseX: 23.0, baseY: 15.5, baseZ: 9.0, radius: 1.8, speed: 1.5, phase: 5.1 },
@@ -741,11 +741,11 @@
         load: c0Load,
         health: `${Math.max(1, 100 - c0Load)}% Headroom`,
         stat: `Load: ${c0Load}% • Freq: ${Math.round(this.telemetry.cpuFreqMhz)} MHz`,
-        desc: "Primary system executive core & foreground UI compositor thread rooted on contoured moss loam.",
+        desc: "Primary system executive core & foreground UI compositor thread rooted on 3-tier terraced moss knoll.",
         action: "Click to isolate Core 0 & trigger blossom burst",
-        worldX: 9.0,
-        worldY: 14.0,
-        worldZ: 9.8,
+        worldX: 8.5,
+        worldY: 12.0,
+        worldZ: 10.5,
       };
 
       // Specimen 1: Golden Ginkgo Tree (Core 1 — Top-Right Interior Knoll)
@@ -970,8 +970,8 @@
         { x: 16.0, y: 18.2, r: 1.5 },
 
         // Path Spurs Connecting to Specimen Knolls
-        { x: 13.5, y: 16.0, r: 1.3 },
-        { x: 11.5, y: 15.2, r: 1.3 }, // Towards Sakura Knoll
+        { x: 13.5, y: 15.5, r: 1.3 },
+        { x: 10.8, y: 13.8, r: 1.3 }, // Towards Sakura Knoll
         { x: 16.0, y: 13.5, r: 1.3 },
         { x: 15.2, y: 11.2, r: 1.3 }, // Towards Ginkgo Knoll
         { x: 13.8, y: 19.8, r: 1.3 },

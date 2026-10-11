@@ -1,0 +1,26 @@
+[23532:3188:1011/000354.947:WARNING:chrome\browser\extensions\external_registry_loader_win.cc:283] Error observing HKLM: 5
+[23532:3188:1011/000355.777:ERROR:chrome\browser\task_manager\providers\fallback_task_provider.cc:126] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/40528867.
+[23532:3188:1011/000356.736:ERROR:chrome\browser\task_manager\providers\fallback_task_provider.cc:126] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/40528867.
+[23532:3188:1011/000356.741:ERROR:chrome\browser\task_manager\providers\fallback_task_provider.cc:126] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/40528867.
+[23532:3188:1011/000356.742:ERROR:chrome\browser\task_manager\providers\fallback_task_provider.cc:126] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/40528867.
+[10412:28820:1011/000356.907:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 4
+[23532:3188:1011/000357.024:WARNING:chrome\browser\performance_manager\policies\page_discarding_helper.cc:173] Discarding multiple pages with target (kb): 0, discard_protected_tabs: 0
+[23532:3188:1011/000357.498:ERROR:chrome\browser\task_manager\providers\fallback_task_provider.cc:126] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/40528867.
+[23532:3188:1011/000358.126:ERROR:chrome\browser\task_manager\providers\fallback_task_provider.cc:126] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/40528867.
+[23532:3188:1011/000358.129:ERROR:chrome\browser\task_manager\providers\fallback_task_provider.cc:126] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/40528867.
+[27404:19420:1011/000358.455:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 4
+[17864:1828:1011/000358.980:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 4
+[23532:3188:1011/000359.151:ERROR:chrome\browser\task_manager\providers\fallback_task_provider.cc:126] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/40528867.
+[4984:28404:1011/000359.579:VERBOSE1:components\viz\service\main\viz_main_impl.cc:87] VizNullHypothesis is disabled (not a warning)
+[4984:19372:1011/000359.602:VERBOSE1:base\allocator\scheduler_loop_quarantine_config.cc:199] No entry found for gpu-process/viz-compositor.
+[26916:17152:1011/000400.352:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 4
+[27188:26672:1011/000400.979:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 4
+[20080:25728:1011/000400.981:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 4
+[23532:3188:1011/000402.617:WARNING:chrome\browser\performance_manager\policies\page_discarding_helper.cc:173] Discarding multiple pages with target (kb): 0, discard_protected_tabs: 0
+[24656:7724:1011/000404.214:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 4
+[18732:18412:1011/000404.616:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 4
+[23532:3188:1011/000406.954:INFO:CONSOLE:6150] "[ProtocolLaunch] handler constructed; wiring port events.", source: chrome-extension://ndcpkimcihhghdcddljkfmmjccdmcmof/background.rollup.js (6150)
+[23532:3188:1011/000407.617:WARNING:chrome\browser\performance_manager\policies\page_discarding_helper.cc:173] Discarding multiple pages with target (kb): 0, discard_protected_tabs: 0
+[23532:3188:1011/000409.646:ERROR:chrome\browser\task_manager\providers\fallback_task_provider.cc:126] Every renderer should have at least one task provided by a primary task provider. If a "Renderer" fallback task is shown, it is a bug. If you have repro steps, please file a new bug and tag it as a dependency of crbug.com/40528867.
+[21284:12976:1011/000410.013:INFO:third_party\webrtc\rtc_base\cpu_info.cc:77] Available number of cores: 4
+[23532:3188:1011/000412.239:ERROR:components\headless\command_handler\headless_command_handler.cc:403] Page load failed: net::ERR_CONNECTION_REFUSED

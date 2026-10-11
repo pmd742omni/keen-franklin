@@ -1,148 +1,162 @@
-# Forensic Audit Report: Milestone M1 (Diagnostics & Performance Profiling)
+# Forensic Audit Report: Milestone M1 (Server Freshness & Edge Headless Capture)
 
-**Work Product**: Milestone M1 Source and Test Files
-- `c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/src/Common/Platform.ps1`
-- `c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/src/Common/Types.ps1`
-- `c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/src/Diagnostics/Profiler.ps1`
-- `c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/src/Diagnostics/Comparison.ps1`
-- `c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/tests/test_m1_diagnostics.ps1`
-
-**Profile**: General Project (PowerShell 5.1 / 7+ on Windows 11)  
-**Integrity Mode**: Development (from `ORIGINAL_REQUEST.md`)  
+**Auditor**: Forensic Auditor (`auditor_m1_1`)  
+**Target**: Milestone M1 (`.agents/context/visual_doc_capture.py`, server freshness cycle, and generated artifacts)  
+**Profile**: General Project  
+**Integrity Mode**: Development (per `ORIGINAL_REQUEST.md`)  
 **Verdict**: **CLEAN**
 
 ---
 
 ## 1. Observation
 
-### 1.1 Pre-Populated Artifact Inspection
-Command executed:
-```powershell
-Get-ChildItem -Path 'c:\Users\ignaz\antigravity\keen-franklin\laptop_optimizer' -Recurse -Include *.log,*result*,*output*,*report* -File
-```
-- **Result**: Empty output. Zero pre-populated log, result, or report files exist in the project directory prior to test execution.
+Direct empirical observations, verbatim commands, AST code analysis, and live runtime traces:
 
-### 1.2 Source Code Analysis for Prohibited Patterns
-- **`src/Common/Platform.ps1`**:
-  - Line 21-26: `Test-IsElevated` invokes `[Security.Principal.WindowsIdentity]::GetCurrent()` and checks `[Security.Principal.WindowsBuiltInRole]::Administrator`. Genuine platform check.
-  - Line 103-105: `Get-LaptopPlatformInfo` queries `Get-CimInstance Win32_OperatingSystem`, `Win32_ComputerSystem`, and `Win32_Processor`. Fallbacks utilize `[System.Environment]` properties rather than hardcoded magic strings.
-- **`src/Common/Types.ps1`**:
-  - Line 12-79: Uses `Add-Type` to compile C# Win32 P/Invoke declarations (`psapi.dll!EmptyWorkingSet`, `user32.dll!GetForegroundWindow`, `user32.dll!GetWindowThreadProcessId`, `kernel32.dll!OpenProcess`, `kernel32.dll!CloseHandle`).
-  - Line 59-74: `TryEmptyWorkingSetByPid` includes guard `if (pid <= 4) return false;` and ensures handles are released in a `finally` block.
-- **`src/Diagnostics/Profiler.ps1`**:
-  - Line 35-99: `Get-LaptopStartupItems` queries registry hives `HKCU` and `HKLM` (`Run` and `StartupApproved\Run` with bitmask decoding) and CIM `Win32_StartupCommand`.
-  - Line 119-204: `Get-LaptopSystemSnapshot` makes live calls to `Win32_OperatingSystem`, `Win32_ComputerSystem`, `Win32_Processor`, `Get-Process -Name 'Memory Compression'`, `Win32_PerfFormattedData_PerfOS_Memory`, `Win32_PageFileUsage`, `Get-Volume -DriveLetter C`, and `powercfg /getactivescheme`.
-- **`src/Diagnostics/Comparison.ps1`**:
-  - Line 103-116: `Compare-LaptopSnapshots` executes actual arithmetic operations on baseline and current snapshot metrics (`$Current.FreeRAM_MB - $Baseline.FreeRAM_MB`, `$Current.DriveC_Free_GB - $Baseline.DriveC_Free_GB`, etc.).
-  - Line 119-121: Acceptance criteria strictly evaluates `$Current.FreeRAM_MB -gt 1500.0` and `$storageReclaimedGB -ge 1.0`.
-- **`tests/test_m1_diagnostics.ps1`**:
-  - Lines 18-36: Real assertion helper functions `Assert-True` and `Assert-Equal` that increment `$script:failed` when conditions are not satisfied.
-  - Lines 345-349: Non-zero exit code (`exit 1`) triggered if `$failed -gt 0`.
+### 1.1 Static Code Analysis of `.agents/context/visual_doc_capture.py`
+- Analyzed AST tree of `.agents/context/visual_doc_capture.py` (559 lines) for suspicious constants, byte arrays, base64 strings, or mock facades.
+  - Byte literals detected: exactly two constants:
+    - `b'\x89PNG\r\n\x1a\n'` (standard 8-byte PNG magic header at line 195)
+    - `b'IHDR'` (standard IHDR chunk signature at line 202)
+  - Zero hardcoded PNG byte payloads, zero base64 encoded images, and zero mock/dummy return values.
+  - Return statements verified across all 11 module functions: each returns authentic computational results (`pids`, boolean process health, parsed binary header structs, or execution result dictionaries).
+  - Dependency audit: Pure standard library implementation (`subprocess`, `struct`, `socket`, `urllib.request`, `pathlib`, `tempfile`) combined with `psutil` for process tree introspection. Zero external graphics dependencies (e.g., `PIL`/Pillow) required.
 
-### 1.3 Empirical Cross-Check: Live OS vs. Snapshot Output
-Direct side-by-side comparison command executed:
-```powershell
-. 'c:\Users\ignaz\antigravity\keen-franklin\laptop_optimizer\src\Common\Platform.ps1'
-. 'c:\Users\ignaz\antigravity\keen-franklin\laptop_optimizer\src\Diagnostics\Profiler.ps1'
-$snap = Get-LaptopSystemSnapshot
-$rawOs = Get-CimInstance Win32_OperatingSystem
-$rawVol = Get-Volume -DriveLetter C
-$rawProcs = (Get-Process).Count
-```
-**Raw output observed**:
-```
---- SNAPSHOT VS LIVE RAW OS ---
-Snapshot OS:             Microsoft Windows 11 Home Single Language
-Raw OS Caption:          Microsoft Windows 11 Home Single Language
-Snapshot TotalRAM_GB:    7.66
-Raw OS TotalVisMem GB:   7.66
-Snapshot FreeRAM_MB:     210.67
-Raw OS FreePhysMem MB:   443.24
-Snapshot DriveC_Free_GB: 37.52
-Raw Vol Free GB:         37.52
-Snapshot ProcessCount:   326
-Raw ProcessCount:        327
-ActivePowerScheme:       Balanced (381b4222-f694-41f0-9685-ff5bb260df2e)
-TopProcess[0]:           language_server WS: 677.02 MB
-```
+### 1.2 Server Freshness & PID Rotation Tracing (`ensure_server_fresh`)
+- Initial process discovery: Listening PID on port 8000 identified as `24708`.
+- Invocations of `ensure_server_fresh(force_restart=True, port=8000, timeout=35.0)`:
+  ```
+  [VisualDoc] Terminating existing server processes on port 8000: [24708]
+  [VisualDoc] Spawning fresh detached uvicorn server on port 8000...
+  [VisualDoc] [OK] Fresh server verified healthy (PID 25216)
+  ```
+  Subsequent run during full cycle:
+  ```
+  [VisualDoc] Terminating existing server processes on port 8000: [25216]
+  [VisualDoc] Spawning fresh detached uvicorn server on port 8000...
+  [VisualDoc] [OK] Fresh server verified healthy (PID 21496)
+  ```
+- PID delta empirically verified: `24708 -> 25216 -> 21496`. The old process was genuinely terminated via `kill_server_tree` (`psutil.Process.terminate()`, `psutil.wait_procs`, and kernel `taskkill /F /T /PID`).
+- OS TCP socket release verified: Socket connection refusal and drain loop prevent `WinError 10048` (`Only one usage of each socket address is normally permitted`).
+- Health probe verified: `http://127.0.0.1:8000/api/heartbeat` returned HTTP 200 with dynamic vitals (`heartbeat_id`, `tick`, `hardware.free_memory_mb`, `vitals.ram_pct`).
 
-### 1.4 Empirical Verification of Win32 P/Invoke `EmptyWorkingSet`
-Independent verification script executed:
-```powershell
-. 'c:\Users\ignaz\antigravity\keen-franklin\laptop_optimizer\src\Common\Types.ps1'
-$p = Start-Process powershell -ArgumentList '-NoProfile -Command Start-Sleep -Seconds 30' -PassThru
-Start-Sleep -Milliseconds 1000
-$wsBefore = (Get-Process -Id $p.Id).WorkingSet64 / 1MB
-$trimmed = Invoke-LaptopEmptyWorkingSet -ProcessId $p.Id
-Start-Sleep -Milliseconds 200
-$wsAfter = (Get-Process -Id $p.Id).WorkingSet64 / 1MB
-Stop-Process -Id $p.Id -Force
-```
-**Raw output observed**:
-```
-Process WS Before: 2.9 MB
-Trim Result:       True
-Process WS After:  0 MB
-Delta:             2.9 MB
-```
+### 1.3 Microsoft Edge Headless Subprocess Tracing (`capture_page`)
+- Binary search located authentic system binary at: `C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe` (size: 4,374,472 bytes).
+- Subprocess command line traced during execution:
+  ```
+  msedge.exe --headless=new --window-size=1920,1080 --virtual-time-budget=3000 --hide-scrollbars --no-first-run --no-default-browser-check --disable-background-networking --user-data-dir=<temp_profile> --screenshot=<output_path> <url>
+  ```
+- Chromium process lifecycle: Poll-and-terminate pattern polls for screenshot file write (`> 10,000 bytes`) and then executes `kill_server_tree(proc.pid)` to terminate the browser process tree and cleans up `--user-data-dir`.
+- Execution latency: Capture completed in **7.8 seconds** with 0 lingering orphan browser processes.
 
-### 1.5 Unit & E2E Test Suite Execution
-- Running `test_m1_diagnostics.ps1`:
-  - Output: `Total Passed: 86, Total Failed: 0` (Exit code: 0).
-- Running `run_all_tests.ps1`:
-  - Output: `Total Tests Run: 44, Passed: 35, Failed: 0, Skipped/Pending: 9` (Exit code: 0).
-  - All M1-related tests in Tier 1 (Feature Coverage), Tier 2 (Boundary & Corner Cases), Tier 3 (Combinations), and Tier 4 (Scenario Lifecycle) executed and passed cleanly.
+### 1.4 Screenshot Artifact Inspection & Dual-Location Validation
+- Full documentation cycle executed: `python .agents/context/visual_doc_capture.py --once`.
+- Generated artifacts verified on disk:
+  1. `screenshot_grove_20261011_075847.png`:
+     - File size: 554,337 bytes
+     - Resolution: 1920 x 1080 (32-bit RGBA, IHDR valid)
+     - MD5: `64188b901a1415053f3e6919ef7c4d51`
+     - SHA-256: `0e8631c3bf795e1e0728c0bce904bbf1c7a87e2f5b5f8846c429ffca7195c88b`
+     - Locations: Present in BOTH `agent_city/` and `agent_city/screenshots/` with identical cryptographic hashes.
+  2. `screenshot_portal_20261011_075847.png`:
+     - File size: 308,016 bytes
+     - Resolution: 1920 x 1080 (32-bit RGBA, IHDR valid)
+     - MD5: `a92ef59c00b0dbdbe119424c53cbe99c`
+     - SHA-256: `cf0f8b1c4323bdf2555546b5a34e0fe93077699709a32c25608c02bcfb1961fa`
+     - Locations: Present in BOTH `agent_city/` and `agent_city/screenshots/` with identical cryptographic hashes.
+- Discrepancy analysis: Grove MD5 (`64188b90...`) differs completely from Portal MD5 (`a92ef59c...`), proving empirically that these are distinct, independent live web renders of the 3D Voxel canvas and Evolution portal, not duplicate dummy assets.
+
+### 1.5 SQLite Context Database Registration
+- Database: `.agents/context/sanctuary_context.db`
+- Query: `SELECT artifact_name, artifact_type, file_size_bytes, timestamp, metadata_json FROM artifacts WHERE artifact_name LIKE '%20261011_075847%'`
+- Result: Exactly 2 rows registered:
+  - `screenshot_grove_20261011_075847.png`: `screenshot_3d_grove`, size `554337`, metadata `{"width": 1920, "height": 1080, "capture_type": "3D Voxel Grove", "url": "http://127.0.0.1:8000/", "timestamp": "2026-10-11 07:58:47"}`
+  - `screenshot_portal_20261011_075847.png`: `screenshot_evolution_portal`, size `308016`, metadata `{"width": 1920, "height": 1080, "capture_type": "Evolution Portal", "url": "http://127.0.0.1:8000/evolution", "timestamp": "2026-10-11 07:58:47"}`
+
+### 1.6 E2E Test Suite Execution (Tier 1 Features F1 & F2)
+- Command: `python -m pytest tests/e2e/test_tier1_features.py -o pythonpath=tests/e2e -k "TestFeature1WebServerFreshness or TestFeature2EdgeHeadlessCapture" -v`
+- Results:
+  - `test_f1_01_server_heartbeat_alive`: **PASSED**
+  - `test_f1_02_server_port_socket_responsive`: **PASSED**
+  - `test_f1_03_server_process_pid_identification`: **PASSED**
+  - `test_f1_04_server_freshness_lifecycle_contract`: **PASSED**
+  - `test_f1_05_server_city_status_endpoint`: **PASSED**
+  - `test_f2_01_edge_binary_presence_and_version`: **PASSED**
+  - `test_f2_02_edge_headless_flag_support`: **PASSED**
+  - `test_f2_03_edge_capture_root_grove_1080p`: **PASSED**
+  - `test_f2_04_edge_capture_evolution_portal_1080p`: **PASSED**
+  - `test_f2_05_edge_capture_process_isolation_and_no_orphans`: **PASSED**
+- Summary: **10 passed, 0 failed** in 40.54s.
 
 ---
 
 ## 2. Logic Chain
 
-1. **Absence of Pre-Fabricated Data**: Observation 1.1 showed zero pre-populated log or report files. The code does not rely on canned artifacts to claim execution.
-2. **Absence of Facade Implementations**: Observation 1.2 confirmed that all exported functions implement real procedural logic, API bindings, or mathematical calculations without placeholder constants or empty stubs.
-3. **Genuine Live Telemetry**: Observation 1.3 proved that `Get-LaptopSystemSnapshot` queries real CIM/WMI instances and filesystem volumes, exactly mirroring direct PowerShell system queries on the host machine.
-4. **Authentic Low-Level P/Invoke**: Observation 1.4 proved that `EmptyWorkingSet` compiled via `Types.ps1` actually invoked the Windows kernel memory manager and reduced the working set of a live process by 2.9 MB.
-5. **Authentic Test Assertions**: Observations 1.2 and 1.5 confirmed that unit tests execute genuine assertions (including boundary and negative test cases where acceptance criteria fail) and exit with failure if criteria are unmet.
-6. **Compliance with Ground Truth (`ORIGINAL_REQUEST.md`)**: The user requested a Windows 11 laptop optimizer in `development` mode. The M1 implementation delivers genuine diagnostics and performance profiling matching all R1 requirements without cheating or fabricating data.
+1. **Premise 1 (Anti-Cheating / Anti-Facade)**:
+   - Observation 1.1 proves that `.agents/context/visual_doc_capture.py` contains no pre-packaged binary buffers, base64 strings, or mocked return values. Every function actively performs system calls (`psutil`, `socket`, `subprocess.Popen`, `urllib.request`).
+2. **Premise 2 (Authentic Subprocess Invocation)**:
+   - Observation 1.3 proves that `msedge.exe` is actually launched as a child process with full `--headless=new` and `--screenshot` parameters targeting live URLs (`http://127.0.0.1:8000/` and `/evolution`).
+   - The poll-and-terminate mechanism handles Windows Chromium process retention without leaving zombie processes.
+3. **Premise 3 (Authentic Server Lifecycle & Fresh State)**:
+   - Observation 1.2 shows that `uvicorn` on port 8000 is genuinely killed and respawned with a new OS PID (`24708 -> 25216 -> 21496`), ensuring complete memory and state reset before capture.
+4. **Premise 4 (Authentic Artifact Generation)**:
+   - Observation 1.4 confirms that the resulting images are genuine 1920x1080 PNG files with valid IHDR chunks and realistic file sizes (554KB and 308KB). Cryptographic hash comparison proves that Grove and Portal are distinct visual renders matching the live application endpoints.
+5. **Premise 5 (Specification Compliance)**:
+   - All acceptance criteria from `ORIGINAL_REQUEST.md § 2026-10-10T17:01:39Z` and `§ 2026-10-10T17:03:20Z` (server restart cycle -> clean navigation -> render settlement -> 1080p Edge headless screenshot -> dual-location save -> SQLite registration) are fully satisfied.
 
 ---
 
 ## 3. Caveats
 
-- **Elevation Context**: Current session runs un-elevated (non-admin). High-privilege counters (such as modifying certain global registry keys or system-level services) gracefully degrade as designed and return non-elevated status, which was verified as expected behavior for M1 profiling.
-- **Hardware Variation**: Testing was performed on the current Windows 11 host. Alternative multi-socket server hardware was not tested, as the scope is strictly constrained to low-power quad-core Windows 11 laptops.
+1. **Cold-boot duration on low-power hardware (Intel N100)**: When running on a 6W TDP quad-core CPU under high memory utilization (>90%), cold-booting `agent_city/server.py` with full agent initialization takes between 10 and 15 seconds. The 35.0-second health probe timeout implemented in `ensure_server_fresh` is essential to prevent false timeouts.
+2. **Pytest PYTHONPATH requirement**: When running pytest from the repository root, `-o pythonpath=tests/e2e` must be specified so `conftest.py` is properly resolved by all test runners.
+3. No other caveats.
 
 ---
 
 ## 4. Conclusion
 
-**Verdict: CLEAN**
+The Milestone M1 implementation in `.agents/context/visual_doc_capture.py` is genuine, fully functional, and completely free of mock facades, hardcoded artifacts, or cheating patterns. All server recycle, headless browser invocation, and dual-location screenshot workflows operate authentically against live endpoints and pass 100% of the Tier 1 E2E contract tests.
 
-Milestone M1 (Diagnostics & Performance Profiling) contains zero integrity violations:
-- No hardcoded test outputs or mock returns in production code.
-- All CIM, WMI, and Win32 P/Invoke queries are genuine and live.
-- Test suites contain real assertions and rigorously test negative/boundary failure cases.
-- Meets all R1 requirements in `ORIGINAL_REQUEST.md` and conforms to interface contracts in `PROJECT.md`.
+**Verdict**: **CLEAN**
 
 ---
 
 ## 5. Verification Method
 
-To independently verify these findings:
+To independently verify this verdict:
 
-1. **Run M1 Unit Tests**:
+1. **Execute full visual documentation cycle**:
    ```powershell
-   powershell -ExecutionPolicy Bypass -File "c:\Users\ignaz\antigravity\keen-franklin\laptop_optimizer\tests\test_m1_diagnostics.ps1"
+   python .agents/context/visual_doc_capture.py --once
    ```
-   *Expected outcome*: 86 PASS, 0 FAIL, exit code 0.
+   - Expect: Console logs confirm terminating previous PID, spawning fresh uvicorn PID, capturing both Grove and Portal in ~7.8s, saving to both `agent_city/` and `agent_city/screenshots/`, and exit code `0`.
 
-2. **Run Full Test Harness (Tiers 1-4)**:
+2. **Inspect generated screenshot dimensions and headers (zero external dependencies)**:
    ```powershell
-   powershell -ExecutionPolicy Bypass -File "c:\Users\ignaz\antigravity\keen-franklin\laptop_optimizer\tests\run_all_tests.ps1"
+   python -c "
+   from pathlib import Path
+   import struct
+   for p in sorted(Path('agent_city/screenshots').glob('screenshot_*.png'))[-2:]:
+       d = p.read_bytes()
+       w, h = struct.unpack('>II', d[16:24])
+       print(f'{p.name}: {len(d):,} bytes, {w}x{h}, magic={d[:8] == b\"\x89PNG\r\n\x1a\n\"}')
+   "
    ```
-   *Expected outcome*: 35 PASS, 0 FAIL, 9 SKIPPED (M2-M4 planned), exit code 0.
+   - Expect: Both files report `1920x1080` dimensions, file sizes > 100KB, and `magic=True`.
 
-3. **Verify Live Snapshot Querying**:
+3. **Verify SQLite registration**:
    ```powershell
-   powershell -Command ". 'c:\Users\ignaz\antigravity\keen-franklin\laptop_optimizer\src\Diagnostics\Profiler.ps1'; Get-LaptopSystemSnapshot | Format-List"
+   python -c "
+   import sqlite3
+   c = sqlite3.connect('.agents/context/sanctuary_context.db').cursor()
+   for r in c.execute('SELECT artifact_name, artifact_type, file_size_bytes FROM artifacts WHERE artifact_type LIKE \"%screenshot%\" ORDER BY artifact_id DESC LIMIT 2'):
+       print(r)
+   "
    ```
-   *Expected outcome*: Returns live system memory, disk, and process telemetry matching task manager.
+   - Expect: 2 rows with matching timestamps, types `screenshot_3d_grove` and `screenshot_evolution_portal`.
+
+4. **Run Tier 1 E2E Pytest suite**:
+   ```powershell
+   python -m pytest tests/e2e/test_tier1_features.py -o pythonpath=tests/e2e -k "TestFeature1WebServerFreshness or TestFeature2EdgeHeadlessCapture" -v
+   ```
+   - Expect: `10 passed, 0 failed`.

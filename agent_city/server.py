@@ -595,6 +595,27 @@ if static_dir.exists():
             return FileResponse(portal_file)
         raise HTTPException(status_code=404, detail="Evolution Portal HTML not found.")
 
+    @app.get("/botanical", response_class=FileResponse)
+    @app.get("/botanical-studio", response_class=FileResponse)
+    async def serve_botanical_studio() -> FileResponse:
+        """Serve the 3D Procedural Voxel Botanical Art Studio."""
+        botanical_file = static_dir / "botanical_viewer.html"
+        if botanical_file.exists():
+            return FileResponse(botanical_file)
+        raise HTTPException(status_code=404, detail="Botanical Studio HTML not found.")
+
+    @app.get("/screenshot_grove_{v}.png", response_class=FileResponse)
+    async def serve_root_screenshot(v: str) -> FileResponse:
+        """Serve screenshot images from root path with fallback to static dirs."""
+        f = static_dir / f"screenshot_grove_{v}.png"
+        if not f.exists():
+            f = static_dir / "screenshots" / f"screenshot_grove_{v}.png"
+        if not f.exists():
+            f = _current_dir / f"screenshot_grove_{v}.png"
+        if f.exists():
+            return FileResponse(f, media_type="image/png")
+        raise HTTPException(status_code=404, detail="Screenshot not found.")
+
     @app.get("/api/heartbeat")
     async def get_heartbeat() -> Dict[str, Any]:
         """Return the latest 1-second system heartbeat status."""

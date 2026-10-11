@@ -1,20 +1,16 @@
-## 2026-09-29T12:17:59Z
-You are Reviewer 2 for Milestone M1 (Diagnostics & Performance Profiling).
-Working directory: c:/Users/ignaz/antigravity/keen-franklin/.agents/teamwork/reviewer_m1_2
-Original request path: c:/Users/ignaz/antigravity/keen-franklin/.agents/teamwork/ORIGINAL_REQUEST.md
-Project plan path: c:/Users/ignaz/antigravity/keen-franklin/PROJECT.md
-Worker handoff path: c:/Users/ignaz/antigravity/keen-franklin/.agents/teamwork/worker_m1/handoff.md
-Target project directory: c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer
+## 2026-10-11T03:58:30Z
 
-Task:
-1. Read ORIGINAL_REQUEST.md, PROJECT.md, and worker_m1's handoff.md.
-2. Review the code implemented in:
-   - `c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/src/Common/Platform.ps1`
-   - `c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/src/Common/Types.ps1`
-   - `c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/src/Diagnostics/Profiler.ps1`
-   - `c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/src/Diagnostics/Comparison.ps1`
-3. Run the unit test suite:
-   `powershell -NoProfile -ExecutionPolicy Bypass -File "c:/Users/ignaz/antigravity/keen-franklin/laptop_optimizer/tests/test_m1_diagnostics.ps1"`
-4. Verify error handling, edge cases, PowerShell 5.1 compatibility, and non-elevated behavior.
-5. Provide your verdict: APPROVE or REQUEST_CHANGES.
-6. Write your handoff to `c:/Users/ignaz/antigravity/keen-franklin/.agents/teamwork/reviewer_m1_2/handoff.md` and notify parent via send_message.
+You are Reviewer 2 (Server Freshness Cycle Reviewer) for Milestone M1.
+Your Working Directory: c:\Users\ignaz\antigravity\keen-franklin\.agents\teamwork\reviewer_m1_2
+Original Request Path: c:\Users\ignaz\antigravity\keen-franklin\.agents\teamwork\ORIGINAL_REQUEST.md (YOU MUST READ THIS FIRST)
+Project Scope Document: c:\Users\ignaz\antigravity\keen-franklin\.agents\teamwork\orchestrator_3\PROJECT.md (YOU MUST READ THIS FIRST)
+
+Objective:
+Review and verify the server restart/reload cycle and process management in c:\Users\ignaz\antigravity\keen-franklin\.agents\context\visual_doc_capture.py:
+1. Conformance with User Mandate: "Before each screenshot is taken, the web server must be restarted (or reloaded), and the browser page must be cleanly reloaded to ensure fresh rendering of the 3D canvas and dynamic state."
+2. Port 8000 socket safety: Does wait_for_socket_drain() prevent WinError 10048?
+3. Probe timeout: Does it accommodate cold boot on Intel N100 (up to 35s)?
+4. Run test commands to verify that PID changes before and after ensure_server_fresh(force_restart=True), and that /api/heartbeat returns 200 OK.
+
+Output:
+Write a comprehensive review report with an unambiguous verdict: APPROVE or REQUEST_CHANGES to c:\Users\ignaz\antigravity\keen-franklin\.agents\teamwork\reviewer_m1_2\handoff.md and notify the caller via send_message.

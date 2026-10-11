@@ -1,0 +1,496 @@
+{
+  "timestamp": "2026-10-11T03:10:24Z",
+  "summary": {
+    "passed": 71,
+    "failed": 13,
+    "skipped": 8,
+    "error": 0,
+    "total": 92
+  },
+  "duration_seconds": 430.92,
+  "exit_code": 1,
+  "strict_mode": false,
+  "results": [
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature1WebServerFreshness::test_f1_01_server_heartbeat_alive",
+      "outcome": "passed",
+      "duration": 0.6458
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature1WebServerFreshness::test_f1_02_server_port_socket_responsive",
+      "outcome": "passed",
+      "duration": 0.0039
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature1WebServerFreshness::test_f1_03_server_process_pid_identification",
+      "outcome": "passed",
+      "duration": 0.0165
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature1WebServerFreshness::test_f1_04_server_freshness_lifecycle_contract",
+      "outcome": "passed",
+      "duration": 0.2816
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature1WebServerFreshness::test_f1_05_server_city_status_endpoint",
+      "outcome": "passed",
+      "duration": 0.3287
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature2EdgeHeadlessCapture::test_f2_01_edge_binary_presence_and_version",
+      "outcome": "passed",
+      "duration": 0.0011
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature2EdgeHeadlessCapture::test_f2_02_edge_headless_flag_support",
+      "outcome": "failed",
+      "duration": 26.5303,
+      "message": "tests\\e2e\\test_tier1_features.py:116: in test_f2_02_edge_headless_flag_support\n    assert ok is True, \"Edge failed to generate screenshot artifact.\"\nE   AssertionError: Edge failed to generate screenshot artifact.\nE   assert False is True"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature2EdgeHeadlessCapture::test_f2_03_edge_capture_root_grove_1080p",
+      "outcome": "failed",
+      "duration": 35.5633,
+      "message": "tests\\e2e\\test_tier1_features.py:135: in test_f2_03_edge_capture_root_grove_1080p\n    assert ok is True, f\"Failed to capture 3D Voxel Canvas at {base_url}/\"\nE   AssertionError: Failed to capture 3D Voxel Canvas at http://127.0.0.1:8000/\nE   assert False is True"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature2EdgeHeadlessCapture::test_f2_04_edge_capture_evolution_portal_1080p",
+      "outcome": "failed",
+      "duration": 30.3917,
+      "message": "tests\\e2e\\test_tier1_features.py:156: in test_f2_04_edge_capture_evolution_portal_1080p\n    assert ok is True, f\"Failed to capture Evolution Portal at {base_url}/evolution\"\nE   AssertionError: Failed to capture Evolution Portal at http://127.0.0.1:8000/evolution\nE   assert False is True"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature2EdgeHeadlessCapture::test_f2_05_edge_capture_process_isolation_and_no_orphans",
+      "outcome": "failed",
+      "duration": 22.0058,
+      "message": "tests\\e2e\\test_tier1_features.py:176: in test_f2_05_edge_capture_process_isolation_and_no_orphans\n    assert ok is True\nE   assert False is True"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature3StaticRouteMounting::test_f3_01_static_css_route_served",
+      "outcome": "passed",
+      "duration": 2.4519
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature3StaticRouteMounting::test_f3_02_screenshots_route_mounted",
+      "outcome": "passed",
+      "duration": 0.1893
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature3StaticRouteMounting::test_f3_03_existing_screenshots_served",
+      "outcome": "passed",
+      "duration": 1.0841
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature3StaticRouteMounting::test_f3_04_new_screenshot_served_after_placement",
+      "outcome": "skipped",
+      "duration": 0.0029,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 219, 'Skipped: [M2 Pending] agent_city/screenshots directory created by M2')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature3StaticRouteMounting::test_f3_05_screenshots_traversal_prevention",
+      "outcome": "passed",
+      "duration": 0.0639
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature4InteractiveEvolutionGallery::test_f4_01_evolution_portal_serves_html",
+      "outcome": "passed",
+      "duration": 0.9521
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature4InteractiveEvolutionGallery::test_f4_02_evolution_gallery_grid_present",
+      "outcome": "passed",
+      "duration": 0.491
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature4InteractiveEvolutionGallery::test_f4_03_evolution_gallery_cards_have_badges_and_timestamps",
+      "outcome": "passed",
+      "duration": 0.4736
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature4InteractiveEvolutionGallery::test_f4_04_gallery_artifacts_api_contract",
+      "outcome": "skipped",
+      "duration": 0.1491,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 219, 'Skipped: [M2 Pending] /api/context/artifacts endpoint implemented by M2')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature4InteractiveEvolutionGallery::test_f4_05_gallery_zoom_preview_structure",
+      "outcome": "passed",
+      "duration": 0.5109
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature5MarkdownSnapshotSync::test_f5_01_snapshots_directory_populated",
+      "outcome": "passed",
+      "duration": 0.1635
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature5MarkdownSnapshotSync::test_f5_02_snapshot_markdown_embed_syntax",
+      "outcome": "skipped",
+      "duration": 0.5551,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 219, 'Skipped: [M3 Pending] Markdown snapshot contains ![alt](path) image embeds (M3)')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature5MarkdownSnapshotSync::test_f5_03_snapshot_referenced_images_exist",
+      "outcome": "passed",
+      "duration": 0.3711
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature5MarkdownSnapshotSync::test_f5_04_snapshot_cron_script_exists_and_valid",
+      "outcome": "passed",
+      "duration": 0.0553
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature5MarkdownSnapshotSync::test_f5_05_latest_context_snapshot_sync",
+      "outcome": "passed",
+      "duration": 0.003
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature6SqliteContextPersistence::test_f6_01_sqlite_database_exists",
+      "outcome": "passed",
+      "duration": 0.0013
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature6SqliteContextPersistence::test_f6_02_sqlite_wal_pragmas_enforced",
+      "outcome": "skipped",
+      "duration": 0.004,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 219, 'Skipped: [M3 Pending] SQLite journal_mode is WAL (found: delete)')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature6SqliteContextPersistence::test_f6_03_sqlite_artifacts_table_schema",
+      "outcome": "passed",
+      "duration": 0.0028
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature6SqliteContextPersistence::test_f6_04_sqlite_artifacts_contain_dimensions_metadata",
+      "outcome": "passed",
+      "duration": 0.0097
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature6SqliteContextPersistence::test_f6_05_sqlite_no_ddl_on_read_contract",
+      "outcome": "passed",
+      "duration": 0.0141
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature7LatexMonographSync::test_f7_01_latex_report_tex_exists",
+      "outcome": "passed",
+      "duration": 0.0079
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature7LatexMonographSync::test_f7_02_latex_includes_graphicx",
+      "outcome": "passed",
+      "duration": 0.0021
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature7LatexMonographSync::test_f7_03_latex_figures_and_includegraphics",
+      "outcome": "skipped",
+      "duration": 0.0025,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 219, 'Skipped: [M3 Pending] LaTeX monograph includes \\\\begin{figure} and \\\\includegraphics (M3)')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature7LatexMonographSync::test_f7_04_latex_empirical_benchmarks",
+      "outcome": "passed",
+      "duration": 0.0015
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature7LatexMonographSync::test_f7_05_latex_pdf_endpoint_served",
+      "outcome": "passed",
+      "duration": 1.9392
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature8TwoMinuteCronStability::test_f8_01_heartbeat_liveness_pulse",
+      "outcome": "passed",
+      "duration": 0.0938
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature8TwoMinuteCronStability::test_f8_02_visual_doc_capture_script_syntax",
+      "outcome": "passed",
+      "duration": 0.0259
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature8TwoMinuteCronStability::test_f8_03_cron_concurrency_no_port_contention",
+      "outcome": "passed",
+      "duration": 0.0037
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature8TwoMinuteCronStability::test_f8_04_cron_concurrency_no_db_locks",
+      "outcome": "passed",
+      "duration": 0.0026
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature8TwoMinuteCronStability::test_f8_05_cron_runner_dry_run_or_once",
+      "outcome": "passed",
+      "duration": 3.0616
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature1Boundaries::test_f1_b1_rapid_sequential_socket_probes",
+      "outcome": "passed",
+      "duration": 0.1489
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature1Boundaries::test_f1_b2_nonexistent_endpoint_404_resilience",
+      "outcome": "passed",
+      "duration": 0.1947
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature1Boundaries::test_f1_b3_server_heartbeat_method_not_allowed",
+      "outcome": "passed",
+      "duration": 0.084
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature1Boundaries::test_f1_b4_malformed_raw_http_stream",
+      "outcome": "passed",
+      "duration": 0.3077
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature1Boundaries::test_f1_b5_port_in_use_detection_logic",
+      "outcome": "passed",
+      "duration": 0.521
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature2Boundaries::test_f2_b1_zero_byte_png_detection",
+      "outcome": "passed",
+      "duration": 0.0009
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature2Boundaries::test_f2_b2_capture_unreachable_port_clean_exit",
+      "outcome": "passed",
+      "duration": 10.7884
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature2Boundaries::test_f2_b3_virtual_time_budget_zero_vs_large",
+      "outcome": "failed",
+      "duration": 15.8738,
+      "message": "tests\\e2e\\test_tier2_boundaries.py:131: in test_f2_b3_virtual_time_budget_zero_vs_large\n    assert ok is True\nE   assert False is True"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature2Boundaries::test_f2_b4_custom_viewport_resolution_boundaries",
+      "outcome": "failed",
+      "duration": 15.2747,
+      "message": "tests\\e2e\\test_tier2_boundaries.py:149: in test_f2_b4_custom_viewport_resolution_boundaries\n    assert ok is True\nE   assert False is True"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature2Boundaries::test_f2_b5_output_directory_auto_creation",
+      "outcome": "failed",
+      "duration": 15.7006,
+      "message": "tests\\e2e\\test_tier2_boundaries.py:169: in test_f2_b5_output_directory_auto_creation\n    assert ok is True\nE   assert False is True"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature3Boundaries::test_f3_b1_missing_screenshot_returns_404",
+      "outcome": "passed",
+      "duration": 0.6265
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature3Boundaries::test_f3_b2_path_traversal_dot_dot_rejected",
+      "outcome": "passed",
+      "duration": 0.0898
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature3Boundaries::test_f3_b3_non_png_extension_in_screenshots_handled",
+      "outcome": "passed",
+      "duration": 0.1088
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature3Boundaries::test_f3_b4_empty_filename_rejected",
+      "outcome": "passed",
+      "duration": 0.0351
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature3Boundaries::test_f3_b5_url_special_characters_escaping",
+      "outcome": "passed",
+      "duration": 0.0793
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature4Boundaries::test_f4_b1_empty_artifacts_list_handled",
+      "outcome": "skipped",
+      "duration": 0.1423,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 219, 'Skipped: [M2 Pending] Artifacts API endpoint available')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature4Boundaries::test_f4_b2_corrupted_metadata_json_handled",
+      "outcome": "passed",
+      "duration": 0.0051
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature4Boundaries::test_f4_b3_large_artifacts_payload_latency",
+      "outcome": "passed",
+      "duration": 0.004
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature4Boundaries::test_f4_b4_xss_sanitization_in_artifact_names",
+      "outcome": "passed",
+      "duration": 0.7387
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature4Boundaries::test_f4_b5_lightbox_missing_image_resilience",
+      "outcome": "passed",
+      "duration": 0.1356
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature5Boundaries::test_f5_b1_empty_snapshots_dir_handling",
+      "outcome": "passed",
+      "duration": 0.0036
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature5Boundaries::test_f5_b2_special_characters_in_markdown_image_links",
+      "outcome": "passed",
+      "duration": 0.0006
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature5Boundaries::test_f5_b3_snapshot_immutability",
+      "outcome": "passed",
+      "duration": 0.2422
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature5Boundaries::test_f5_b4_malformed_snapshot_parsing",
+      "outcome": "passed",
+      "duration": 0.0004
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature5Boundaries::test_f5_b5_relative_vs_absolute_paths_in_markdown",
+      "outcome": "passed",
+      "duration": 0.0636
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature6Boundaries::test_f6_b1_sqlite_concurrent_writer_lock_resilience",
+      "outcome": "passed",
+      "duration": 0.5352
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature6Boundaries::test_f6_b2_sqlite_zero_byte_file_insertion_validation",
+      "outcome": "passed",
+      "duration": 0.0035
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature6Boundaries::test_f6_b3_sqlite_missing_mandatory_fields_rejected",
+      "outcome": "passed",
+      "duration": 0.0099
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature6Boundaries::test_f6_b4_sqlite_large_metadata_payload",
+      "outcome": "passed",
+      "duration": 0.1116
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature6Boundaries::test_f6_b5_sqlite_busy_timeout_pragmas_effective",
+      "outcome": "passed",
+      "duration": 0.0004
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature7Boundaries::test_f7_b1_latex_missing_figure_path_detection",
+      "outcome": "passed",
+      "duration": 0.0185
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature7Boundaries::test_f7_b2_latex_special_characters_escaped",
+      "outcome": "passed",
+      "duration": 0.0035
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature7Boundaries::test_f7_b3_latex_corrupted_pdf_detection",
+      "outcome": "passed",
+      "duration": 0.0288
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature7Boundaries::test_f7_b4_latex_empty_benchmarks_graceful_fallback",
+      "outcome": "passed",
+      "duration": 0.0014
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature7Boundaries::test_f7_b5_latex_pdf_endpoint_404_if_missing",
+      "outcome": "passed",
+      "duration": 0.0608
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature8Boundaries::test_f8_b1_cron_overlap_prevention",
+      "outcome": "passed",
+      "duration": 0.003
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature8Boundaries::test_f8_b2_cron_subprocess_timeout_enforcement",
+      "outcome": "passed",
+      "duration": 0.3998
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature8Boundaries::test_f8_b3_cron_heartbeat_skew_resilience",
+      "outcome": "passed",
+      "duration": 0.0021
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature8Boundaries::test_f8_b4_cron_disk_space_guard",
+      "outcome": "passed",
+      "duration": 0.0011
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature8Boundaries::test_f8_b5_cron_orphan_process_cleanup_guarantee",
+      "outcome": "passed",
+      "duration": 0.3491
+    },
+    {
+      "nodeid": "tests/e2e/test_tier3_combinations.py::TestCrossFeatureCombinations::test_tier3_combo1_restart_and_capture",
+      "outcome": "failed",
+      "duration": 33.3516,
+      "message": "tests\\e2e\\test_tier3_combinations.py:54: in test_tier3_combo1_restart_and_capture\n    assert ok is True\nE   assert False is True"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier3_combinations.py::TestCrossFeatureCombinations::test_tier3_combo2_capture_and_gallery_mounting",
+      "outcome": "skipped",
+      "duration": 0.0017,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 219, 'Skipped: [M2 Pending] agent_city/screenshots directory created by M2')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier3_combinations.py::TestCrossFeatureCombinations::test_tier3_combo3_capture_and_db_registration",
+      "outcome": "failed",
+      "duration": 25.5373,
+      "message": "tests\\e2e\\test_tier3_combinations.py:122: in test_tier3_combo3_capture_and_db_registration\n    assert ok is True\nE   assert False is True"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier3_combinations.py::TestCrossFeatureCombinations::test_tier3_combo4_db_registration_and_markdown_embed",
+      "outcome": "skipped",
+      "duration": 0.5909,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 219, 'Skipped: [M3 Pending] Markdown snapshot embeds match SQLite artifacts table (M3)')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier3_combinations.py::TestCrossFeatureCombinations::test_tier3_combo5_markdown_and_gallery_sync",
+      "outcome": "passed",
+      "duration": 0.2697
+    },
+    {
+      "nodeid": "tests/e2e/test_tier3_combinations.py::TestCrossFeatureCombinations::test_tier3_combo6_db_benchmarks_and_latex_sync",
+      "outcome": "failed",
+      "duration": 0.0161,
+      "message": "tests\\e2e\\test_tier3_combinations.py:203: in test_tier3_combo6_db_benchmarks_and_latex_sync\n    assert val_int_str in tex_content, (\nE   AssertionError: Epoch 0 Benchmark value 3859 (RAM Reclaimed (C-Kernel)) not cited in LaTeX report.\nE   assert '3859' in '\\\\documentclass[11pt,a4paper]{article}\\n\\\\usepackage[utf8]{inputenc}\\n\\\\usepackage[margin=1in]{geometry}\\n\\\\usepackage{amsmath,amssymb,amsfonts}\\n\\\\usepackage{graphicx}\\n\\\\usepackage{booktabs}\\n\\\\usepackage{hyperref}\\n\\\\usepackage{microtype}\\n\\\\usepackage{xcolor}\\n\\\\usepackage{fancyhdr}\\n\\\\usepackage{listings}\\n\\n\\\\definecolor{sanctuarypink}{RGB}{244, 114, 182}\\n\\\\definecolor{sanctuarygold}{RGB}{245, 158, 11}\\n\\\\definecolor{sanctuarygreen}{RGB}{16, 185, 129}\\n\\\\definecolor{sanctuaryblue}{RGB}{56, 189, 248}\\n\\n\\\\hypersetup{\\n    colorlinks=true,\\n    linkcolor=sanctuaryblue,\\n    citecolor=sanctuarygreen,\\n    urlcolor=sanctuarypink\\n}\\n\\n\\\\pagestyle{fancy}\\n\\\\fancyhf{}\\n\\\\rhead{\\\\textcolor{gray}{\\\\small Silicon Sanctuary 336-Hour Technical Report}}\\n\\\\lhead{\\\\textcolor{gray}{\\\\small Intel N100 Sovereign Optimization}}\\n\\\\cfoot{\\\\thepage}\\n\\n\\\\title{\\\\textbf{\\\\Large Silicon Sanctuary: A Polyglot, Sovereign Operating System Optimization \\\\& Botanical Voxel Engine for Heterogeneous Edge Architecture}\\\\\\\\[0.5em]\\n\\\\large Autonomous 336-Hour Engineering, Native NT Kernel Compaction, and Living Documentation}\\n\\\\author{\\\\textbf{Autonomous Agent Cohort} \\\\\\\\\\n\\\\textit{BotanicalSculptor...ional context management architecture residing in \\\\texttt{.agents/context/}:\\n\\\\begin{itemize}\\n    \\\\item \\\\textbf{Relational Database (\\\\texttt{sanctuary\\\\_context.db})}: Implements tables for \\\\texttt{epochs}, \\\\texttt{benchmarks}, \\\\texttt{rate\\\\_limits}, \\\\texttt{agent\\\\_memories}, and \\\\texttt{artifacts}.\\n    \\\\item \\\\textbf{Liveness \\\\& Rate-Limit Sentinel}: Evaluates token headroom, daemon availability, and triggers agent awakening events on configurable minute and second cycles.\\n    \\\\item \\\\textbf{Living Interactive Documentation Portal}: Served dynamically via FastAPI at \\\\texttt{/evolution}, rendering real-time hardware telemetry, screenshot galleries, and SQLite records directly in the browser.\\n\\\\end{itemize}\\n\\n\\\\section{Conclusion}\\nThe Silicon Sanctuary demonstrates that aesthetic computational art and low-level operating system governance can converge synergistically. By coupling a procedural voxel botanical simulator with deep Win32 C/NT kernel capabilities, the system proves that low-power x86 platforms can maintain exceptional memory headroom, thermal efficiency, and responsive execution across extended multi-week operational horizons.\\n\\n\\\\end{document}\\n'"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier3_combinations.py::TestCrossFeatureCombinations::test_tier3_combo7_2min_daemon_heartbeat_and_server_concurrency",
+      "outcome": "passed",
+      "duration": 1.7556
+    },
+    {
+      "nodeid": "tests/e2e/test_tier4_scenarios.py::TestRealWorldApplicationScenarios::test_tier4_scenario1_full_autonomous_documentation_cycle",
+      "outcome": "failed",
+      "duration": 35.2444,
+      "message": "tests\\e2e\\test_tier4_scenarios.py:65: in test_tier4_scenario1_full_autonomous_documentation_cycle\n    assert ok_grove is True\nE   assert False is True"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier4_scenarios.py::TestRealWorldApplicationScenarios::test_tier4_scenario2_multi_epoch_evolution_simulation",
+      "outcome": "passed",
+      "duration": 1.8235
+    },
+    {
+      "nodeid": "tests/e2e/test_tier4_scenarios.py::TestRealWorldApplicationScenarios::test_tier4_scenario3_continuous_cadence_simulation_no_orphans",
+      "outcome": "failed",
+      "duration": 23.021,
+      "message": "tests\\e2e\\test_tier4_scenarios.py:169: in test_tier4_scenario3_continuous_cadence_simulation_no_orphans\n    assert ok is True\nE   assert False is True"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier4_scenarios.py::TestRealWorldApplicationScenarios::test_tier4_scenario4_latex_monograph_artifact_verification",
+      "outcome": "passed",
+      "duration": 5.8941
+    },
+    {
+      "nodeid": "tests/e2e/test_tier4_scenarios.py::TestRealWorldApplicationScenarios::test_tier4_scenario5_stress_concurrency_during_capture",
+      "outcome": "failed",
+      "duration": 32.6043,
+      "message": "tests\\e2e\\test_tier4_scenarios.py:231: in test_tier4_scenario5_stress_concurrency_during_capture\n    assert ok is True\nE   assert False is True"
+    }
+  ]
+}

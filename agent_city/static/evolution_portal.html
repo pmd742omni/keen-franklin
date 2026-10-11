@@ -329,11 +329,12 @@
     </div>
     <nav class="portal-links">
       <a href="/" class="portal-link-btn">Living 3D Grove</a>
+      <a href="/botanical" target="_blank" class="portal-link-btn" style="color:var(--accent-sakura);border-color:rgba(244,114,182,0.4);background:rgba(244,114,182,0.1);">🌿 3D Botanical Studio</a>
       <a href="#gallery" class="portal-link-btn">Visual Evolution</a>
       <a href="#native" class="portal-link-btn">Polyglot Kernel</a>
       <a href="#context" class="portal-link-btn">Context DB</a>
       <a href="/api/evolution/chronicle" target="_blank" class="portal-link-btn">Raw Chronicle</a>
-      <a href="/docs/latex/silicon_sanctuary_report.pdf" target="_blank" class="portal-link-btn" style="color:var(--accent-sakura);border-color:rgba(244,114,182,0.3);">📄 LaTeX Report PDF</a>
+      <a href="/docs/latex/silicon_sanctuary_report.pdf" target="_blank" class="portal-link-btn" style="color:var(--accent-sky);border-color:rgba(56,189,248,0.3);">📄 LaTeX Report PDF</a>
     </nav>
   </header>
 
@@ -390,11 +391,37 @@
       </div>
 
       <div class="gallery-grid">
+        <!-- V1 Card -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <span class="gallery-badge" style="color: #94a3b8;">Genesis • Milestone V1</span>
+            <img src="/static/screenshots/screenshot_grove_v1.png" onerror="this.onerror=null; this.src='/static/screenshot_grove_v1.png';" alt="Grove V1" class="gallery-img" onclick="openLightbox(this.src, 'Genesis Prototype V1')" style="cursor: zoom-in;" />
+          </div>
+          <div class="gallery-content">
+            <h3 class="gallery-title">Early Island Bedrock & Flora Seeding</h3>
+            <p class="gallery-desc">Initial civic plot setup with raw voxel trunk structures and baseline color maps.</p>
+            <div class="gallery-meta">Resolution: 1280x860 • Epoch 0 • File: screenshot_grove_v1.png</div>
+          </div>
+        </div>
+
+        <!-- V3 Card -->
+        <div class="gallery-card">
+          <div class="gallery-img-wrapper">
+            <span class="gallery-badge" style="color: #38bdf8;">Iteration • Milestone V3</span>
+            <img src="/static/screenshots/screenshot_grove_v3.png" onerror="this.onerror=null; this.src='/static/screenshot_grove_v3.png';" alt="Grove V3" class="gallery-img" onclick="openLightbox(this.src, 'Iteration Pass V3')" style="cursor: zoom-in;" />
+          </div>
+          <div class="gallery-content">
+            <h3 class="gallery-title">Lotus Basin Excavation & Foliage Expansion</h3>
+            <p class="gallery-desc">Water tile shaders integrated with perimeter hedges and multi-tier loam foundation.</p>
+            <div class="gallery-meta">Resolution: 1280x860 • Epoch 0 • File: screenshot_grove_v3.png</div>
+          </div>
+        </div>
+
         <!-- V5 Card -->
         <div class="gallery-card">
           <div class="gallery-img-wrapper">
             <span class="gallery-badge" style="color: #cbd5e1;">Epoch 0 • Milestone V5</span>
-            <img src="/static/../screenshot_grove_v5.png" alt="Grove V5" class="gallery-img" />
+            <img src="/static/screenshots/screenshot_grove_v5.png" onerror="this.onerror=null; this.src='/static/screenshot_grove_v5.png';" alt="Grove V5" class="gallery-img" onclick="openLightbox(this.src, 'Initial 3-Tier Bedrock Prototype V5')" style="cursor: zoom-in;" />
           </div>
           <div class="gallery-content">
             <h3 class="gallery-title">Initial 3-Tier Bedrock & Palette Prototype</h3>
@@ -409,7 +436,7 @@
         <div class="gallery-card">
           <div class="gallery-img-wrapper">
             <span class="gallery-badge" style="color: var(--accent-ginkgo);">Epoch 1 • Relocation Pass V6</span>
-            <img src="/static/../screenshot_grove_v6.png" alt="Grove V6" class="gallery-img" />
+            <img src="/static/screenshots/screenshot_grove_v6.png" onerror="this.onerror=null; this.src='/static/screenshot_grove_v6.png';" alt="Grove V6" class="gallery-img" onclick="openLightbox(this.src, 'Ginkgo Relocation Pass V6')" style="cursor: zoom-in;" />
           </div>
           <div class="gallery-content">
             <h3 class="gallery-title">Ginkgo Northern Knoll Relocation (16.0, 10.5)</h3>
@@ -424,7 +451,7 @@
         <div class="gallery-card" style="border-color: rgba(244, 114, 182, 0.4);">
           <div class="gallery-img-wrapper">
             <span class="gallery-badge" style="color: var(--accent-sakura);">Epoch 1 • Master Sculpt V7</span>
-            <img src="/static/../screenshot_grove_v7.png" alt="Grove V7" class="gallery-img" />
+            <img src="/static/screenshots/screenshot_grove_v7.png" onerror="this.onerror=null; this.src='/static/screenshot_grove_v7.png';" alt="Grove V7" class="gallery-img" onclick="openLightbox(this.src, 'Master Sculpt V7 - Cascading Canopy')" style="cursor: zoom-in;" />
           </div>
           <div class="gallery-content">
             <h3 class="gallery-title">Cascading Volumetric Cloud Canopy (Concentric)</h3>
@@ -631,8 +658,20 @@
       loadPortalData();
     }
 
-    function captureNewScreenshot() {
-      alert("Capturing high-resolution progress screenshot via Edge Headless engine...");
+    function openLightbox(src, caption) {
+      const modal = document.getElementById('lightboxModal');
+      const img = document.getElementById('lightboxImg');
+      const cap = document.getElementById('lightboxCaption');
+      if (modal && img && cap) {
+        img.src = src;
+        cap.textContent = caption || 'Silicon Sanctuary Visual Snapshot';
+        modal.style.display = 'flex';
+      }
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightboxModal');
+      if (modal) modal.style.display = 'none';
     }
 
     loadPortalData();
@@ -640,5 +679,16 @@
     setInterval(pollHeartbeat, 1000);
     setInterval(loadPortalData, 10000);
   </script>
+
+  <!-- Visual Snapshot Lightbox Modal -->
+  <div id="lightboxModal" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.88); backdrop-filter:blur(8px); justify-content:center; align-items:center; flex-direction:column; cursor:pointer;" onclick="closeLightbox()">
+    <div style="max-width:92%; max-height:90%; position:relative;" onclick="event.stopPropagation()">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; color:#fff;">
+        <span id="lightboxCaption" style="font-weight:700; font-size:16px;"></span>
+        <button onclick="closeLightbox()" style="background:#222; border:1px solid #444; color:#fff; border-radius:6px; padding:4px 12px; cursor:pointer; font-weight:bold;">✕ Close</button>
+      </div>
+      <img id="lightboxImg" src="" style="max-width:100%; max-height:80vh; border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,0.8); border:1px solid rgba(255,255,255,0.2);" />
+    </div>
+  </div>
 </body>
 </html>

@@ -1,0 +1,169 @@
+{
+  "verdict": "REQUEST_CHANGES",
+  "tests": [
+    {
+      "name": "Process Tree Inspection (Normal Cycle)",
+      "status": "FAIL",
+      "reason": "FAILED: Found 7 orphaned msedge processes or incomplete captures (0/2)",
+      "data": {
+        "elapsed": 131.8531939983368,
+        "pre_edge": [
+          2768,
+          4512,
+          5880,
+          7200,
+          9708,
+          11236,
+          12112,
+          12680,
+          13940,
+          14560,
+          14568,
+          14968,
+          15816,
+          17316,
+          17836,
+          17860,
+          18236,
+          19988,
+          20512,
+          20980,
+          28612,
+          29352
+        ],
+        "post_edge": [
+          1936,
+          2768,
+          3508,
+          4512,
+          5880,
+          7200,
+          9708,
+          11236,
+          12112,
+          12680,
+          13940,
+          14560,
+          14568,
+          14968,
+          15816,
+          16144,
+          16524,
+          17316,
+          17608,
+          17836,
+          17860,
+          18236,
+          19988,
+          20512,
+          20980,
+          26860,
+          28612,
+          28692,
+          29352
+        ],
+        "new_edge": [
+          17608,
+          16524,
+          26860,
+          1936,
+          16144,
+          3508,
+          28692
+        ],
+        "captures_count": 0
+      }
+    },
+    {
+      "name": "Edge Timeout Orphan Prevention",
+      "status": "PASS",
+      "reason": "Timeout handled gracefully with 0 orphaned msedge processes.",
+      "data": {
+        "elapsed": 3.5994110107421875,
+        "new_edge": [],
+        "ok": false
+      }
+    },
+    {
+      "name": "Temporary Profile Directory Reclamation",
+      "status": "FAIL",
+      "reason": "FAILED: Leaked 1 profile directories: ['C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\edge_doc_profile_bfy77gvg']",
+      "data": {
+        "profiles_before": 8,
+        "profiles_after": 9,
+        "leaked": 1
+      }
+    },
+    {
+      "name": "Rapid Server Recycling & Singleton Listening",
+      "status": "FAIL",
+      "reason": "Cycle 1 failed: fresh=False, singleton=True, healthy=False, old_dead=True",
+      "data": {
+        "history": [
+          {
+            "cycle": 1,
+            "fresh": false,
+            "elapsed": 6.328545570373535,
+            "pids": [
+              11276
+            ],
+            "singleton": true,
+            "healthy": false,
+            "old_pid_dead": true,
+            "current_pid": 11276
+          }
+        ]
+      }
+    },
+    {
+      "name": "Foreign Socket & Stale Port Reclamation",
+      "status": "PASS",
+      "reason": "Foreign socket cleanly relinquished and uvicorn successfully bound.",
+      "data": {
+        "elapsed": 18.232452154159546,
+        "pids": [
+          18776
+        ],
+        "healthy": true
+      }
+    },
+    {
+      "name": "System Stability, Memory & File Handles",
+      "status": "PASS",
+      "reason": "Handle and memory metrics remain stable across cycles.",
+      "data": {
+        "server_pid": 18776,
+        "self_handle_delta": 1,
+        "server_handle_delta": 1,
+        "self_mem_delta": 0.015625,
+        "server_mem_delta": 1.359375,
+        "metrics": [
+          {
+            "cycle": 1,
+            "ok": false,
+            "server_handles": 205,
+            "server_rss_mb": 54.28515625,
+            "self_handles": 530,
+            "self_rss_mb": 27.16015625
+          },
+          {
+            "cycle": 2,
+            "ok": false,
+            "server_handles": 204,
+            "server_rss_mb": 53.0,
+            "self_handles": 528,
+            "self_rss_mb": 27.16015625
+          },
+          {
+            "cycle": 3,
+            "ok": true,
+            "server_handles": 204,
+            "server_rss_mb": 54.203125,
+            "self_handles": 512,
+            "self_rss_mb": 27.16015625
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,501 @@
+{
+  "timestamp": "2026-10-10T23:04:09Z",
+  "summary": {
+    "passed": 66,
+    "failed": 17,
+    "skipped": 9,
+    "error": 0,
+    "total": 92
+  },
+  "duration_seconds": 2059.52,
+  "exit_code": 1,
+  "strict_mode": false,
+  "results": [
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature1WebServerFreshness::test_f1_01_server_heartbeat_alive",
+      "outcome": "passed",
+      "duration": 0.5704
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature1WebServerFreshness::test_f1_02_server_port_socket_responsive",
+      "outcome": "passed",
+      "duration": 0.0028
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature1WebServerFreshness::test_f1_03_server_process_pid_identification",
+      "outcome": "passed",
+      "duration": 0.0135
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature1WebServerFreshness::test_f1_04_server_freshness_lifecycle_contract",
+      "outcome": "passed",
+      "duration": 0.6342
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature1WebServerFreshness::test_f1_05_server_city_status_endpoint",
+      "outcome": "passed",
+      "duration": 0.2882
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature2EdgeHeadlessCapture::test_f2_01_edge_binary_presence_and_version",
+      "outcome": "passed",
+      "duration": 0.0016
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature2EdgeHeadlessCapture::test_f2_02_edge_headless_flag_support",
+      "outcome": "failed",
+      "duration": 114.8629,
+      "message": "tests\\e2e\\test_tier1_features.py:120: in test_f2_02_edge_headless_flag_support\n    res = subprocess.run(cmd, capture_output=True, timeout=25)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:550: in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1209: in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1630: in _communicate\n    raise TimeoutExpired(self.args, orig_timeout)\nE   subprocess.TimeoutExpired: Command '['C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe', '--user-data-dir=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_kh5vhjqe\\\\edge_user_data', '--headless=new', '--no-first-run', '--no-default-browser-check', '--hide-scrollbars', '--virtual-time-budget=1000', '--window-size=1920,1080', '--screenshot=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_kh5vhjqe\\\\probe_flag_test.png', \"data:text/html,<html><body style='background:teal;'><h1>Ready</h1></body></html>\"]' timed out after 25 seconds"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature2EdgeHeadlessCapture::test_f2_03_edge_capture_root_grove_1080p",
+      "outcome": "failed",
+      "duration": 212.8721,
+      "message": "tests\\e2e\\test_tier1_features.py:144: in test_f2_03_edge_capture_root_grove_1080p\n    res = subprocess.run(cmd, capture_output=True, timeout=30)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:550: in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1209: in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1630: in _communicate\n    raise TimeoutExpired(self.args, orig_timeout)\nE   subprocess.TimeoutExpired: Command '['C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe', '--user-data-dir=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_bj8bbcul\\\\edge_user_data_grove', '--headless=new', '--no-first-run', '--no-default-browser-check', '--hide-scrollbars', '--virtual-time-budget=3000', '--window-size=1920,1080', '--screenshot=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_bj8bbcul\\\\test_grove_1080p.png', 'http://127.0.0.1:8000/']' timed out after 30 seconds"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature2EdgeHeadlessCapture::test_f2_04_edge_capture_evolution_portal_1080p",
+      "outcome": "failed",
+      "duration": 222.8763,
+      "message": "tests\\e2e\\test_tier1_features.py:170: in test_f2_04_edge_capture_evolution_portal_1080p\n    res = subprocess.run(cmd, capture_output=True, timeout=30)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:550: in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1209: in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1630: in _communicate\n    raise TimeoutExpired(self.args, orig_timeout)\nE   subprocess.TimeoutExpired: Command '['C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe', '--user-data-dir=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_nbxpoh2w\\\\edge_user_data_portal', '--headless=new', '--no-first-run', '--no-default-browser-check', '--hide-scrollbars', '--virtual-time-budget=2000', '--window-size=1920,1080', '--screenshot=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_nbxpoh2w\\\\test_portal_1080p.png', 'http://127.0.0.1:8000/evolution']' timed out after 30 seconds"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature2EdgeHeadlessCapture::test_f2_05_edge_capture_process_isolation_and_no_orphans",
+      "outcome": "failed",
+      "duration": 20.0939,
+      "message": "tests\\e2e\\test_tier1_features.py:195: in test_f2_05_edge_capture_process_isolation_and_no_orphans\n    proc.wait(timeout=20)\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1264: in wait\n    return self._wait(timeout=timeout)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1593: in _wait\n    raise TimeoutExpired(self.args, timeout)\nE   subprocess.TimeoutExpired: Command '['C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe', '--user-data-dir=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_zr0z23_x\\\\edge_iso_test', '--headless=new', '--no-first-run', '--screenshot=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_zr0z23_x\\\\iso_test.png', 'data:text/html,<b>Done</b>']' timed out after 20 seconds"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature3StaticRouteMounting::test_f3_01_static_css_route_served",
+      "outcome": "passed",
+      "duration": 0.968
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature3StaticRouteMounting::test_f3_02_screenshots_route_mounted",
+      "outcome": "passed",
+      "duration": 0.1309
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature3StaticRouteMounting::test_f3_03_existing_screenshots_served",
+      "outcome": "skipped",
+      "duration": 0.0706,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 118, 'Skipped: [M2 Pending] Screenshot screenshot_grove_v1.png served via HTTP 200')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature3StaticRouteMounting::test_f3_04_new_screenshot_served_after_placement",
+      "outcome": "skipped",
+      "duration": 0.002,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 118, 'Skipped: [M2 Pending] agent_city/screenshots directory created by M2')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature3StaticRouteMounting::test_f3_05_screenshots_traversal_prevention",
+      "outcome": "passed",
+      "duration": 0.0748
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature4InteractiveEvolutionGallery::test_f4_01_evolution_portal_serves_html",
+      "outcome": "passed",
+      "duration": 0.5647
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature4InteractiveEvolutionGallery::test_f4_02_evolution_gallery_grid_present",
+      "outcome": "passed",
+      "duration": 0.0781
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature4InteractiveEvolutionGallery::test_f4_03_evolution_gallery_cards_have_badges_and_timestamps",
+      "outcome": "passed",
+      "duration": 0.0921
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature4InteractiveEvolutionGallery::test_f4_04_gallery_artifacts_api_contract",
+      "outcome": "skipped",
+      "duration": 0.0468,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 118, 'Skipped: [M2 Pending] /api/context/artifacts endpoint implemented by M2')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature4InteractiveEvolutionGallery::test_f4_05_gallery_zoom_preview_structure",
+      "outcome": "passed",
+      "duration": 0.2954
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature5MarkdownSnapshotSync::test_f5_01_snapshots_directory_populated",
+      "outcome": "passed",
+      "duration": 0.0188
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature5MarkdownSnapshotSync::test_f5_02_snapshot_markdown_embed_syntax",
+      "outcome": "skipped",
+      "duration": 0.217,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 118, 'Skipped: [M3 Pending] Markdown snapshot contains ![alt](path) image embeds (M3)')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature5MarkdownSnapshotSync::test_f5_03_snapshot_referenced_images_exist",
+      "outcome": "passed",
+      "duration": 0.1626
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature5MarkdownSnapshotSync::test_f5_04_snapshot_cron_script_exists_and_valid",
+      "outcome": "passed",
+      "duration": 0.1989
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature5MarkdownSnapshotSync::test_f5_05_latest_context_snapshot_sync",
+      "outcome": "passed",
+      "duration": 0.0015
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature6SqliteContextPersistence::test_f6_01_sqlite_database_exists",
+      "outcome": "passed",
+      "duration": 0.0013
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature6SqliteContextPersistence::test_f6_02_sqlite_wal_pragmas_enforced",
+      "outcome": "skipped",
+      "duration": 0.0121,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 118, 'Skipped: [M3 Pending] SQLite journal_mode is WAL (found: delete)')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature6SqliteContextPersistence::test_f6_03_sqlite_artifacts_table_schema",
+      "outcome": "passed",
+      "duration": 0.0017
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature6SqliteContextPersistence::test_f6_04_sqlite_artifacts_contain_dimensions_metadata",
+      "outcome": "passed",
+      "duration": 0.065
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature6SqliteContextPersistence::test_f6_05_sqlite_no_ddl_on_read_contract",
+      "outcome": "passed",
+      "duration": 0.0039
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature7LatexMonographSync::test_f7_01_latex_report_tex_exists",
+      "outcome": "passed",
+      "duration": 0.0012
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature7LatexMonographSync::test_f7_02_latex_includes_graphicx",
+      "outcome": "passed",
+      "duration": 0.0023
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature7LatexMonographSync::test_f7_03_latex_figures_and_includegraphics",
+      "outcome": "skipped",
+      "duration": 0.0079,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 118, 'Skipped: [M3 Pending] LaTeX monograph includes \\\\begin{figure} and \\\\includegraphics (M3)')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature7LatexMonographSync::test_f7_04_latex_empirical_benchmarks",
+      "outcome": "passed",
+      "duration": 0.0016
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature7LatexMonographSync::test_f7_05_latex_pdf_endpoint_served",
+      "outcome": "passed",
+      "duration": 2.3619
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature8TwoMinuteCronStability::test_f8_01_heartbeat_liveness_pulse",
+      "outcome": "failed",
+      "duration": 0.0048,
+      "message": "tests\\e2e\\test_tier1_features.py:485: in test_f8_01_heartbeat_liveness_pulse\n    assert age_seconds < 120.0, f\"heartbeat.json has not been updated in {age_seconds:.1f}s\"\nE   AssertionError: heartbeat.json has not been updated in 739.6s\nE   assert 739.6247198581696 < 120.0"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature8TwoMinuteCronStability::test_f8_02_visual_doc_capture_script_syntax",
+      "outcome": "passed",
+      "duration": 0.0728
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature8TwoMinuteCronStability::test_f8_03_cron_concurrency_no_port_contention",
+      "outcome": "passed",
+      "duration": 0.0026
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature8TwoMinuteCronStability::test_f8_04_cron_concurrency_no_db_locks",
+      "outcome": "passed",
+      "duration": 0.0077
+    },
+    {
+      "nodeid": "tests/e2e/test_tier1_features.py::TestFeature8TwoMinuteCronStability::test_f8_05_cron_runner_dry_run_or_once",
+      "outcome": "passed",
+      "duration": 4.1721
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature1Boundaries::test_f1_b1_rapid_sequential_socket_probes",
+      "outcome": "passed",
+      "duration": 0.3762
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature1Boundaries::test_f1_b2_nonexistent_endpoint_404_resilience",
+      "outcome": "passed",
+      "duration": 0.3035
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature1Boundaries::test_f1_b3_server_heartbeat_method_not_allowed",
+      "outcome": "passed",
+      "duration": 0.0578
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature1Boundaries::test_f1_b4_malformed_raw_http_stream",
+      "outcome": "passed",
+      "duration": 0.2122
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature1Boundaries::test_f1_b5_port_in_use_detection_logic",
+      "outcome": "passed",
+      "duration": 0.5136
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature2Boundaries::test_f2_b1_zero_byte_png_detection",
+      "outcome": "passed",
+      "duration": 0.0006
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature2Boundaries::test_f2_b2_capture_unreachable_port_clean_exit",
+      "outcome": "failed",
+      "duration": 101.8327,
+      "message": "tests\\e2e\\test_tier2_boundaries.py:119: in test_f2_b2_capture_unreachable_port_clean_exit\n    res = subprocess.run(cmd, capture_output=True, timeout=15)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:550: in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1209: in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1630: in _communicate\n    raise TimeoutExpired(self.args, orig_timeout)\nE   subprocess.TimeoutExpired: Command '['C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe', '--user-data-dir=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_28dun13z\\\\edge_user_data_unreachable', '--headless=new', '--no-first-run', '--hide-scrollbars', '--screenshot=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_28dun13z\\\\unreachable.png', 'http://127.0.0.1:59999/']' timed out after 15 seconds"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature2Boundaries::test_f2_b3_virtual_time_budget_zero_vs_large",
+      "outcome": "failed",
+      "duration": 25.1614,
+      "message": "tests\\e2e\\test_tier2_boundaries.py:137: in test_f2_b3_virtual_time_budget_zero_vs_large\n    subprocess.run(cmd, capture_output=True, timeout=15)\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:550: in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1209: in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1630: in _communicate\n    raise TimeoutExpired(self.args, orig_timeout)\nE   subprocess.TimeoutExpired: Command '['C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe', '--user-data-dir=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_haap22ye\\\\user_zero', '--headless=new', '--no-first-run', '--virtual-time-budget=0', '--screenshot=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_haap22ye\\\\budget_zero.png', 'data:text/html,<h1>Fast</h1>']' timed out after 15 seconds"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature2Boundaries::test_f2_b4_custom_viewport_resolution_boundaries",
+      "outcome": "failed",
+      "duration": 172.9544,
+      "message": "tests\\e2e\\test_tier2_boundaries.py:155: in test_f2_b4_custom_viewport_resolution_boundaries\n    subprocess.run(cmd, capture_output=True, timeout=15)\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:550: in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1209: in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1630: in _communicate\n    raise TimeoutExpired(self.args, orig_timeout)\nE   subprocess.TimeoutExpired: Command '['C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe', '--user-data-dir=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_x8ew5ted\\\\user_custom_res', '--headless=new', '--no-first-run', '--window-size=800,600', '--screenshot=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_x8ew5ted\\\\custom_res.png', \"data:text/html,<body style='background:purple;'></body>\"]' timed out after 15 seconds"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature2Boundaries::test_f2_b5_output_directory_auto_creation",
+      "outcome": "failed",
+      "duration": 97.4385,
+      "message": "tests\\e2e\\test_tier2_boundaries.py:174: in test_f2_b5_output_directory_auto_creation\n    res = subprocess.run(cmd, capture_output=True, timeout=15)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:550: in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1209: in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1630: in _communicate\n    raise TimeoutExpired(self.args, orig_timeout)\nE   subprocess.TimeoutExpired: Command '['C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe', '--user-data-dir=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_jwgodjex\\\\user_nested', '--headless=new', '--screenshot=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_jwgodjex\\\\deeply\\\\nested\\\\path\\\\test_nested.png', 'data:text/html,<b>OK</b>']' timed out after 15 seconds"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature3Boundaries::test_f3_b1_missing_screenshot_returns_404",
+      "outcome": "passed",
+      "duration": 0.1024
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature3Boundaries::test_f3_b2_path_traversal_dot_dot_rejected",
+      "outcome": "passed",
+      "duration": 0.1271
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature3Boundaries::test_f3_b3_non_png_extension_in_screenshots_handled",
+      "outcome": "passed",
+      "duration": 0.1122
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature3Boundaries::test_f3_b4_empty_filename_rejected",
+      "outcome": "passed",
+      "duration": 0.2691
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature3Boundaries::test_f3_b5_url_special_characters_escaping",
+      "outcome": "passed",
+      "duration": 0.2364
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature4Boundaries::test_f4_b1_empty_artifacts_list_handled",
+      "outcome": "skipped",
+      "duration": 0.1797,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 118, 'Skipped: [M2 Pending] Artifacts API endpoint available')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature4Boundaries::test_f4_b2_corrupted_metadata_json_handled",
+      "outcome": "passed",
+      "duration": 0.0026
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature4Boundaries::test_f4_b3_large_artifacts_payload_latency",
+      "outcome": "passed",
+      "duration": 0.0032
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature4Boundaries::test_f4_b4_xss_sanitization_in_artifact_names",
+      "outcome": "passed",
+      "duration": 0.484
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature4Boundaries::test_f4_b5_lightbox_missing_image_resilience",
+      "outcome": "passed",
+      "duration": 0.1029
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature5Boundaries::test_f5_b1_empty_snapshots_dir_handling",
+      "outcome": "passed",
+      "duration": 0.0026
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature5Boundaries::test_f5_b2_special_characters_in_markdown_image_links",
+      "outcome": "passed",
+      "duration": 0.0006
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature5Boundaries::test_f5_b3_snapshot_immutability",
+      "outcome": "passed",
+      "duration": 0.0355
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature5Boundaries::test_f5_b4_malformed_snapshot_parsing",
+      "outcome": "passed",
+      "duration": 0.0005
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature5Boundaries::test_f5_b5_relative_vs_absolute_paths_in_markdown",
+      "outcome": "passed",
+      "duration": 0.0171
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature6Boundaries::test_f6_b1_sqlite_concurrent_writer_lock_resilience",
+      "outcome": "passed",
+      "duration": 0.5615
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature6Boundaries::test_f6_b2_sqlite_zero_byte_file_insertion_validation",
+      "outcome": "passed",
+      "duration": 0.0026
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature6Boundaries::test_f6_b3_sqlite_missing_mandatory_fields_rejected",
+      "outcome": "passed",
+      "duration": 0.0057
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature6Boundaries::test_f6_b4_sqlite_large_metadata_payload",
+      "outcome": "passed",
+      "duration": 0.1023
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature6Boundaries::test_f6_b5_sqlite_busy_timeout_pragmas_effective",
+      "outcome": "passed",
+      "duration": 0.0006
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature7Boundaries::test_f7_b1_latex_missing_figure_path_detection",
+      "outcome": "passed",
+      "duration": 0.0048
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature7Boundaries::test_f7_b2_latex_special_characters_escaped",
+      "outcome": "passed",
+      "duration": 0.0053
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature7Boundaries::test_f7_b3_latex_corrupted_pdf_detection",
+      "outcome": "passed",
+      "duration": 0.0032
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature7Boundaries::test_f7_b4_latex_empty_benchmarks_graceful_fallback",
+      "outcome": "passed",
+      "duration": 0.002
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature7Boundaries::test_f7_b5_latex_pdf_endpoint_404_if_missing",
+      "outcome": "passed",
+      "duration": 0.0894
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature8Boundaries::test_f8_b1_cron_overlap_prevention",
+      "outcome": "passed",
+      "duration": 0.004
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature8Boundaries::test_f8_b2_cron_subprocess_timeout_enforcement",
+      "outcome": "passed",
+      "duration": 0.3234
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature8Boundaries::test_f8_b3_cron_heartbeat_skew_resilience",
+      "outcome": "passed",
+      "duration": 0.0026
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature8Boundaries::test_f8_b4_cron_disk_space_guard",
+      "outcome": "failed",
+      "duration": 0.0009,
+      "message": "tests\\e2e\\test_tier2_boundaries.py:475: in test_f8_b4_cron_disk_space_guard\n    stat = shutil.disk_usage(str(project_root))\n           ^^^^^^\nE   NameError: name 'shutil' is not defined"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier2_boundaries.py::TestFeature8Boundaries::test_f8_b5_cron_orphan_process_cleanup_guarantee",
+      "outcome": "failed",
+      "duration": 0.0005,
+      "message": "tests\\e2e\\test_tier2_boundaries.py:481: in test_f8_b5_cron_orphan_process_cleanup_guarantee\n    for p in psutil.process_iter([\"pid\", \"name\"]):\n             ^^^^^^\nE   NameError: name 'psutil' is not defined"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier3_combinations.py::TestCrossFeatureCombinations::test_tier3_combo1_restart_and_capture",
+      "outcome": "failed",
+      "duration": 236.0085,
+      "message": "tests\\e2e\\test_tier3_combinations.py:58: in test_tier3_combo1_restart_and_capture\n    res = subprocess.run(cmd, capture_output=True, timeout=30)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:550: in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1209: in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1630: in _communicate\n    raise TimeoutExpired(self.args, orig_timeout)\nE   subprocess.TimeoutExpired: Command '['C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe', '--user-data-dir=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_4ooy3jrd\\\\combo1_user_data', '--headless=new', '--no-first-run', '--no-default-browser-check', '--hide-scrollbars', '--virtual-time-budget=2500', '--window-size=1920,1080', '--screenshot=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_4ooy3jrd\\\\combo1_grove.png', 'http://127.0.0.1:8000/']' timed out after 30 seconds"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier3_combinations.py::TestCrossFeatureCombinations::test_tier3_combo2_capture_and_gallery_mounting",
+      "outcome": "skipped",
+      "duration": 0.0025,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 118, 'Skipped: [M2 Pending] agent_city/screenshots directory created by M2')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier3_combinations.py::TestCrossFeatureCombinations::test_tier3_combo3_capture_and_db_registration",
+      "outcome": "failed",
+      "duration": 243.2972,
+      "message": "tests\\e2e\\test_tier3_combinations.py:130: in test_tier3_combo3_capture_and_db_registration\n    subprocess.run(cmd, capture_output=True, timeout=25)\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:550: in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1209: in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1630: in _communicate\n    raise TimeoutExpired(self.args, orig_timeout)\nE   subprocess.TimeoutExpired: Command '['C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe', '--user-data-dir=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_juuqgeey\\\\combo3_user_data', '--headless=new', '--window-size=1920,1080', '--screenshot=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_juuqgeey\\\\combo3_capture.png', 'http://127.0.0.1:8000/']' timed out after 25 seconds"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier3_combinations.py::TestCrossFeatureCombinations::test_tier3_combo4_db_registration_and_markdown_embed",
+      "outcome": "skipped",
+      "duration": 0.2813,
+      "reason": "('C:\\\\Users\\\\ignaz\\\\antigravity\\\\keen-franklin\\\\tests\\\\e2e\\\\conftest.py', 118, 'Skipped: [M3 Pending] Markdown snapshot embeds match SQLite artifacts table (M3)')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier3_combinations.py::TestCrossFeatureCombinations::test_tier3_combo5_markdown_and_gallery_sync",
+      "outcome": "passed",
+      "duration": 0.5331
+    },
+    {
+      "nodeid": "tests/e2e/test_tier3_combinations.py::TestCrossFeatureCombinations::test_tier3_combo6_db_benchmarks_and_latex_sync",
+      "outcome": "failed",
+      "duration": 0.0292,
+      "message": "tests\\e2e\\test_tier3_combinations.py:221: in test_tier3_combo6_db_benchmarks_and_latex_sync\n    assert val_int_str in tex_content or val_str in tex_content, (\nE   AssertionError: Benchmark value 3,698.69 (RAM Reclaimed (C-Kernel)) not cited in LaTeX report.\nE   assert ('3698' in '\\\\documentclass[11pt,a4paper]{article}\\n\\\\usepackage[utf8]{inputenc}\\n\\\\usepackage[margin=1in]{geometry}\\n\\\\usepackage{amsmath,amssymb,amsfonts}\\n\\\\usepackage{graphicx}\\n\\\\usepackage{booktabs}\\n\\\\usepackage{hyperref}\\n\\\\usepackage{microtype}\\n\\\\usepackage{xcolor}\\n\\\\usepackage{fancyhdr}\\n\\\\usepackage{listings}\\n\\n\\\\definecolor{sanctuarypink}{RGB}{244, 114, 182}\\n\\\\definecolor{sanctuarygold}{RGB}{245, 158, 11}\\n\\\\definecolor{sanctuarygreen}{RGB}{16, 185, 129}\\n\\\\definecolor{sanctuaryblue}{RGB}{56, 189, 248}\\n\\n\\\\hypersetup{\\n    colorlinks=true,\\n    linkcolor=sanctuaryblue,\\n    citecolor=sanctuarygreen,\\n    urlcolor=sanctuarypink\\n}\\n\\n\\\\pagestyle{fancy}\\n\\\\fancyhf{}\\n\\\\rhead{\\\\textcolor{gray}{\\\\small Silicon Sanctuary 336-Hour Technical Report}}\\n\\\\lhead{\\\\textcolor{gray}{\\\\small Intel N100 Sovereign Optimization}}\\n\\\\cfoot{\\\\thepage}\\n\\n\\\\title{\\\\textbf{\\\\Large Silicon Sanctuary: A Polyglot, Sovereign Operating System Optimization \\\\& Botanical Voxel Engine for Heterogeneous Edge Architecture}\\\\\\\\[0.5em]\\n\\\\large Autonomous 336-Hour Engineering, Native NT Kernel Compaction, and Living Documentation}\\n\\\\author{\\\\textbf{Autonomous Agent Cohort} \\\\\\\\\\n\\\\textit{BotanicalSculptor...ional context management architecture residing in \\\\texttt{.agents/context/}:\\n\\\\begin{itemize}\\n    \\\\item \\\\textbf{Relational Database (\\\\texttt{sanctuary\\\\_context.db})}: Implements tables for \\\\texttt{epochs}, \\\\texttt{benchmarks}, \\\\texttt{rate\\\\_limits}, \\\\texttt{agent\\\\_memories}, and \\\\texttt{artifacts}.\\n    \\\\item \\\\textbf{Liveness \\\\& Rate-Limit Sentinel}: Evaluates token headroom, daemon availability, and triggers agent awakening events on configurable minute and second cycles.\\n    \\\\item \\\\textbf{Living Interactive Documentation Portal}: Served dynamically via FastAPI at \\\\texttt{/evolution}, rendering real-time hardware telemetry, screenshot galleries, and SQLite records directly in the browser.\\n\\\\end{itemize}\\n\\n\\\\section{Conclusion}\\nThe Silicon Sanctuary demonstrates that aesthetic computational art and low-level operating system governance can converge synergistically. By coupling a procedural voxel botanical simulator with deep Win32 C/NT kernel capabilities, the system proves that low-power x86 platforms can maintain exceptional memory headroom, thermal efficiency, and responsive execution across extended multi-week operational horizons.\\n\\n\\\\end{document}\\n' or '3,698.69' in '\\\\documentclass[11pt,a4paper]{article}\\n\\\\usepackage[utf8]{inputenc}\\n\\\\usepackage[margin=1in]{geometry}\\n\\\\usepackage{amsmath,amssymb,amsfonts}\\n\\\\usepackage{graphicx}\\n\\\\usepackage{booktabs}\\n\\\\usepackage{hyperref}\\n\\\\usepackage{microtype}\\n\\\\usepackage{xcolor}\\n\\\\usepackage{fancyhdr}\\n\\\\usepackage{listings}\\n\\n\\\\definecolor{sanctuarypink}{RGB}{244, 114, 182}\\n\\\\definecolor{sanctuarygold}{RGB}{245, 158, 11}\\n\\\\definecolor{sanctuarygreen}{RGB}{16, 185, 129}\\n\\\\definecolor{sanctuaryblue}{RGB}{56, 189, 248}\\n\\n\\\\hypersetup{\\n    colorlinks=true,\\n    linkcolor=sanctuaryblue,\\n    citecolor=sanctuarygreen,\\n    urlcolor=sanctuarypink\\n}\\n\\n\\\\pagestyle{fancy}\\n\\\\fancyhf{}\\n\\\\rhead{\\\\textcolor{gray}{\\\\small Silicon Sanctuary 336-Hour Technical Report}}\\n\\\\lhead{\\\\textcolor{gray}{\\\\small Intel N100 Sovereign Optimization}}\\n\\\\cfoot{\\\\thepage}\\n\\n\\\\title{\\\\textbf{\\\\Large Silicon Sanctuary: A Polyglot, Sovereign Operating System Optimization \\\\& Botanical Voxel Engine for Heterogeneous Edge Architecture}\\\\\\\\[0.5em]\\n\\\\large Autonomous 336-Hour Engineering, Native NT Kernel Compaction, and Living Documentation}\\n\\\\author{\\\\textbf{Autonomous Agent Cohort} \\\\\\\\\\n\\\\textit{BotanicalSculptor...ional context management architecture residing in \\\\texttt{.agents/context/}:\\n\\\\begin{itemize}\\n    \\\\item \\\\textbf{Relational Database (\\\\texttt{sanctuary\\\\_context.db})}: Implements tables for \\\\texttt{epochs}, \\\\texttt{benchmarks}, \\\\texttt{rate\\\\_limits}, \\\\texttt{agent\\\\_memories}, and \\\\texttt{artifacts}.\\n    \\\\item \\\\textbf{Liveness \\\\& Rate-Limit Sentinel}: Evaluates token headroom, daemon availability, and triggers agent awakening events on configurable minute and second cycles.\\n    \\\\item \\\\textbf{Living Interactive Documentation Portal}: Served dynamically via FastAPI at \\\\texttt{/evolution}, rendering real-time hardware telemetry, screenshot galleries, and SQLite records directly in the browser.\\n\\\\end{itemize}\\n\\n\\\\section{Conclusion}\\nThe Silicon Sanctuary demonstrates that aesthetic computational art and low-level operating system governance can converge synergistically. By coupling a procedural voxel botanical simulator with deep Win32 C/NT kernel capabilities, the system proves that low-power x86 platforms can maintain exceptional memory headroom, thermal efficiency, and responsive execution across extended multi-week operational horizons.\\n\\n\\\\end{document}\\n')"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier3_combinations.py::TestCrossFeatureCombinations::test_tier3_combo7_2min_daemon_heartbeat_and_server_concurrency",
+      "outcome": "passed",
+      "duration": 1.4418
+    },
+    {
+      "nodeid": "tests/e2e/test_tier4_scenarios.py::TestRealWorldApplicationScenarios::test_tier4_scenario1_full_autonomous_documentation_cycle",
+      "outcome": "failed",
+      "duration": 153.8439,
+      "message": "tests\\e2e\\test_tier4_scenarios.py:67: in test_tier4_scenario1_full_autonomous_documentation_cycle\n    res_grove = subprocess.run(cmd_grove, capture_output=True, timeout=30)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:550: in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1209: in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1630: in _communicate\n    raise TimeoutExpired(self.args, orig_timeout)\nE   subprocess.TimeoutExpired: Command '['C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe', '--user-data-dir=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_g8ee7od4\\\\user_data_s1_grove', '--headless=new', '--no-first-run', '--no-default-browser-check', '--hide-scrollbars', '--virtual-time-budget=3000', '--window-size=1920,1080', '--screenshot=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_g8ee7od4\\\\screenshot_grove_s1_1791665695.png', 'http://127.0.0.1:8000/']' timed out after 30 seconds"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier4_scenarios.py::TestRealWorldApplicationScenarios::test_tier4_scenario2_multi_epoch_evolution_simulation",
+      "outcome": "passed",
+      "duration": 1.7646
+    },
+    {
+      "nodeid": "tests/e2e/test_tier4_scenarios.py::TestRealWorldApplicationScenarios::test_tier4_scenario3_continuous_cadence_simulation_no_orphans",
+      "outcome": "failed",
+      "duration": 132.7063,
+      "message": "tests\\e2e\\test_tier4_scenarios.py:180: in test_tier4_scenario3_continuous_cadence_simulation_no_orphans\n    res = subprocess.run(cmd, capture_output=True, timeout=20)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:550: in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1209: in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1630: in _communicate\n    raise TimeoutExpired(self.args, orig_timeout)\nE   subprocess.TimeoutExpired: Command '['C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe', '--user-data-dir=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_q88vb_d1\\\\user_cadence_1', '--headless=new', '--no-first-run', '--hide-scrollbars', '--virtual-time-budget=1000', '--screenshot=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_q88vb_d1\\\\cadence_cycle_1.png', 'http://127.0.0.1:8000/api/heartbeat']' timed out after 20 seconds"
+    },
+    {
+      "nodeid": "tests/e2e/test_tier4_scenarios.py::TestRealWorldApplicationScenarios::test_tier4_scenario4_latex_monograph_artifact_verification",
+      "outcome": "passed",
+      "duration": 1.5711
+    },
+    {
+      "nodeid": "tests/e2e/test_tier4_scenarios.py::TestRealWorldApplicationScenarios::test_tier4_scenario5_stress_concurrency_during_capture",
+      "outcome": "failed",
+      "duration": 246.8447,
+      "message": "tests\\e2e\\test_tier4_scenarios.py:247: in test_tier4_scenario5_stress_concurrency_during_capture\n    res = subprocess.run(cmd, capture_output=True, timeout=30)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:550: in run\n    stdout, stderr = process.communicate(input, timeout=timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1209: in communicate\n    stdout, stderr = self._communicate(input, endtime, timeout)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n..\\..\\AppData\\Roaming\\uv\\python\\cpython-3.11.11-windows-x86_64-none\\Lib\\subprocess.py:1630: in _communicate\n    raise TimeoutExpired(self.args, orig_timeout)\nE   subprocess.TimeoutExpired: Command '['C:\\\\Program Files (x86)\\\\Microsoft\\\\Edge\\\\Application\\\\msedge.exe', '--user-data-dir=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_gurunlzw\\\\user_data_stress', '--headless=new', '--no-first-run', '--hide-scrollbars', '--virtual-time-budget=2000', '--window-size=1920,1080', '--screenshot=C:\\\\Users\\\\ignaz\\\\AppData\\\\Local\\\\Temp\\\\test_e2e_capture_gurunlzw\\\\stress_capture_1080p.png', 'http://127.0.0.1:8000/']' timed out after 30 seconds"
+    }
+  ]
+}

@@ -126,11 +126,13 @@ quadrantChart
 │   ├── 01-open-source-voxel-tools-and-formats.md      <-- Goxel, MagicaVoxel, .vox parser, palette design
 │   ├── 02-webgl-webgpu-voxel-rendering-engines.md     <-- Three.js InstancedMesh, Babylon Thin Instances, WebGPU DDA
 │   ├── 03-greedy-meshing-and-mesh-optimization.md     <-- Greedy meshing algorithm, 95% poly drop, vertex AO
-│   └── 04-interactive-react-three-fiber-voxel-viewer.md<-- Production React Three Fiber component & lighting
+│   ├── 04-interactive-react-three-fiber-voxel-viewer.md<-- Production React Three Fiber component & lighting
+│   └── 05-procedural-voxel-botanical-art-systems.md   <-- 3D L-Systems, space colonization, phyllotaxis, rasterization
 └── scripts/
     ├── skills_audit.py                                <-- Automated YAML frontmatter and reference auditor
     ├── stack_scaffolder.py                            <-- CLI generator for scaffolding starter stacks
     ├── stack_decision_advisor.py                      <-- Interactive architecture recommender and scoring CLI
+    ├── procedural_voxel_botanist.py                   <-- Procedural 3D voxel flora generator (.vox/JSON exporter)
     └── run_all_diagnostics.py                         <-- Unified end-to-end regression and verification suite
 ```
 

@@ -61,14 +61,21 @@ Build an autonomous multi-agent documentation system on a 2-minute cron cadence 
 | explorer_survey_2 | teamwork_preview_explorer | Survey Edge headless capture & reload cycle | completed | a3b21d17-1d85-4f48-a125-505d9b9a2986 |
 | spec_miner_survey_3 | teamwork_preview_spec_miner | Survey SQLite DB & LaTeX monograph | completed | db94c6cf-9877-4471-a949-e8a5d1320d21 |
 | test_writer_e2e_1 | teamwork_preview_test_writer | Build opaque-box E2E test suite (Tiers 1-4) | in-progress | 84d2bd13-5b4a-4708-82b9-5824439cd88f |
-| explorer_m1_1 | teamwork_preview_explorer | Investigate server freshness cycle (F1) | in-progress | 8b612e6b-d8e5-4aac-a134-b8a5ba3829c6 |
-| explorer_m1_2 | teamwork_preview_explorer | Investigate Edge headless capture runner (F2) | in-progress | baa7e215-924a-40bb-aaa0-4c48dda99296 |
-| explorer_m1_3 | teamwork_preview_explorer | Design M1 verification harness & checks | in-progress | a066f6b5-8555-42ee-857f-60bd44118faf |
+| explorer_m1_1 | teamwork_preview_explorer | Investigate server freshness cycle (F1) | completed | 8b612e6b-d8e5-4aac-a134-b8a5ba3829c6 |
+| explorer_m1_2 | teamwork_preview_explorer | Investigate Edge headless capture runner (F2) | completed | baa7e215-924a-40bb-aaa0-4c48dda99296 |
+| explorer_m1_3 | teamwork_preview_explorer | Design M1 verification harness & checks | completed | a066f6b5-8555-42ee-857f-60bd44118faf |
+| worker_m1_1 | teamwork_preview_worker | Implement server freshness & capture runner | completed | d4b0df3d-db86-45ce-86f5-ff9ff3735e04 |
+| reviewer_m1_1 | teamwork_preview_reviewer | Review capture code & PNG output | in-progress | a843e0e4-3123-480e-b46e-3f7a587bf196 |
+| reviewer_m1_2 | teamwork_preview_reviewer | Review server freshness cycle & socket drain | in-progress | e3015cac-2e22-47d2-978e-51dde834a89d |
+| challenger_m1_1 | teamwork_preview_challenger | Stress-test Edge capture & PNG validation | in-progress | 6ecbb629-c01a-40e8-85e8-a7939031f1a1 |
+| challenger_m1_2 | teamwork_preview_challenger | Stress-test process safety & orphan cleanup | in-progress | b71bdfcc-b340-4a37-a955-a291e08eaf10 |
+| auditor_m1_1 | teamwork_preview_auditor | Forensic integrity audit on M1 implementation | completed | 2a34da24-c72b-4606-8dfd-1bb10c138594 |
+| worker_m1_2 | teamwork_preview_worker | Remediation of visual_doc_capture.py (Iter 2) | in-progress | 9200350e-642a-4e9d-8273-0c4125f94e1d |
 
 ## Succession Status
 - Succession required: no
-- Spawn count: 7 / 16
-- Pending subagents: 84d2bd13-5b4a-4708-82b9-5824439cd88f, 8b612e6b-d8e5-4aac-a134-b8a5ba3829c6, baa7e215-924a-40bb-aaa0-4c48dda99296, a066f6b5-8555-42ee-857f-60bd44118faf
+- Spawn count: 14 / 16
+- Pending subagents: 9200350e-642a-4e9d-8273-0c4125f94e1d
 - Predecessor: none
 - Successor: not yet spawned
 - Predecessor: none
